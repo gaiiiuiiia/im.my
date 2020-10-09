@@ -1,0 +1,20 @@
+Fault: 04-10-2020 22:43:21 - Ошибка в SQL запросе: SELECT * FROM articles1 - 1146 Table 'im.articles1' doesn't exist
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 36
+
+Fault: 04-10-2020 22:44:20 - Ошибка в SQL запросе: SELECT name1 FROM articles1 - 1146 Table 'im.articles1' doesn't exist
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 36
+
+Fault: 07-10-2020 15:27:30 - Ошибка в SQL запросе: SELECT teachers.id,teachers.name FROM teachers  WHERE teachers.name='masha'  ORDER BY 1 DESC,teachers.name DESC LIMIT 1 - 1146 Table 'im.teachers' doesn't exist
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 36
+
+Fault: 07-10-2020 20:48:01 - Ошибка в SQL запросе: INSERT INTO teachers (name,content,gallery_img,img,) VALUES ('Olga','Hello','[\"red\'\'.jpg\",\"blue.jpg\",\"black.jpg\"]','main_img. jpg',) - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') VALUES ('Olga','Hello','[\"red\'\'.jpg\",\"blue.jpg\",\"black.jpg\"]','main_im' at line 1
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 45
+
+Fault: 08-10-2020 1:15:56 - Ошибка в SQL запросе: UPDATE teachers SET name='Olya',gallery_img='[\"new_red.jpg\"]',img='main_img. jpg' WHERE id='1'  - 0 
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 44
+
