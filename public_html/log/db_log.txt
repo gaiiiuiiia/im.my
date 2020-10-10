@@ -26,3 +26,7 @@ Fault: 10-10-2020 0:44:40 - Ошибка в SQL запросе: UPDATE teachers 
 file W:\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 44
 
+Fault: 10-10-2020 14:01:05 - Ошибка в SQL запросе: SHOW COLUMNS FROM  - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 44
+
