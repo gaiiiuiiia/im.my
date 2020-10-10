@@ -202,6 +202,77 @@ class BaseModel extends BaseModelMethods
         return $this->query($query, 'u');
     }
 
+    /**
+     * @param $table - Таблица базы данных
+     * @param array $set
+    'fields' => ['id', 'name'],
+    'where' => ['name' => 'masha', 'surname' => 'sergeevna', 'fio' => 'andrey', 'car' => 'porsche', 'color' => ['red', 'blue', 'black']],
+    'operand' => ['IN', 'LIKE%', '<>', '=', 'NOT IN'],
+    'condition' => ['OR', 'AND'],
+    'join' => [
+    'join_table1' => [
+        'table' => 'join_table1',
+        'fields' => ['id as j_id', 'name as j_name'],
+        'type' => 'left',
+        'where' => ['name' => 'sasha'],
+        'operand' => ['='],
+        'condition' => ['OR'],
+        'on' => ['id', 'parent_id'],
+        'group_condition' => 'AND',
+    ],
+    'join_table2' => [
+        'table' => 'join_table2',
+        'fields' => ['id as j2_id', 'name as j2_name'],
+        'type' => 'left',
+        'where' => ['name' => 'sasha'],
+        'operand' => ['<>'],
+        'condition' => ['AND'],
+        'on' => [
+            'table' => 'teachers',
+            'fields' => ['id', 'parent_id'],
+     *   ]
+    ],
+     */
+
+    public function delete($table, $set){
+
+        $table = trim($table);
+
+        $where = $this->createWhere($set, $table);
+
+        $columns = $this->showColumns($table);
+
+        if (!$columns){
+            return false;
+        }
+        if (is_array($set['fields']) && !empty($set['fields'])) {
+            // если вдруг пытаемся изменить поле с первичным ключом
+            if ($columns['id_row']) {
+                $key = array_search($columns['id_row'], $set['fields']);
+
+                if ($key !== false) {
+                    unset($set['fields'][$key]);
+                }
+            }
+            $fields = [];
+
+            foreach ($set['fields'] as $field) {
+                $fields[$field] = $columns[$field]['Default'];
+            }
+            $update = $this->createUpdate($fields, false, false);
+            $query = "UPDATE $table SET $update $where";
+        }
+        else{
+            $join_arr = $this->createJoin($set, $table);
+            $join = $join_arr['join'];
+            $join_tables = $join_arr['tables'];
+
+            $query = 'DELETE ' . $table . $join_tables . ' FROM ' . $table . ' ' . $join . ' '. $where;
+        }
+
+        return $this->query($query, 'u');
+    }
+
     final public function showColumns($table){
 
         $query = "SHOW COLUMNS FROM $table";

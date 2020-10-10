@@ -16,14 +16,14 @@ class IndexController extends BaseController
 
         $table = 'teachers';
 
-        $files['gallery_img'] = ["new_red.jpg"];
-        $files['img'] = 'main_img. jpg';
-
-        $_POST['id'] = 4;
-        $_POST['name'] = 'Ivan';
-        $_POST['content'] = 'Some Text';
-
-        $res = $db->edit($table);
+        $res = $db->delete($table, [
+            'where' => ['id' => 15],
+            'join' => [
+                'students' => [
+                    'on' => ['student_id', 'id'],
+                ],
+            ],
+        ]);
 
         exit('Iam admin panel');
     }
