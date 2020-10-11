@@ -4,7 +4,6 @@
 namespace core\base\settings;
 
 use core\base\controller\Singleton;
-use core\base\settings\Settings;
 
 
 class ShopSettings
