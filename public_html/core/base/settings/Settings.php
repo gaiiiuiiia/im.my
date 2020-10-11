@@ -44,6 +44,9 @@ class Settings
 
     private $defaultTable = 'teachers';
 
+    // Расширение
+    private $expansion = 'core/admin/expansion/';
+
     private $templateArr = [
         'text' => [
             'name',

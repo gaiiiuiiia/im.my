@@ -30,3 +30,7 @@ Fault: 10-10-2020 14:01:05 - Ошибка в SQL запросе: SHOW COLUMNS FR
 file W:\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 44
 
+Fault: 11-10-2020 1:29:21 - Ошибка в SQL запросе: SELECT teachers.id as id,teachers.name,teachers.img,teachers.content FROM teachers   ORDER BY teachers.menu_position ASC  - 2006 MySQL server has gone away
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 44
+
