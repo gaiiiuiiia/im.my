@@ -69,6 +69,16 @@ class Settings
         ],
     ];
 
+    private $translate = [
+        'name' => ['Название', 'Не более 100 символов'],
+    ];
+
+    private $blockNeedle = [
+        'vg-rows' => [],
+        'vg_img' => ['id'],
+        'vg-content' => ['content'],
+    ];
+
     static public function get($property){
         return self::instance()->$property;
     }
