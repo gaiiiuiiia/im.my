@@ -29,7 +29,6 @@ class ShowController extends BaseAdmin
         $this->content = $this->render($this->template, $vars);
 
         return parent::outputData();
-
     }
 
     protected function createData($arr = []){

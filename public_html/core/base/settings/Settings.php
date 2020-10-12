@@ -11,6 +11,9 @@ class Settings
 
     use Singleton;
 
+    // Расширение
+    private $expansion = 'core/admin/expansion/';
+
     private $routes = [
         'admin' => [
             'alias' => 'admin',
@@ -44,8 +47,15 @@ class Settings
 
     private $defaultTable = 'teachers';
 
-    // Расширение
-    private $expansion = 'core/admin/expansion/';
+    private $projectTables = [
+        'teachers' => [
+            'name' => 'Учителя',
+            'img' => 'pages.png',
+        ],
+        'students' => [
+            'name' => 'Ученики',
+        ],
+    ];
 
     private $templateArr = [
         'text' => [

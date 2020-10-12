@@ -38,3 +38,31 @@ Fault: 12-10-2020 11:21:59 - Ошибка в SQL запросе: SHOW COLUMNS FR
 file W:\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 41
 
+Fault: 12-10-2020 14:46:49 - Ошибка в SQL запросе: SHOW COLUMNS FROM show - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show' at line 1
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 12-10-2020 14:49:26 - Ошибка в SQL запросе: SHOW COLUMNS FROM show - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show' at line 1
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 12-10-2020 15:03:19 - Ошибка в SQL запросе: SHOW COLUMNS FROM show - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show' at line 1
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 12-10-2020 15:04:50 - Ошибка в SQL запросе: SHOW COLUMNS FROM show - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show' at line 1
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 12-10-2020 15:05:59 - Ошибка в SQL запросе: SHOW COLUMNS FROM show - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show' at line 1
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 12-10-2020 19:12:33 - Ошибка в SQL запросе: SHOW COLUMNS FROM show - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show' at line 1
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 12-10-2020 19:12:41 - Ошибка в SQL запросе: SHOW COLUMNS FROM show - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show' at line 1
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+

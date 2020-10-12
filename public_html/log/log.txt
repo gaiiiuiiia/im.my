@@ -82,3 +82,279 @@ Fault: 12-10-2020 11:22:05 - Не верное имя файла для подк
 file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
 In line 33
 
+Fault: 12-10-2020 14:36:56 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:36:56 - Не верное имя файла для подключения - core/user/controller/CoreController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:36:56 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:37:29 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:37:29 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:37:29 - Не верное имя файла для подключения - core/user/controller/CoreController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:39:12 - Не верное имя файла для подключения - core/user/controller/CoreController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:39:12 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:39:12 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:39:16 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:39:16 - Не верное имя файла для подключения - core/user/controller/CoreController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:39:16 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:39:19 - Не верное имя файла для подключения - core/user/controller/CoreController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:39:19 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:39:19 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:41:34 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:41:34 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:42:39 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:42:39 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:45:37 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:45:37 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:46:14 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:46:14 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:46:14 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:46:14 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:46:44 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:46:45 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:47:11 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:47:11 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:47:11 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:47:11 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:47:19 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:47:19 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:48:42 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:48:42 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:49:15 - Не верное имя файла для подключения - core/admin/controller/EditController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:49:23 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:49:23 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:49:44 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:49:44 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:49:44 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 14:49:44 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 15:02:44 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 15:03:16 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 15:03:22 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 15:04:41 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 15:05:38 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 15:05:38 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 15:10:45 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 15:10:45 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 15:11:08 - Не верное имя файла для подключения - core/user/controller/TeachersController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 15:11:11 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 15:11:26 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 15:11:44 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 15:12:29 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 15:16:04 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 15:16:56 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 15:17:10 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 15:17:18 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 15:17:29 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 15:18:19 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 15:18:32 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 19:03:16 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 19:03:32 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 19:03:32 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 19:12:25 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 19:12:47 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 19:12:48 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 19:13:04 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
