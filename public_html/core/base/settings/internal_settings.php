@@ -6,6 +6,7 @@ use core\base\exceptions\RouteException;
 
 const TEMPLATE = 'templates/default/';
 const ADMIN_TEMPLATE = 'core/admin/view/';
+const UPLOAD_DIR = 'userfiles/';
 
 const COOKIE_VERSION = '1.0.0';
 const CRYPT_KEY = '';
@@ -16,11 +17,11 @@ const QTY = 8;  // кол-во товаров на странице
 const QTY_LINKS = 3;  // кол-во ссылок справа и слева (пагинация)
 
 const ADMIN_CSS_JS = [
-    'styles' => [],
+    'styles' => ['css/main.css'],
     'scripts' => [],
 ];
 const USER_CSS_JS = [
-    'styles' => ['css/style.css'],
+    'styles' => [],
     'scripts' => [],
 ];
 

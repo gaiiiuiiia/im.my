@@ -2,3 +2,83 @@ Fault: 04-10-2020 17:17:34 - Method core\admin\controller\IndexController::reque
 file W:\domains\im.my\public_html\core\base\controller\BaseController.php
 In line 41
 
+Fault: 12-10-2020 11:12:24 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 11:12:24 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 11:12:24 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 11:12:24 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 11:12:24 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 11:12:24 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 11:12:24 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 11:12:24 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 11:21:33 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 11:21:33 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 11:21:33 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 11:21:33 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 11:21:33 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 11:21:33 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 11:22:04 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 11:22:04 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 11:22:04 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 11:22:05 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 11:22:05 - Не верное имя файла для подключения - core/user/controller/ImagesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 12-10-2020 11:22:05 - Не верное имя файла для подключения - core/user/controller/TemplateController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+

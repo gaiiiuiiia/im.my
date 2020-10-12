@@ -11,13 +11,19 @@ abstract class BaseController
 
     use BaseMethods;
 
+    protected $header;
+    protected $content;
+    protected $footer;
     protected $page;
+
     protected $errors;
 
     protected $controller;
     protected $inputMethod;
     protected $outputMethod;
     protected $parameters;
+
+    protected $template;
 
     protected $styles;
     protected $scripts;
@@ -109,8 +115,7 @@ abstract class BaseController
         else{
             echo $this->page;
         }
-
-        exit();
+        exit;
     }
 
     protected function init($admin = false){
