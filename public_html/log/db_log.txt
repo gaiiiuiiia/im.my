@@ -66,3 +66,21 @@ Fault: 12-10-2020 19:12:41 - Ошибка в SQL запросе: SHOW COLUMNS FR
 file W:\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 41
 
+Fault: 13-10-2020 23:46:04 - Ошибка в SQL запросе: SELECT * FROM information_schema.KEY_COLUMN_USAGE
+                  WHERE TABLE_SCHEMA = im AND TABLE_NAME = articles
+                  CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null' at line 3
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 13-10-2020 23:47:15 - Ошибка в SQL запросе: SELECT * FROM information_schema.KEY_COLUMN_USAGE
+                  WHERE TABLE_SCHEMA = 'im' AND TABLE_NAME = 'articles'
+                  CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null' at line 3
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 13-10-2020 23:48:51 - Ошибка в SQL запросе: SELECT * FROM information_schema.KEY_COLUMN_USAGE
+                  WHERE TABLE_SCHEMA = 'im' AND TABLE_NAME = 'articles'
+                  CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null' at line 3
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+

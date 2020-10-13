@@ -358,3 +358,19 @@ Fault: 12-10-2020 19:13:04 - Не верное имя файла для подк
 file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
 In line 33
 
+Fault: 13-10-2020 16:01:23 - Отсутсвует шаблон - core/admin/view/add
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 13-10-2020 16:24:11 - Отсутсвует шаблон - core/admin/view/add
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 13-10-2020 16:24:45 - Отсутсвует шаблон - core/admin/view/add
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 13-10-2020 16:30:04 - Отсутсвует шаблон - core/admin/view/add
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+

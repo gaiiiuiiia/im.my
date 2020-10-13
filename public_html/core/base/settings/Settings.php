@@ -75,8 +75,8 @@ class Settings
 
     private $blockNeedle = [
         'vg-rows' => [],
-        'vg_img' => ['id'],
-        'vg-content' => ['content'],
+        'vg_img' => [],
+        'vg-content' => [],
     ];
 
     static public function get($property){

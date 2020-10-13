@@ -154,7 +154,6 @@ abstract class BaseAdmin extends BaseController
                 if (!$this->translate[$name]) $this->translate[$name][] = $name;
                 $this->blocks[0][] = $name;
             }
-
             return;
         }
 
