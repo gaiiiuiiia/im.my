@@ -73,6 +73,11 @@ class Settings
         'name' => ['Название', 'Не более 100 символов'],
     ];
 
+    private $rootItems = [
+        'name' => 'Корневая',
+        'tables' => ['articles'],
+    ];
+
     private $blockNeedle = [
         'vg-rows' => [],
         'vg_img' => [],

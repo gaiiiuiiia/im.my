@@ -18,6 +18,7 @@ abstract class BaseAdmin extends BaseController
     protected $table;
     protected $columns;
     protected $data;
+    protected $foreignData;
 
     protected $adminPath;
 
@@ -133,7 +134,7 @@ abstract class BaseAdmin extends BaseController
             $file = $_SERVER['DOCUMENT_ROOT'] . PATH . $path . $this->table . '.php';
 
             extract($args);
-             if (is_readable($file)) return include $file;
+            if (is_readable($file)) return include $file;
         }
 
         return false;
