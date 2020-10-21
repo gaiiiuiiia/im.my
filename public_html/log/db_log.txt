@@ -84,3 +84,7 @@ Fault: 13-10-2020 23:48:51 - Ошибка в SQL запросе: SELECT * FROM i
 file W:\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 41
 
+Fault: 21-10-2020 20:44:03 - Ошибка в SQL запросе: SHOW COLUMNS FROM teachers - 1146 Table 'im.teachers' doesn't exist
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+

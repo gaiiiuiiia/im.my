@@ -374,3 +374,19 @@ Fault: 13-10-2020 16:30:04 - Отсутсвует шаблон - core/admin/view
 file W:\domains\im.my\public_html\core\base\controller\BaseController.php
 In line 104
 
+Fault: 21-10-2020 20:39:38 - Отсутсвует шаблон - core/admin/view/add
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 21-10-2020 20:41:07 - Отсутсвует шаблон - core/admin/view/add
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 21-10-2020 20:41:08 - Отсутсвует шаблон - core/admin/view/add
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 21-10-2020 20:44:56 - Отсутсвует шаблон - core/admin/view/add
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
