@@ -88,3 +88,23 @@ Fault: 21-10-2020 20:44:03 - Ошибка в SQL запросе: SHOW COLUMNS FR
 file W:\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 41
 
+Fault: 23-10-2020 3:09:31 - Ошибка в SQL запросе: INSERT INTO teachers (name,img) VALUES ('Lena','2.jpg') - 1054 Unknown column 'img' in 'field list'
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 23-10-2020 3:30:04 - Ошибка в SQL запросе: INSERT INTO teachers (name,img,menu_position) VALUES ('Lena','2.jpg','1'),('Natalia','3.jpg',NULL,NULL) - 1136 Column count doesn't match value count at row 2
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 23-10-2020 3:36:42 - Ошибка в SQL запросе: INSERT INTO teachers (img) VALUES ('Lena111','1','1.jpg') - 1136 Column count doesn't match value count at row 1
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 23-10-2020 3:39:54 - Ошибка в SQL запросе: INSERT INTO teachers (img) VALUES ('Lena111','1','1.jpg') - 1136 Column count doesn't match value count at row 1
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 23-10-2020 3:46:26 - Ошибка в SQL запросе: INSERT INTO teachers (name,menu_position,gallery_img) VALUES ('Lena111!!!!','1','[\"5.jpg\",\"6.jpg\"]') - 1054 Unknown column 'gallery_img' in 'field list'
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
