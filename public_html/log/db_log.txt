@@ -108,3 +108,69 @@ Fault: 23-10-2020 3:46:26 - Ошибка в SQL запросе: INSERT INTO teac
 file W:\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 41
 
+Fault: 23-10-2020 16:22:38 - Ошибка в SQL запросе: SELECT teachers.id as id,teachers.name,teachers.img,teachers.content,teachers.parent_id FROM teachers   ORDER BY teachers.parent_id ASC,teachers.menu_position ASC  - 1054 Unknown column 'teachers.content' in 'field list'
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 23-10-2020 16:24:21 - Ошибка в SQL запросе: SHOW COLUMNS FROM show - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show' at line 1
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 13-10-2020 23:46:04 - Ошибка в SQL запросе: SELECT * FROM information_schema.KEY_COLUMN_USAGE
+                  WHERE TABLE_SCHEMA = im AND TABLE_NAME = articles
+                  CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null' at line 3
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 13-10-2020 23:47:15 - Ошибка в SQL запросе: SELECT * FROM information_schema.KEY_COLUMN_USAGE
+                  WHERE TABLE_SCHEMA = 'im' AND TABLE_NAME = 'articles'
+                  CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null' at line 3
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 13-10-2020 23:48:51 - Ошибка в SQL запросе: SELECT * FROM information_schema.KEY_COLUMN_USAGE
+                  WHERE TABLE_SCHEMA = 'im' AND TABLE_NAME = 'articles'
+                  CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CONSTRAINT_NAME <> 'PRIMARY' AND REFERENCED_TABLE_NAME is not null' at line 3
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 21-10-2020 20:44:03 - Ошибка в SQL запросе: SHOW COLUMNS FROM teachers - 1146 Table 'im.teachers' doesn't exist
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 23-10-2020 3:09:31 - Ошибка в SQL запросе: INSERT INTO teachers (name,img) VALUES ('Lena','2.jpg') - 1054 Unknown column 'img' in 'field list'
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 23-10-2020 3:30:04 - Ошибка в SQL запросе: INSERT INTO teachers (name,img,menu_position) VALUES ('Lena','2.jpg','1'),('Natalia','3.jpg',NULL,NULL) - 1136 Column count doesn't match value count at row 2
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 23-10-2020 3:36:42 - Ошибка в SQL запросе: INSERT INTO teachers (img) VALUES ('Lena111','1','1.jpg') - 1136 Column count doesn't match value count at row 1
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 23-10-2020 3:39:54 - Ошибка в SQL запросе: INSERT INTO teachers (img) VALUES ('Lena111','1','1.jpg') - 1136 Column count doesn't match value count at row 1
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 23-10-2020 3:46:26 - Ошибка в SQL запросе: INSERT INTO teachers (name,menu_position,gallery_img) VALUES ('Lena111!!!!','1','[\"5.jpg\",\"6.jpg\"]') - 1054 Unknown column 'gallery_img' in 'field list'
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 23-10-2020 16:52:19 - Ошибка в SQL запросе: SHOW COLUMNS FROM show - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show' at line 1
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 23-10-2020 17:14:27 - Ошибка в SQL запросе: SHOW COLUMNS FROM show - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show' at line 1
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 23-10-2020 17:16:12 - Ошибка в SQL запросе: SHOW COLUMNS FROM show - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show' at line 1
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 23-10-2020 17:16:26 - Ошибка в SQL запросе: SHOW COLUMNS FROM show - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show' at line 1
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
