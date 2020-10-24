@@ -442,3 +442,7 @@ Fault: 24-10-2020 3:04:44 - Не верное имя файла для подк�
 file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
 In line 33
 
+Fault: 24-10-2020 19:18:20 - Не верное имя файла для подключения - core/user/controller/LoginController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
