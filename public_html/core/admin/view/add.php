@@ -6,12 +6,15 @@
                 <div class="vg-element vg-padding-in-px">
                     <input type="submit" class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button" value="Сохранить">
                 </div>
-                <div class="vg-element vg-padding-in-px">
-                    <a href=""
-                       class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button vg-center vg_delete">
-                        <span>Удалить</span>
-                    </a>
-                </div>
+
+                <?php if(!$this->noDelete && $this->data): ?>
+                    <div class="vg-element vg-padding-in-px">
+                        <a href=""
+                           class="vg-text vg-firm-color1 vg-firm-background-color4 vg-input vg-button vg-center vg_delete">
+                            <span>Удалить</span>
+                        </a>
+                    </div>
+                <?php endif;?>
             </div>
         </div>
 
@@ -22,20 +25,41 @@
 
     <input type="hidden" name="table" value="<?=$this->table?>">
 
-    <div class="vg-wrap vg-element vg-rows">
-        <div class="vg-full vg-firm-background-color4 vg-box-shadow">
+    <?php
 
-        </div>
-    </div>
-    <div class="vg-wrap vg-element vg-img">
-        <div class="vg-full vg-firm-background-color4 vg-box-shadow">
+    foreach ($this->blocks as $class => $block){
 
+        // Если вдруг не подали blockNeedle. сваливаем все в левую колоночку
+        if (is_int($class)) $class = 'vg-rows';
 
-        </div>
-    </div>
-    <div class="vg-wrap vg-element vg-content">
+        echo '<div class="vg-wrap vg-element ' . $class . '">';
 
-    </div>
+        if ($class !== 'vg-content') echo '<div class="vg-full vg-firm-background-color4 vg-box-shadow">';
+
+        if ($block){
+
+            foreach ($block as $row){
+
+                foreach ($this->templateArr as $template => $items){
+
+                    if (in_array($row, $items)){
+
+                        if (!@include $_SERVER['DOCUMENT_ROOT'] . $this->formTemplates . $template . '.php'){
+                            throw new \core\base\exceptions\RouteException('Не найден шаблон ' .
+                                      $_SERVER['DOCUMENT_ROOT'] . $this->formTemplates . $template . '.php');
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        if ($class !== 'vg-content') echo '</div>';
+
+        echo '</div>';
+    }
+
+    ?>
+
     <div class="vg-wrap vg-element vg-full">
         <div class="vg-wrap vg-element vg-full vg-firm-background-color4 vg-box-shadow">
             <div class="vg-element vg-half vg-left">

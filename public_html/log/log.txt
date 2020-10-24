@@ -430,3 +430,15 @@ Fault: 23-10-2020 19:11:05 - Не верное имя файла для подк
 file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
 In line 33
 
+Fault: 23-10-2020 21:23:14 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 23-10-2020 21:23:22 - Не верное имя файла для подключения - core/admin/controller/ShopController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 24-10-2020 3:04:44 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
