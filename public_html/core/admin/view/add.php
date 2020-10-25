@@ -23,8 +23,6 @@
         <input type="hidden" name="<?=$this->columns['id_row']?>" value="<?=$this->data[$this->columns['id_row']]?>">
     <?php endif; ?>
 
-        hola-mola
-
     <input type="hidden" name="table" value="<?=$this->table?>">
 
     <?php

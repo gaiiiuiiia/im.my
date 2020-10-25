@@ -174,3 +174,11 @@ Fault: 23-10-2020 17:16:26 - Ошибка в SQL запросе: SHOW COLUMNS FR
 file W:\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 41
 
+Fault: 25-10-2020 12:27:03 - Ошибка в SQL запросе: SHOW COLUMNS FROM students - 1146 Table 'im.students' doesn't exist
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 25-10-2020 12:27:14 - Ошибка в SQL запросе: SHOW COLUMNS FROM teachers - 1146 Table 'im.teachers' doesn't exist
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
