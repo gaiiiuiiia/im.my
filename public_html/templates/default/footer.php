@@ -1,1 +1,2 @@
-<div>Это FOOTER</div>
+    </body>
+</html>

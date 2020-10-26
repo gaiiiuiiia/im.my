@@ -450,3 +450,27 @@ Fault: 24-10-2020 22:55:15 - Не верное имя файла для подк
 file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
 In line 33
 
+Fault: 25-10-2020 23:00:12 - Не верное имя файла для подключения - core/user/controller/CoreController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 25-10-2020 23:00:28 - Не верное имя файла для подключения - core/user/controller/CoreController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 26-10-2020 1:48:10 - Не верное имя файла для подключения - core/user/controller/ShowController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 26-10-2020 1:48:42 - Не верное имя файла для подключения - core/user/controller/ShowController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 26-10-2020 2:27:09 - Отсутсвует шаблон - templates/default/index
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 26-10-2020 2:36:18 - Не верное имя файла для подключения - core/user/controller/ShowController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+

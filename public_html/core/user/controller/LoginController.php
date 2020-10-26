@@ -13,24 +13,19 @@ namespace core\user\controller;
  * */
 
 use core\admin\model\Model;
-use core\base\controller\BaseController;
 
-class LoginController extends BaseController
+
+class LoginController extends BaseUser
 {
-    protected $model;
 
     protected function inputData(){
 
-        $this->model = Model::instance();
-
-        $w = $this->model->get('teachers');
-
-        exit;
+        return 'some_text';
 
     }
 
     protected function outputData(){
-
+        return func_get_arg(0);
     }
 
 }

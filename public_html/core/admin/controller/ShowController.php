@@ -13,6 +13,7 @@ class ShowController extends BaseAdmin
 
         if (!$this->userId) $this->execBase();
 
+        // информация о столбцах таблицы. создается $this->columns
         $this->createTableData();
 
         $this->createData();

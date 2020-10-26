@@ -76,7 +76,7 @@ abstract class BaseController
     }
 
     protected function render($path = '', $parameters = []){
-        // подключение шаблонов
+        // подключение шаблонов и рендеринг
 
         // разбор параметров. получаем доступ к элементам массива в виде
         // $elem = value, где $elem - ячейка массива
