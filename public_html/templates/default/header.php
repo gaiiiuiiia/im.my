@@ -48,7 +48,7 @@
                 <button class="btn-close" data-dismiss="modal" aria-label="close"></button>
             </div>
             <div class="modal-body">
-                <form action="" method="post" id="loginModalForm">
+                <form action="<?=PATH?>login" method="post" id="loginModalForm">
                     <div class="row mb-3">
                         <label for="inputEmail" class="col-sm-2 col-form-lable">Логин</label>
                         <div class="col-sm-10">
@@ -70,3 +70,4 @@
         </div>
     </div>
 </div>
+

@@ -13,7 +13,6 @@ abstract class BaseUser extends BaseController
 
     protected $model;
 
-    protected $menu;
     protected $title;
 
 
@@ -25,9 +24,6 @@ abstract class BaseUser extends BaseController
         $this->title = 'Astra';
 
         if (!$this->model) $this->model = Model::instance();
-
-        // Таблицы, что отображаются в менюшке
-        if (!$this->menu) $this->menu = Settings::get('projectTables');
 
     }
 

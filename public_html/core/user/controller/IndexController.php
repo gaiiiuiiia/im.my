@@ -11,6 +11,8 @@ class IndexController extends BaseUser
 
         $this->execBase();
 
+
+
         return ['content_' => 'some_content_part'];
 
         // могу венуть массив с данными. и получить к ним доступ в будущем!

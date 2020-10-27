@@ -8,4 +8,4 @@ const PATH = '/';
 const HOST = 'localhost';
 const USER = 'root';
 const PASS = 'root';
-const DB_NAME = 'im';
+const DB_NAME = 'mdb';

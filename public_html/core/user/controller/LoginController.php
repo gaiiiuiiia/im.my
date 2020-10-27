@@ -12,7 +12,7 @@ namespace core\user\controller;
  *    нет: вывести нет такого пользователя
  * */
 
-use core\admin\model\Model;
+use core\base\model\UserModel;
 
 
 class LoginController extends BaseUser
@@ -20,12 +20,42 @@ class LoginController extends BaseUser
 
     protected function inputData(){
 
-        return 'some_text';
+        if (!$this->model) $this->model = UserModel::instance();
+
+
+        $user_data = $this->createUserData();
+
+        exit;
+
+
 
     }
 
     protected function outputData(){
-        return func_get_arg(0);
+
+        return;
+    }
+
+    protected function createUserData(){
+
+        if (!$_POST['login'] || !$_POST['password']) return false;
+
+        $login = $_POST['login'];
+        $password = $_POST['password'];
+
+        $query = [
+            'fields' => ['id'],
+            'where' => [
+                'login' => $login,
+                'password' => $password,
+            ],
+        ];
+
+        $res = $this->model->get('users', $query);
+
+
+
+
     }
 
 }
