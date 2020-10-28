@@ -22,40 +22,43 @@ class LoginController extends BaseUser
 
         if (!$this->model) $this->model = UserModel::instance();
 
-
         $user_data = $this->createUserData();
 
-        exit;
+        $authorized = $this->checkUserInDataBase($user_data);
 
+        $ses = $_SESSION;
 
+        if ($authorized){
+
+        }
 
     }
 
     protected function outputData(){
-
-        return;
+        $this->redirect($_SERVER['HTTP_REFERER']);
     }
 
     protected function createUserData(){
 
-        if (!$_POST['login'] || !$_POST['password']) return false;
+        if (!$_POST['login'] || !$_POST['password']){
+            $this->redirect($_SERVER['HTTP_REFERER']);
+        }
 
-        $login = $_POST['login'];
-        $password = $_POST['password'];
+        return ['login' => $_POST['login'],
+                'password' => $_POST['password']];
 
+    }
+
+    protected function checkUserInDataBase($user_data){
         $query = [
             'fields' => ['id'],
             'where' => [
-                'login' => $login,
-                'password' => $password,
+                'login' => $user_data['login'],
+                'password' => $user_data['password'],
             ],
         ];
 
-        $res = $this->model->get('users', $query);
-
-
-
-
+        return $this->model->get('users', $query);
     }
 
 }
