@@ -23,19 +23,45 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav mr-auto mb-2">
-                <li class="nav-item">
-                    <a href="" class="nav-link ml-3">Главная</a>
+                <li class="nav-item ">
+                    <a href="" class="nav-link ml-5">Акции</a>
                 </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">Каталог</a>
+                <li class="nav-item dropdown">
+                    <a href="" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkWoman" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Женщины</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkWoman">
+                        <a class="dropdown-item" href="#">Платья</a>
+                        <a class="dropdown-item" href="#">Блузки</a>
+                        <a class="dropdown-item" href="#">Хуйнюшки</a>
+                    </div>
+                <li class="nav-item dropdown">
+                    <a href="" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkMan" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Мужчины</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkMan">
+                        <a class="dropdown-item" href="#">-</a>
+                        <a class="dropdown-item" href="#">-</a>
+                        <a class="dropdown-item" href="#">-</a>
+                    </div>
                 </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">Контакты</a>
+                <li class="nav-item dropdown">
+                    <a href="" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkChild" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Дети</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkChild">
+                        <a class="dropdown-item" href="#">-</a>
+                        <a class="dropdown-item" href="#">-</a>
+                        <a class="dropdown-item" href="#">-</a>
+                    </div>
                 </li>
+
             </ul>
-            <div class="d-flex">
+
+            <form class="d-flex mb-0" action="">
+                <input class="form-control mr-sm-2" type="search" placeholder="Поиск">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Найти</button>
+            </form>
+
+            <div class="d-flex ml-5">
+                <!--<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal"></button>-->
                 <button class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">Войти</button>
             </div>
+
         </div>
     </div>
 </nav>
