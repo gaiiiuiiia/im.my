@@ -474,55 +474,7 @@ Fault: 26-10-2020 2:36:18 - Не верное имя файла для подк�
 file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
 In line 33
 
-Fault: 28-10-2020 15:50:25 - Введены неверные данные
-file W:\domains\im.my\public_html\core\user\controller\LoginController.php
-In line 35
-
-Fault: 28-10-2020 15:51:58 - Введены неверные данные
-file W:\domains\im.my\public_html\core\user\controller\LoginController.php
-In line 35
-
-Fault: 28-10-2020 16:37:49 - Пользователь не авторизован на сайте
-file W:\domains\im.my\public_html\core\user\controller\LoginController.php
-In line 31
-
-Fault: 28-10-2020 16:38:28 - Пользователь не авторизован на сайте
-file W:\domains\im.my\public_html\core\user\controller\LoginController.php
-In line 33
-
-Fault: 28-10-2020 16:39:32 - Пользователь не авторизован на сайте
-file W:\domains\im.my\public_html\core\user\controller\LoginController.php
-In line 31
-
-Fault: 28-10-2020 21:12:42 - Пользователь не авторизован на сайте
-file W:\domains\im.my\public_html\core\user\controller\LoginController.php
-In line 31
-
-Fault: 28-10-2020 21:17:11 - Пользователь не авторизован на сайте
-file W:\domains\im.my\public_html\core\user\controller\LoginController.php
-In line 31
-
-Fault: 28-10-2020 21:43:31 - Пользователь не авторизован на сайте
-file W:\domains\im.my\public_html\core\user\controller\LoginController.php
-In line 31
-
-Fault: 28-10-2020 22:18:17 - Отсутсвует шаблон - templates/default/login
-file W:\domains\im.my\public_html\core\base\controller\BaseController.php
-In line 104
-
-Fault: 29-10-2020 23:28:45 - Неверный пароль
-file W:\domains\im.my\public_html\core\user\controller\LoginController.php
-In line 37
-
-Fault: 29-10-2020 23:38:32 - Неверный пароль
-file W:\domains\im.my\public_html\core\user\controller\LoginController.php
-In line 37
-
-Fault: 30-10-2020 0:45:24 - Отсутсвует шаблон - templates/default/login
-file W:\domains\im.my\public_html\core\base\controller\BaseController.php
-In line 104
-
-Fault: 30-10-2020 0:46:38 - Отсутсвует шаблон - templates/default/login
-file W:\domains\im.my\public_html\core\base\controller\BaseController.php
-In line 104
+Fault: 28-10-2020 13:58:49 - Некорректная дирректория сайта
+file C:\Users\sapun\Deskt\open_server_5_3_5_basic_premium_ultimate\OSPanel\domains\im.my\public_html\core\base\controller\RouteController.php
+In line 103
 
