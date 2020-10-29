@@ -16,7 +16,7 @@
 
 <nav class="navbar navbar-expand-sm navar-light bg-light">
     <div class="container">
-        <a href="" class="navbar-brand">ASTRA</a>
+        <a href="<?=PATH?>" class="navbar-brand">ASTRA</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
                 aria-controls="navbarContent" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
@@ -68,8 +68,8 @@
         </div>
     </div>
 </nav>
-<!-- Модальное окно-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -161,6 +161,45 @@
 
 <!---->
 
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Вход</h5>
+            </div>
+            <div class="modal-body">
+                <form action="<?=PATH?>login" method="post" id="loginModalForm">
+                    <div class="row mb-3">
+                        <label for="inputEmail" class="col-sm-2 col-form-lable">Логин</label>
+                        <div class="col-sm-10">
+                            <input type="text" name='login' class="form-control" id="inputEmail">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="inputPass" class="col-sm-2 col-form-lable">Пароль</label>
+                        <div class="col-sm-10">
+                            <input type="password" name="password" class="form-control" id="inputPass">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                <button type="submit" name="loginButton" form="loginModalForm" class="btn btn-primary">Войти</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Разлогиниваемся?</h5>
+            </div>
+            <div class="modal-footer">
+                <form action="<?=PATH?>login" method="post" id="logoutModalForm">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Нен</button>
+                        <button type="submit" name="logoutButton" form="logoutModalForm" class="btn btn-primary">Да, давай</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
