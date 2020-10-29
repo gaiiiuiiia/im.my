@@ -30,8 +30,7 @@ class LoginController extends BaseUser
             $user_data_from_DB = $this->createUserDataFromDB($user_data);
 
             if (!$user_data_from_DB) {
-                $this->redirect($_SERVER['HTTP_REFERER']);
-                //throw new UserException('Пользователя с таким логином не существует', 3);
+                throw new UserException('Пользователя с таким логином не существует', 3);
             }
 
             if (!$this->checkPassword($user_data['password'], $user_data_from_DB)){
