@@ -65,34 +65,99 @@
         </div>
     </div>
 </nav>
-
+<!-- Модальное окно-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Вход</h5>
-                <button class="btn-close" data-dismiss="modal" aria-label="close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="<?=PATH?>login" method="post" id="loginModalForm">
-                    <div class="row mb-3">
-                        <label for="inputEmail" class="col-sm-2 col-form-lable">Логин</label>
-                        <div class="col-sm-10">
-                            <input type="text" name='login' class="form-control" id="inputEmail">
-                        </div>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Войти</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="regist-tab" data-toggle="tab" href="#regist" role="tab" aria-cons="regist" aria-selected="false">Регистрация</a>
+                </li>
+
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <!-- Вкладка "Вход"-->
+                    <div class="modal-body " >
+                        <form action="<?=PATH?>login" method="post" id="loginModalForm">
+                            <div class="row mb-3">
+                                <label for="inputEmail" class="col-sm-2 col-form-lable">Логин</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name='login' class="form-control" id="inputEmail">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputPass" class="col-sm-2 col-form-lable">Пароль</label>
+                                <div class="col-sm-10">
+                                    <input type="password" name="password" class="form-control" id="inputPass">
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="row mb-3">
-                        <label for="inputPass" class="col-sm-2 col-form-lable">Пароль</label>
-                        <div class="col-sm-10">
-                            <input type="password" name="password" class="form-control" id="inputPass">
-                        </div>
+                    <div class="form-check d-flex ml-5">
+                        <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                        <label class="form-check-label ml-2" for="dropdownCheck">
+                            Запомнить меня
+                        </label>
                     </div>
-                </form>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                        <button type="submit" form="loginModalForm" class="btn btn-primary">Войти</button>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="regist" role="tabpanel" aria-labelledby="regist-tab">
+                    <!-- Вкладка "Регистрация"-->
+                    <div class="modal-body" >
+                        <form action="<?=PATH?>login" method="post" id="loginModalForm">
+                            <div class="row mb-3">
+                                <label for="inputName" class="col-sm-2 col-form-lable">Имя</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name='name' class="form-control" id="inputName">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputEmail" class="col-sm-2 col-form-lable">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name='login' class="form-control" id="inputEmail">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputPass" class="col-sm-2 col-form-lable">Пароль</label>
+                                <div class="col-sm-10">
+                                    <input type="password" name="password" class="form-control" id="inputPass">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="form-check d-flex ml-5">
+                        <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                        <label class="form-check-label ml-2" for="dropdownCheck">
+                            <small class="text-muted">Хочу получать информацию о новинках и распродажах.</small>
+                        </label>
+                    </div>
+
+                    <div class="text-center mx-auto my-1 my-sm-1 my-lg-2 p-1">
+                        <button type="submit" form="loginModalForm" class="btn btn-primary">Зарегистрироваться</button>
+                    </div>
+                    <div  class="text-center ml-2 ">
+                        <p>
+                            <small class="text-muted">
+                            Продолжая регистрацию, я соглашаюсь с&nbsp;
+                            <a  href="#">
+                                Правилами пользования сайтом и обработки персональных данных</a>
+                            </small>
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                <button type="submit" form="loginModalForm" class="btn btn-primary">Войти</button>
-            </div>
+
+<!---->
+
         </div>
     </div>
 </div>
