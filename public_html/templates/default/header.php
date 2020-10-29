@@ -49,7 +49,6 @@
                         <a class="dropdown-item" href="#">-</a>
                     </div>
                 </li>
-
             </ul>
 
             <form class="d-flex mb-0" action="">
@@ -57,11 +56,15 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Найти</button>
             </form>
 
-            <div class="d-flex ml-5">
-                <!--<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal"></button>-->
-                <button class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">Войти</button>
-            </div>
-
+            <?php if (!$this->checkCookie()):?>
+                <div class="d-flex">
+                    <button class="btn btn-outline-danger" data-toggle="modal" data-target="#loginModal">Войти</button>
+                </div>
+            <?php else:?>
+                <div class="d-flex">
+                    <button class="btn btn-outline-danger" data-toggle="modal" data-target="#logoutModal">Выйти</button>
+                </div>
+            <?php endif;?>
         </div>
     </div>
 </nav>

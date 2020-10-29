@@ -2,7 +2,6 @@
 
 namespace core\user\controller;
 
-use core\base\controller\BaseController;
 
 class IndexController extends BaseUser
 {
@@ -11,13 +10,11 @@ class IndexController extends BaseUser
 
         $this->execBase();
 
+        $this->content = "HI I'm a IndexController \n";
 
-
-        return ['content_' => 'some_content_part'];
-
-        // могу венуть массив с данными. и получить к ним доступ в будущем!
-
-
+        print_arr($_COOKIE);
+        echo '<br>';
+        print_arr($_SESSION);
     }
 
 }

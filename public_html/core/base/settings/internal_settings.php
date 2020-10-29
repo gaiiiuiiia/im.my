@@ -10,8 +10,8 @@ const UPLOAD_DIR = 'userfiles/';
 
 const COOKIE_VERSION = '1.0.0';
 const CRYPT_KEY = '';
-const COOKIE_TIME = 60;
-const BLOCK_TIME = 3;
+const COOKIE_TIME = 60 * 60;
+const BLOCK_TIME = 3 * 60;
 
 const QTY = 8;  // кол-во товаров на странице
 const QTY_LINKS = 3;  // кол-во ссылок справа и слева (пагинация)

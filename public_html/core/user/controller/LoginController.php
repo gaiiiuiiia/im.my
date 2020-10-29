@@ -12,6 +12,7 @@ namespace core\user\controller;
  *    нет: вывести нет такого пользователя
  * */
 
+use core\base\exceptions\UserException;
 use core\base\model\UserModel;
 
 
@@ -20,23 +21,39 @@ class LoginController extends BaseUser
 
     protected function inputData(){
 
-        if (!$this->model) $this->model = UserModel::instance();
+        $this->execBase();
 
-        $user_data = $this->createUserData();
+        if (isset($_POST['loginButton'])){
 
-        $authorized = $this->checkUserInDataBase($user_data);
+            $user_data = $this->createUserData();
 
-        $ses = $_SESSION;
+            $user_data_from_DB = $this->createUserDataFromDB($user_data);
 
-        if ($authorized){
+            if (!$user_data_from_DB) {
+                throw new UserException('Пользователя с таким логином не существует', 3);
+            }
 
+            if (!$this->checkPassword($user_data['password'], $user_data_from_DB)){
+                throw new UserException('Неверный пароль', 4);
+            }
+
+            $this->authorize($user_data, $user_data_from_DB);
+
+            $this->redirect($_SERVER['HTTP_REFERER']);
+        }
+        if (isset($_POST['logoutButton'])){
+            $this->logout();
+            $this->redirect($_SERVER['HTTP_REFERER']);
+        }
+        else{
+            $this->content = 'страница входа на сайт';
         }
 
     }
 
-    protected function outputData(){
+   /* protected function outputData(){
         $this->redirect($_SERVER['HTTP_REFERER']);
-    }
+    }*/
 
     protected function createUserData(){
 
@@ -46,19 +63,59 @@ class LoginController extends BaseUser
 
         return ['login' => $_POST['login'],
                 'password' => $_POST['password']];
-
     }
 
-    protected function checkUserInDataBase($user_data){
+    protected function createUserDataFromDB($user_data){
+
         $query = [
-            'fields' => ['id'],
-            'where' => [
-                'login' => $user_data['login'],
-                'password' => $user_data['password'],
-            ],
+            'fields' => ['id', 'login', 'password', 'salt'],
+            'where' => ['login' => $user_data['login']],
         ];
 
-        return $this->model->get('users', $query);
+        return $this->model->get('users', $query)[0];
+    }
+
+    protected function checkPassword($user_password, $user_data_from_DB){
+        if ($this->hash_($user_password, $user_data_from_DB['salt']) === $user_data_from_DB['password']){
+            return true;
+        }
+        return false;
+    }
+
+    protected function authorize($user_data, $user_data_from_DB){
+
+        setcookie('login', $user_data['login'], time() + COOKIE_TIME);
+
+        setcookie('password',
+            $this->hash_($user_data_from_DB['password'], $user_data_from_DB['salt'], true),
+            time() + COOKIE_TIME);
+
+        $_SESSION[$user_data_from_DB['id']] = $user_data_from_DB['id'];
+    }
+
+    protected function logout(){
+
+        SetCookie('login', '', time() - 360000, '/');
+        SetCookie('password', '', time() - 360000, '/');
+        unset($_SESSION['id']);
+    }
+
+    private function fill_db_user_data(){
+        // Заполняю бд данными
+
+        $data = ['1', 'admin', 'max', '123'];
+
+        foreach ($data as $row){
+            $query = [
+                'fields' => [
+                    'login' => $row,
+                    'password' => $this->hash_($row, 'salt_' . $row),
+                    'salt' => 'salt_' . $row,
+                ],
+            ];
+
+            $this->model->add('users', $query);
+        }
     }
 
 }
