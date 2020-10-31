@@ -4,7 +4,6 @@
 namespace core\user\controller;
 
 use core\base\exceptions\UserException;
-use core\base\model\UserModel;
 
 
 class LoginController extends BaseUser
