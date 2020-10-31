@@ -3,11 +3,12 @@
 
 namespace core\user\controller;
 
-use core\base\model\UserModel;
 
-Class RegistrationController extends BaseUser {
+class RegistrationController extends BaseUser
+{
+    protected function inputData(){
 
-
-
+        $this->content = 'cnhfybwf htubcnhfwbb';
+    }
 
 }

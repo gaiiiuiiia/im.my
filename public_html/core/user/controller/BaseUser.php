@@ -14,6 +14,8 @@ abstract class BaseUser extends BaseController
 
     protected $model;
 
+    protected $isCookie;
+
     protected $title;
 
 
@@ -25,6 +27,10 @@ abstract class BaseUser extends BaseController
         $this->title = 'Astra';
 
         if (!$this->model) $this->model = Model::instance();
+
+        if (!$this->isCookie) $this->isCookie = $this->checkCookie();
+
+        $this->setCookie($this->isCookie);
 
     }
 
@@ -61,6 +67,9 @@ abstract class BaseUser extends BaseController
     }
 
     protected function checkCookie(){
+        // return 1, если куки были и совпали
+        //       -1, если куки были и не совпали
+        //        0, если куки не было
 
         if ($_COOKIE['login'] and $_COOKIE['password']){
             $query = [
@@ -74,20 +83,28 @@ abstract class BaseUser extends BaseController
 
                 if ($_COOKIE['password'] === $this->hash_($user_data_from_DB['password'],
                         $user_data_from_DB['salt'], true)){
-                    // куки совпали - обновляем куки
-                    setcookie('login', '', time() - 1, '/');
-                    setcookie('password', '', time() - 1, '/');
-                    setcookie ('login', $_COOKIE['login'], time() + COOKIE_TIME, '/');
-                    setcookie ('password', $_COOKIE['password'], time() + COOKIE_TIME, '/');
-
-                    return true;
+                    return 1;
                 }
+                return -1;
             }
         }
-        // куки не совпали - удаляем их
-        SetCookie('login', '', time() - 360000, '/');
-        SetCookie('password', '', time() - 360000, '/');
-        return false;
+        return 0;
+    }
+
+    protected function setCookie($isCookie){
+
+        if ($isCookie === 1){
+            // куки совпали - обновляем куки
+            setcookie('login', '', time() - 1, '/');
+            setcookie('password', '', time() - 1, '/');
+            setcookie ('login', $_COOKIE['login'], time() + COOKIE_TIME, '/');
+            setcookie ('password', $_COOKIE['password'], time() + COOKIE_TIME, '/');
+        }
+        else if ($isCookie === -1){
+            // куки не совпали - удаляем их
+            setCookie('login', '', time() - 360000, '/');
+            setCookie('password', '', time() - 360000, '/');
+        }
     }
 
 }

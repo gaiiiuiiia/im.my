@@ -3,15 +3,6 @@
 
 namespace core\user\controller;
 
-
-/*
- * Вход на сайт
- * 1 получить данные из форм ввода.
- * 2 проверить, есть ли они в бд
- *    да: вывести вы вошли как пользователь
- *    нет: вывести нет такого пользователя
- * */
-
 use core\base\exceptions\UserException;
 use core\base\model\UserModel;
 
@@ -42,11 +33,15 @@ class LoginController extends BaseUser
 
             $this->redirect($_SERVER['HTTP_REFERER']);
         }
-        if (isset($_POST['logoutButton'])){
+        else if (isset($_POST['logoutButton'])){
             $this->logout();
             $this->redirect($_SERVER['HTTP_REFERER']);
         }
-        else{
+        else if ($this->isCookie === 1){
+            $this->redirect($_SERVER['HTTP_REFERER']);
+            $this->content = 'страница входа на сайт';
+        }
+        else if ($this->isCookie === 0){
             $this->content = 'страница входа на сайт';
         }
 
