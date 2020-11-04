@@ -8,7 +8,9 @@ class RegistrationController extends BaseUser
 {
     protected function inputData(){
 
-        $this->content = 'cnhfybwf htubcnhfwbb';
+        if (isset($_POST['registrationButton'])){
+            exit;
+        }
     }
 
 }

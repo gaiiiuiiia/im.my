@@ -1,1 +1,1 @@
-<h1><?=$content_?></h1>
+<h1><?=$this->content?></h1>

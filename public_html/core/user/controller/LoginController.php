@@ -15,84 +15,62 @@ class LoginController extends BaseUser
 
         if (isset($_POST['loginButton'])){
 
-            $user_data = $this->createUserData();
+            $userData = $this->createUserData(['login', 'password']);
 
-            $user_data_from_DB = $this->createUserDataFromDB($user_data);
+            $userDataFromDB = $this->createUserDataFromDB($userData['login']);
 
-            if (!$user_data_from_DB) {
-                $this->redirect($_SERVER['HTTP_REFERER']);
-                //throw new UserException('Пользователя с таким логином не существует', 3);
+            if (!$userDataFromDB) {
+                $this->message = 'Такого пользователя не существует';
+                return;
             }
 
-            if (!$this->checkPassword($user_data['password'], $user_data_from_DB)){
-                throw new UserException('Неверный пароль', 4);
+            if (!$this->checkPassword($userData['password'], $userDataFromDB)){
+                $this->message = 'Пароль введен не корректно';
+                return;
             }
 
-            $this->authorize($user_data, $user_data_from_DB);
-
-            $this->redirect($_SERVER['HTTP_REFERER']);
+            $this->login($userDataFromDB);
         }
         else if (isset($_POST['logoutButton'])){
             $this->logout();
-            $this->redirect($_SERVER['HTTP_REFERER']);
-        }
-        else if ($this->isCookie === 1){
-            $this->redirect($_SERVER['HTTP_REFERER']);
-            $this->content = 'страница входа на сайт';
-        }
-        else if ($this->isCookie === 0){
-            $this->content = 'страница входа на сайт';
         }
 
-    }
-
-   /* protected function outputData(){
         $this->redirect($_SERVER['HTTP_REFERER']);
-    }*/
 
-    protected function createUserData(){
-
-        if (!$_POST['login'] || !$_POST['password']){
-            $this->redirect($_SERVER['HTTP_REFERER']);
-        }
-
-        return ['login' => $_POST['login'],
-                'password' => $_POST['password']];
     }
 
-    protected function createUserDataFromDB($user_data){
-
-        $query = [
-            'fields' => ['id', 'login', 'password', 'salt'],
-            'where' => ['login' => $user_data['login']],
-        ];
-
-        return $this->model->get('users', $query)[0];
+    protected function outputData(){
+        if ($this->message){
+            return $this->message;
+        }
     }
 
     protected function checkPassword($user_password, $user_data_from_DB){
-        if ($this->hash_($user_password, $user_data_from_DB['salt']) === $user_data_from_DB['password']){
+        if ($this->hash_($user_password, 'pass', $user_data_from_DB['salt']) === $user_data_from_DB['password']){
             return true;
         }
         return false;
     }
 
-    protected function authorize($user_data, $user_data_from_DB){
+    protected function login($userData){
 
-        setcookie('login', $user_data['login'], time() + COOKIE_TIME);
+        if (isset($_POST['rememberMe'])) $this->setCookie(false, $userData);
 
-        setcookie('password',
-            $this->hash_($user_data_from_DB['password'], $user_data_from_DB['salt'], true),
-            time() + COOKIE_TIME);
-
-        $_SESSION[$user_data_from_DB['id']] = $user_data_from_DB['id'];
+        session_start();
+        $_SESSION['id'] = $userData['id'];
+        $_SESSION['login'] = $userData['login'];
     }
 
     protected function logout(){
 
-        SetCookie('login', '', time() - 360000, '/');
-        SetCookie('password', '', time() - 360000, '/');
+        $this->setCookie(true);
+
+        unset($_SESSION['login']);
         unset($_SESSION['id']);
+        session_destroy();
+        session_start();
+        $_SESSION['id'] = 'guestID';
+        $this->login = null;
     }
 
     private function fill_db_user_data(){
@@ -104,7 +82,7 @@ class LoginController extends BaseUser
             $query = [
                 'fields' => [
                     'login' => $row,
-                    'password' => $this->hash_($row, 'salt_' . $row),
+                    'password' => $this->hash_($row, 'pass', 'salt_' . $row),
                     'salt' => 'salt_' . $row,
                 ],
             ];

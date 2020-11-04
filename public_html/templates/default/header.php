@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ASTRA</title>
+    <title><?=$this->title?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -16,7 +16,7 @@
 
 <nav class="navbar navbar-expand-sm navar-light bg-light">
     <div class="container">
-        <a href="<?=PATH?>" class="navbar-brand">ASTRA</a>
+        <a href="<?=PATH?>" class="navbar-brand"><?=$this->title?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
                 aria-controls="navbarContent" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
@@ -56,11 +56,14 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Найти</button>
             </form>
 
-            <?php if (!$this->checkCookie()):?>
+            <?php if (!$_SESSION['login']):?>
                 <div class="d-flex">
                     <button class="btn btn-outline-danger" data-toggle="modal" data-target="#enterModal">Войти</button>
                 </div>
             <?php else:?>
+                <div>
+                    <h1><?=$this->login?></h1>
+                </div>
                 <div class="d-flex">
                     <button class="btn btn-outline-danger" data-toggle="modal" data-target="#logoutModal">Выйти</button>
                 </div>
@@ -98,15 +101,14 @@
                                     <input type="password" name="password" class="form-control" id="inputPass">
                                 </div>
                             </div>
+                            <div class="form-check d-flex ml-5">
+                                <input type="checkbox" name="rememberMe" class="form-check-input" id="dropdownCheck">
+                                <label class="form-check-label ml-2" for="dropdownCheck">
+                                    Запомнить меня
+                                </label>
+                            </div>
                         </form>
                     </div>
-                    <div class="form-check d-flex ml-5">
-                        <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                        <label class="form-check-label ml-2" for="dropdownCheck">
-                            Запомнить меня
-                        </label>
-                    </div>
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
                         <button type="submit" name="loginButton" form="loginForm" class="btn btn-primary">Авторизоваться</button>
@@ -115,11 +117,17 @@
 
                 <div class="tab-pane fade" id="registration" role="tabpanel" aria-labelledby="registration-tab">
                     <div class="modal-body">
-                        <form action="<?=PATH?>login" method="post" id="registrationForm">
+                        <form action="<?=PATH?>registration" method="post" id="registrationForm">
                             <div class="row mb-3">
                                 <label for="inputName" class="col-sm-2 col-form-lable">Имя</label>
                                 <div class="col-sm-10">
                                     <input type="text" name='name' class="form-control" id="inputName">
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="inputLogin" class="col-sm-2 col-form-lable">Логин</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name='login' class="form-control" id="inputLogin">
                                 </div>
                             </div>
                             <div class="row mb-3">
