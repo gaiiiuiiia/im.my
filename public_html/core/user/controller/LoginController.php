@@ -10,6 +10,7 @@ class LoginController extends BaseUser
 {
 
     protected function inputData(){
+        $this->fill_db_user_data();
 
         $this->execBase();
 
