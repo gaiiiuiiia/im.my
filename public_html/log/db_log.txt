@@ -186,3 +186,7 @@ Fault: 26-10-2020 1:27:30 - Ошибка в SQL запросе: SELECT teachers.
 file W:\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 41
 
+Fault: 28-10-2020 14:15:05 - Ошибка подключения к базе данных: 1045 Access denied for user 'root'@'localhost' (using password: YES)
+file C:\Users\sapun\Deskt\open_server_5_3_5_basic_premium_ultimate\OSPanel\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 19
+
