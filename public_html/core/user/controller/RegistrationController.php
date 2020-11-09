@@ -3,11 +3,17 @@
 
 namespace core\user\controller;
 
-use core\base\model\UserModel;
 
-Class RegistrationController extends BaseUser {
+class RegistrationController extends BaseUser
+{
+    protected function inputData(){
+        $this->execBase();
 
+        if (isset($_POST['registrationButton'])){
+            $userData = $this->createUserData(['nameUser', 'email','password','passwordCheck']);
 
-
+            //exit;
+        }
+    }
 
 }

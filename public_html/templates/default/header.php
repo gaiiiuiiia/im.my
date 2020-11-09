@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ASTRA</title>
+    <title><?=$this->title?></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -16,7 +16,7 @@
 
 <nav class="navbar navbar-expand-sm navar-light bg-light">
     <div class="container">
-        <a href="" class="navbar-brand">ASTRA</a>
+        <a href="<?=PATH?>" class="navbar-brand"><?=$this->title?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
                 aria-controls="navbarContent" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,6 @@
                         <a class="dropdown-item" href="#">-</a>
                     </div>
                 </li>
-
             </ul>
 
             <form class="d-flex mb-0" action="">
@@ -57,32 +56,39 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Найти</button>
             </form>
 
-            <div class="d-flex ml-5">
-                <!--<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal"></button>-->
-                <button class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal">Войти</button>
-            </div>
-
+            <?php if (!$_SESSION['login']):?>
+                <div class="d-flex ml-5">
+                    <button class="btn btn-outline-danger" data-toggle="modal" data-target="#enterModal">Войти</button>
+                </div>
+            <?php else:?>
+                <div>
+                    <h1><?=$this->login?></h1>
+                </div>
+                <div class="d-flex">
+                    <button class="btn btn-outline-danger" data-toggle="modal" data-target="#logoutModal">Выйти</button>
+                </div>
+            <?php endif;?>
         </div>
     </div>
 </nav>
-<!-- Модальное окно-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+<div class="modal fade" id="enterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Войти</a>
+                    <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Авторизоваться</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="regist-tab" data-toggle="tab" href="#regist" role="tab" aria-cons="regist" aria-selected="false">Регистрация</a>
+                    <a class="nav-link" id="registration-tab" data-toggle="tab" href="#registration" role="tab" aria-controls="registration" aria-selected="false">Зарегистрироваться</a>
                 </li>
 
             </ul>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <!-- Вкладка "Вход"-->
-                    <div class="modal-body " >
-                        <form action="<?=PATH?>login" method="post" id="loginModalForm">
+
+                <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                    <div class="modal-body" >
+                        <form action="<?=PATH?>login" method="post" id="loginForm">
                             <div class="row mb-3">
                                 <label for="inputEmail" class="col-sm-2 col-form-lable">Логин</label>
                                 <div class="col-sm-10">
@@ -95,25 +101,23 @@
                                     <input type="password" name="password" class="form-control" id="inputPass">
                                 </div>
                             </div>
+                            <div class="form-check d-flex ml-5">
+                                <input type="checkbox" name="rememberMe" class="form-check-input" id="dropdownCheck">
+                                <label class="form-check-label ml-2" for="dropdownCheck">
+                                    Запомнить меня
+                                </label>
+                            </div>
                         </form>
                     </div>
-                    <div class="form-check d-flex ml-5">
-                        <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                        <label class="form-check-label ml-2" for="dropdownCheck">
-                            Запомнить меня
-                        </label>
-                    </div>
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                        <button type="submit" form="loginModalForm" class="btn btn-primary">Войти</button>
+                        <button type="submit" name="loginButton" form="loginForm" class="btn btn-primary">Авторизоваться</button>
                     </div>
                 </div>
 
-                <div class="tab-pane fade" id="regist" role="tabpanel" aria-labelledby="regist-tab">
-                    <!-- Вкладка "Регистрация"-->
-                    <div class="modal-body" >
-                        <form action="<?=PATH?>login" method="post" id="loginModalForm">
+                <div class="tab-pane fade" id="registration" role="tabpanel" aria-labelledby="registration-tab">
+                    <div class="modal-body">
+                        <form action="<?=PATH?>registration" method="post" id="registrationForm">
                             <div class="row mb-3">
                                 <label for="inputName" class="col-sm-2 col-form-lable">Имя</label>
                                 <div class="col-sm-10">
@@ -123,7 +127,7 @@
                             <div class="row mb-3">
                                 <label for="inputEmail" class="col-sm-2 col-form-lable">Email</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name='login' class="form-control" id="inputEmail">
+                                    <input type="email" name='email' class="form-control" id="inputEmail">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -132,32 +136,52 @@
                                     <input type="password" name="password" class="form-control" id="inputPass">
                                 </div>
                             </div>
+                            <div class="row mb-3">
+                                <label for="inputConfirmPass" class="col-sm-2 col-form-lable">Подтверждение пароля</label>
+                                <div class="col-sm-10">
+                                    <input type="password" name="confirm-password" class="form-control" id="inputConfirmPass">
+                                </div>
+                            </div>
                         </form>
                     </div>
                     <div class="form-check d-flex ml-5">
                         <input type="checkbox" class="form-check-input" id="dropdownCheck">
                         <label class="form-check-label ml-2" for="dropdownCheck">
-                            <small class="text-muted">Хочу получать информацию о новинках и распродажах.</small>
+                            <small class="text-muted">Хочу получать информацию о новинках и распродажах</small>
                         </label>
                     </div>
 
                     <div class="text-center mx-auto my-1 my-sm-1 my-lg-2 p-1">
-                        <button type="submit" form="loginModalForm" class="btn btn-primary">Зарегистрироваться</button>
+                        <button type="submit" name="registrationButton" form="registrationForm" class="btn btn-primary">Зарегистрироваться</button>
                     </div>
                     <div  class="text-center ml-2 ">
                         <p>
                             <small class="text-muted">
-                            Продолжая регистрацию, я соглашаюсь с&nbsp;
+                            Продолжая регистрацию, я соглашаюсь с <br>
                             <a  href="#">
                                 Правилами пользования сайтом и обработки персональных данных</a>
                             </small>
                         </p>
                     </div>
                 </div>
+
             </div>
+        </div>
+    </div>
+</div>
 
-<!---->
-
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Разлогиниваемся?</h5>
+            </div>
+            <div class="modal-footer">
+                <form action="<?=PATH?>login" method="post" id="logoutForm">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Нен</button>
+                        <button type="submit" name="logoutButton" form="logoutForm" class="btn btn-primary">Да, давай</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

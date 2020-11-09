@@ -19,9 +19,9 @@ trait Singleton
 
         self::$_instance = new self;
 
-        /*if (method_exists(self::$_instance, 'connect')){
+        if (method_exists(self::$_instance, 'connect')){
             self::$_instance->connect();
-        }*/
+        }
 
         return self::$_instance;
     }

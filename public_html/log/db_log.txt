@@ -186,7 +186,11 @@ Fault: 26-10-2020 1:27:30 - Ошибка в SQL запросе: SELECT teachers.
 file W:\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 41
 
-Fault: 28-10-2020 14:15:05 - Ошибка подключения к базе данных: 1045 Access denied for user 'root'@'localhost' (using password: YES)
-file C:\Users\sapun\Deskt\open_server_5_3_5_basic_premium_ultimate\OSPanel\domains\im.my\public_html\core\base\model\BaseModel.php
-In line 19
+Fault: 28-10-2020 16:29:04 - Ошибка в SQL запросе: INSERT INTO users (login,password,salt) VALUES ('1','3b07a0325de8e685c82d4ebeae813166a80ea3806e602764ea5d9c39b1ec8cdd4a4b7acbb41a6ad14cef77772fc890a391bc83eff3d4e398e5fb4a86787ee6b6','salt_1') - 1406 Data too long for column 'password' at row 1
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 28-10-2020 16:35:54 - Ошибка в SQL запросе: INSERT INTO users (login,password,salt) VALUES ('max','d25496b682763ad2b8b70c94919bc320e37afd70fe760f65c58df05ba8150641f49cf78286217e5518328a981832632b51dfd5536b74fbcff1d9b2a654ece57d','salt_max') - 1062 Duplicate entry 'max' for key 'users_login_uindex'
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
 
