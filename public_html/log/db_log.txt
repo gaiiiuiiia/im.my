@@ -194,3 +194,7 @@ Fault: 28-10-2020 16:35:54 - Ошибка в SQL запросе: INSERT INTO use
 file W:\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 41
 
+Fault: 04-11-2020 14:10:37 - Ошибка в SQL запросе: SELECT users.* FROM users  WHERE users.login='1'    - 0 
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+

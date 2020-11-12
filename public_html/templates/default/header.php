@@ -11,6 +11,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            if(window.location.href.indexOf('#enter') !== -1) {
+                $('#enter').modal('show');
+            }
+
+        })
+    </script>
 </head>
 <body>
 
@@ -58,21 +68,21 @@
 
             <?php if (!$_SESSION['login']):?>
                 <div class="d-flex">
-                    <button class="btn btn-outline-danger" data-toggle="modal" data-target="#enterModal">Войти</button>
+                    <button class="btn btn-outline-danger" data-toggle="modal" data-target="#enter">Войти</button>
                 </div>
             <?php else:?>
                 <div>
                     <h1><?=$this->login?></h1>
                 </div>
                 <div class="d-flex">
-                    <button class="btn btn-outline-danger" data-toggle="modal" data-target="#logoutModal">Выйти</button>
+                    <button class="btn btn-outline-danger" data-toggle="modal" data-target="#logout">Выйти</button>
                 </div>
             <?php endif;?>
         </div>
     </div>
 </nav>
 
-<div class="modal fade" id="enterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="enter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -88,6 +98,11 @@
 
                 <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
                     <div class="modal-body" >
+
+                        <div>
+                            Сообщение пользователю!
+                        </div>
+
                         <form action="<?=PATH?>login" method="post" id="loginForm">
                             <div class="row mb-3">
                                 <label for="inputEmail" class="col-sm-2 col-form-lable">Логин</label>
@@ -176,7 +191,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

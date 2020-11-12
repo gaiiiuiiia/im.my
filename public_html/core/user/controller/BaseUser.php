@@ -15,8 +15,6 @@ abstract class BaseUser extends BaseController
 
     protected $title;
 
-    protected $message;
-
     protected $login;
 
 
@@ -187,11 +185,13 @@ abstract class BaseUser extends BaseController
         }
     }
 
-    protected function createUserDataFromDB($login){
+    protected function createUserDataFromDB($userData){
 
         $query = [
             'fields' => [],
-            'where' => ['login' => $login]
+            'where' => [
+                'login' => $userData['login'],
+            ],
         ];
 
         return $this->model->get('users', $query)[0];

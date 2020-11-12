@@ -17,7 +17,7 @@ class LoginController extends BaseUser
 
             $userData = $this->createUserData(['login', 'password']);
 
-            $userDataFromDB = $this->createUserDataFromDB($userData['login']);
+            $userDataFromDB = $this->createUserDataFromDB($userData);
 
             if (!$userDataFromDB) {
                 $this->message = 'Такого пользователя не существует';
@@ -34,15 +34,14 @@ class LoginController extends BaseUser
         else if (isset($_POST['logoutButton'])){
             $this->logout();
         }
-
-        $this->redirect($_SERVER['HTTP_REFERER']);
-
     }
 
     protected function outputData(){
         if ($this->message){
-            return $this->message;
+            $this->redirect($_SERVER['HTTP_REFERER'] . "#enter");
         }
+
+        $this->redirect($_SERVER['HTTP_REFERER']);
     }
 
     protected function checkPassword($user_password, $user_data_from_DB){

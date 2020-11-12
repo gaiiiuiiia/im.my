@@ -526,3 +526,115 @@ Fault: 30-10-2020 0:46:38 - Отсутсвует шаблон - templates/defaul
 file W:\domains\im.my\public_html\core\base\controller\BaseController.php
 In line 104
 
+Fault: 28-10-2020 16:39:32 - Пользователь не авторизован на сайте
+file W:\domains\im.my\public_html\core\user\controller\LoginController.php
+In line 31
+
+Fault: 28-10-2020 21:12:42 - Пользователь не авторизован на сайте
+file W:\domains\im.my\public_html\core\user\controller\LoginController.php
+In line 31
+
+Fault: 28-10-2020 21:17:11 - Пользователь не авторизован на сайте
+file W:\domains\im.my\public_html\core\user\controller\LoginController.php
+In line 31
+
+Fault: 28-10-2020 21:43:31 - Пользователь не авторизован на сайте
+file W:\domains\im.my\public_html\core\user\controller\LoginController.php
+In line 31
+
+Fault: 28-10-2020 22:18:17 - Отсутсвует шаблон - templates/default/login
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 29-10-2020 23:28:45 - Неверный пароль
+file W:\domains\im.my\public_html\core\user\controller\LoginController.php
+In line 37
+
+Fault: 29-10-2020 23:38:32 - Неверный пароль
+file W:\domains\im.my\public_html\core\user\controller\LoginController.php
+In line 37
+
+Fault: 30-10-2020 0:45:24 - Отсутсвует шаблон - templates/default/login
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 30-10-2020 0:46:38 - Отсутсвует шаблон - templates/default/login
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 31-10-2020 18:15:49 - Отсутсвует шаблон - templates/default/login
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 31-10-2020 18:31:41 - Неверный пароль
+file W:\domains\im.my\public_html\core\user\controller\LoginController.php
+In line 28
+
+Fault: 31-10-2020 20:17:33 - Не верное имя файла для подключения - core/user/controller/ShopController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 31-10-2020 20:18:36 - Не верное имя файла для подключения - core/user/controller/ShopController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 01-11-2020 0:50:09 - Отсутсвует шаблон - templates/default/login
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 01-11-2020 0:53:37 - Отсутсвует шаблон - templates/default/login
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 01-11-2020 1:14:50 - Отсутсвует шаблон - templates/default/login
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 01-11-2020 1:23:52 - Отсутсвует шаблон - templates/default/login
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 01-11-2020 1:24:34 - Отсутсвует шаблон - templates/default/login
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 01-11-2020 1:24:52 - Отсутсвует шаблон - templates/default/login
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 01-11-2020 1:29:43 - Отсутсвует шаблон - templates/default/login
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 01-11-2020 1:29:53 - Отсутсвует шаблон - templates/default/login
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 01-11-2020 1:31:09 - Отсутсвует шаблон - templates/default/login
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 01-11-2020 1:31:17 - Отсутсвует шаблон - templates/default/login
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 01-11-2020 1:31:54 - Отсутсвует шаблон - templates/default/login
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 01-11-2020 13:39:51 - Отсутсвует шаблон - templates/default/login
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 04-11-2020 14:12:59 - Class core\user\controller\?Controller does not exist
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 49
+
+Fault: 04-11-2020 16:01:19 - Отсутсвует шаблон - templates/default/login
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
+Fault: 04-11-2020 16:02:40 - Отсутсвует шаблон - templates/default/login
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+
