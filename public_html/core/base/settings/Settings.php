@@ -64,7 +64,8 @@ class Settings
         'textarea' => ['content'],
         'radio' => ['visible'],
         'select' => ['menu_position', 'parent_id'],
-        'img' => ['img']
+        'img' => ['img'],
+        'gallery_img' => ['gallery_img'],
     ];
 
     private $translate = [
@@ -75,7 +76,7 @@ class Settings
         'visible' => [
             'Нет',
             'Да',
-            'default' => 'Да'
+            'default' => 'Да',
         ],
     ];
 

@@ -174,3 +174,7 @@ Fault: 23-10-2020 17:16:26 - Ошибка в SQL запросе: SHOW COLUMNS FR
 file W:\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 41
 
+Fault: 12-11-2020 19:13:09 - Ошибка в SQL запросе: SHOW COLUMNS FROM teachers - 2006 MySQL server has gone away
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+

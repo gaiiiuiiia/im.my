@@ -24,6 +24,12 @@ class AddController extends BaseAdmin
 
         $this->createOutputData();
 
+        $this->data = [
+            'name' => 'Masha',
+            'keywords' => 'Ключевики',
+
+        ];
+
     }
 
     protected function createForeignProperty($arr, $rootItems){
