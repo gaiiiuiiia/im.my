@@ -6,6 +6,7 @@ use core\base\exceptions\RouteException;
 
 const TEMPLATE = 'templates/default/';
 const ADMIN_TEMPLATE = 'core/admin/view/';
+const USER_TEMPLATE = 'core/user/view/';
 const UPLOAD_DIR = 'userfiles/';
 
 const COOKIE_VERSION = '1.0.0';
@@ -21,7 +22,7 @@ const ADMIN_CSS_JS = [
     'scripts' => [],
 ];
 const USER_CSS_JS = [
-    'styles' => [],
+    'styles' => ['css/main.css'],
     'scripts' => [],
 ];
 

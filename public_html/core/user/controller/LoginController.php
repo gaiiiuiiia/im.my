@@ -9,9 +9,13 @@ use core\base\exceptions\UserException;
 class LoginController extends BaseUser
 {
 
+    private $redirection;
+
     protected function inputData(){
 
         $this->execBase();
+
+        if ($this->login) return;
 
         if (isset($_POST['loginButton'])){
 
@@ -20,16 +24,17 @@ class LoginController extends BaseUser
             $userDataFromDB = $this->createUserDataFromDB($userData);
 
             if (!$userDataFromDB) {
-                $this->message = 'Такого пользователя не существует';
+                $this->redirection = true;
                 return;
             }
 
             if (!$this->checkPassword($userData['password'], $userDataFromDB)){
-                $this->message = 'Пароль введен не корректно';
+                $this->redirection = true;
                 return;
             }
 
             $this->login($userDataFromDB);
+            $this->redirection = true;
         }
         else if (isset($_POST['logoutButton'])){
             $this->logout();
@@ -37,11 +42,11 @@ class LoginController extends BaseUser
     }
 
     protected function outputData(){
-        if ($this->message){
-            $this->redirect($_SERVER['HTTP_REFERER'] . "#enter");
+        if ($this->login){
+            $this->redirect($_SERVER['HTTP_REFERER']);
         }
 
-        $this->redirect($_SERVER['HTTP_REFERER']);
+        parent::outputData(func_get_arg(0));
     }
 
     protected function checkPassword($user_password, $user_data_from_DB){

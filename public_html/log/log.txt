@@ -638,3 +638,35 @@ Fault: 04-11-2020 16:02:40 - Отсутсвует шаблон - templates/defau
 file W:\domains\im.my\public_html\core\base\controller\BaseController.php
 In line 104
 
+Fault: 14-11-2020 12:42:05 - Не верное имя файла для подключения - core/user/controller/TemplatesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 14-11-2020 12:42:13 - Не верное имя файла для подключения - core/user/controller/TemplatesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 33
+
+Fault: 14-11-2020 12:59:56 - Не верное имя файла для подключения - core/user/controller/TemplatesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 34
+
+Fault: 14-11-2020 13:00:04 - Не верное имя файла для подключения - core/user/controller/TemplatesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 34
+
+Fault: 14-11-2020 13:02:08 - Не верное имя файла для подключения - core/user/controller/TemplatesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 34
+
+Fault: 14-11-2020 13:02:12 - Не верное имя файла для подключения - core/user/controller/TemplatesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 34
+
+Fault: 14-11-2020 13:02:16 - Не верное имя файла для подключения - core/user/controller/TemplatesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 34
+
+Fault: 14-11-2020 13:02:24 - Не верное имя файла для подключения - core/user/controller/TemplatesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 34
+

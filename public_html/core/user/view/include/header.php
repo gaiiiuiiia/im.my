@@ -6,6 +6,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?=$this->title?></title>
+    <?php foreach($this->styles as $style): ?>
+        <link rel="stylesheet" href="<?=$style?>">
+    <?php endforeach;?>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -105,15 +108,15 @@
 
                         <form action="<?=PATH?>login" method="post" id="loginForm">
                             <div class="row mb-3">
-                                <label for="inputEmail" class="col-sm-2 col-form-lable">Логин</label>
+                                <label for="login" class="col-sm-2 col-form-lable">Логин</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name='login' class="form-control" id="inputEmail">
+                                    <input type="text" name='login' class="form-control" id="login">
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="inputPass" class="col-sm-2 col-form-lable">Пароль</label>
+                                <label for="password" class="col-sm-2 col-form-lable">Пароль</label>
                                 <div class="col-sm-10">
-                                    <input type="password" name="password" class="form-control" id="inputPass">
+                                    <input type="password" name="password" class="form-control" id="password">
                                 </div>
                             </div>
                             <div class="form-check d-flex ml-5">

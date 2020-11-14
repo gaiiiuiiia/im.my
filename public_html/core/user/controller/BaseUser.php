@@ -17,6 +17,8 @@ abstract class BaseUser extends BaseController
 
     protected $login;
 
+    protected $message;
+
 
     protected function inputData(){
 
@@ -29,6 +31,8 @@ abstract class BaseUser extends BaseController
 
         $this->authorize();
 
+        if (!$this->message) $this->message = $this->getMessage();
+
     }
 
     protected function outputData(){
@@ -40,8 +44,8 @@ abstract class BaseUser extends BaseController
             $this->content = $this->render($this->template, $vars);
         }
 
-        $this->header = $this->render(TEMPLATE . 'header');
-        $this->footer = $this->render(TEMPLATE . 'footer');
+        $this->header = $this->render(USER_TEMPLATE . 'include/header');
+        $this->footer = $this->render(USER_TEMPLATE . 'include/footer');
 
         // дефолтная раскладка хедер контент футер
         return $this->render(ADMIN_TEMPLATE . 'layout/default');
@@ -195,6 +199,13 @@ abstract class BaseUser extends BaseController
         ];
 
         return $this->model->get('users', $query)[0];
+    }
+
+    protected function getMessage(){
+        $message = $_SESSION['messageToUser'];
+        unset($_SESSION['messageToUser']);
+
+        return $message;
     }
 
 }
