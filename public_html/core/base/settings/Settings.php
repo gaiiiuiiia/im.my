@@ -14,6 +14,8 @@ class Settings
     // Расширение
     private $expansion = 'core/admin/expansion/';
 
+    private $messages = 'core/base/messages/';
+
     private $routes = [
         'admin' => [
             'alias' => 'admin',
@@ -69,7 +71,7 @@ class Settings
     ];
 
     private $translate = [
-        'name' => ['Название', 'Не более 100 символов'],
+        'name' => ['Название', "Не более 100 символов"],
     ];
 
     private $radio = [
@@ -89,6 +91,32 @@ class Settings
         'vg-rows' => [],
         'vg-img' => ['img'],
         'vg-content' => ['content'],
+    ];
+
+    private $validation = [
+        'name' => [
+            'empty' => true,
+            'trim' => true,
+            ],
+        'price' => [
+            'int' => true,
+        ],
+        'login' => [
+            'empty' => true,
+            'trim' => true,
+        ],
+        'password' => [
+            'crypt' => true,
+            'empty' => true,
+        ],
+        'keywords' => [
+            'count' => 70,
+            'trim' => true,
+        ],
+        'description' => [
+            'count' => 160,
+            'trim' => true,
+        ],
     ];
 
     static public function get($property){
