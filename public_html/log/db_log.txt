@@ -178,3 +178,7 @@ Fault: 12-11-2020 19:13:09 - Ошибка в SQL запросе: SHOW COLUMNS FR
 file W:\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 41
 
+Fault: 15-11-2020 23:30:04 - Ошибка в SQL запросе: SHOW COLUMNS FROM articles - 1146 Table 'im.articles' doesn't exist
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+

@@ -12,8 +12,7 @@
         <div class="vg-element vg-full">
             <div class="vg-element vg-full vg-left">
                 <textarea name="<?=$row?>" class="vg-input vg-text vg-full vg-firm-color1"><?=isset($_SESSION['res'][$row]) ?
-                        htmlspecialchars($_SESSION['res'][$row]) : htmlspecialchars($this->data[$row])?>
-                </textarea>
+                        htmlspecialchars($_SESSION['res'][$row]) : htmlspecialchars($this->data[$row])?></textarea>
             </div>
         </div>
     </div>

@@ -260,7 +260,6 @@ abstract class BaseAdmin extends BaseController
 
     }
 
-
     protected function clearPostFields($settings, &$arr = []){
         if (!$arr) $arr = &$_POST;  // ссылка
         if (!$settings) $settings = Settings::instance();
