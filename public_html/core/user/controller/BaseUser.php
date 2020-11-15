@@ -16,7 +16,7 @@ abstract class BaseUser extends BaseController
 
     protected $title;
 
-    protected $login;
+    protected $userLogin;
 
     protected $messages;
 
@@ -34,7 +34,7 @@ abstract class BaseUser extends BaseController
             $this->messages = include $_SERVER['DOCUMENT_ROOT'] . PATH .
                                         Settings::get('messages') . 'informationMessages.php';
 
-        $this->authorize();
+        $this->authorizeUser();
 
     }
 
@@ -54,12 +54,11 @@ abstract class BaseUser extends BaseController
         return $this->render(ADMIN_TEMPLATE . 'layout/default');
     }
 
-    private function authorize(){
+    private function authorizeUser(){
 
         if (isset($_SESSION['login'])){
             // Авторизованный пользователь
-            $this->login = $_SESSION['login'];
-
+            $this->userLogin = $_SESSION['login'];
         }
         else{
             // мб гость, а мб и пользователь, который только-только зашел...
@@ -71,7 +70,7 @@ abstract class BaseUser extends BaseController
                     $this->startSession($userData);
                     $this->setCookie(false, $userData);  // проверить, а не конфликтует ли это с "галочкой на запомнить меня"
 
-                    $this->login = $_SESSION['login'];
+                    $this->userLogin = $_SESSION['login'];
                 }
                 else{
                     $this->setCookie(true);
@@ -207,6 +206,19 @@ abstract class BaseUser extends BaseController
 
     protected function createMessage($message){
         $_SESSION['res']['answer'] = '<div class="error">' . $message . '</div>';
+    }
+
+    protected function saveUserInputToSession(){
+
+        if ($this->isPost()){
+            foreach ($_POST as $item => $value){
+                $_SESSION['userInput'][$item] = $value;
+            }
+        }
+    }
+
+    protected function clearUserInputFromSession(){
+        unset($_SESSION['userInput']);
     }
 
 }

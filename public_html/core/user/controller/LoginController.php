@@ -9,35 +9,32 @@ use core\base\exceptions\UserException;
 class LoginController extends BaseUser
 {
 
-    protected $error;
-
     protected function inputData(){
 
         $this->execBase();
 
-        if ($this->login){
+        if ($this->userLogin && !isset($_POST['logoutButton'])){
+
             $this->createMessage($this->messages['alreadyLogged']);
+
             $this->redirect();
         }
-
         if (isset($_POST['loginButton'])){
 
+            $this->saveUserInputToSession();
+
             $userDataFromDB = $this->validateUserLoginData();
-
             $this->login($userDataFromDB);
-            $this->redirection = true;
-        }
-        else if (isset($_POST['logoutButton'])){
-            $this->logout();
-        }
-    }
 
-    protected function outputData(){
-        if ($this->login){
+            $this->clearUserInputFromSession();
+
+            $this->redirect();
+        } else if (isset($_POST['logoutButton'])){
+
+            $this->logout();
+
             $this->redirect();
         }
-
-        parent::outputData(func_get_arg(0));
     }
 
     protected function validateUserLoginData(){
@@ -48,12 +45,12 @@ class LoginController extends BaseUser
 
         if (!$userDataFromDB) {
             $this->createMessage($this->messages['userNotExists']);
-            $this->redirect();
+            $this->redirect($_SERVER['HTTP_REFERER'] . '/#enter');
         }
 
         if (!$this->checkPassword($userData['password'], $userDataFromDB)){
             $this->createMessage($this->messages['incorrectPassword']);
-            $this->redirect();
+            $this->redirect($_SERVER['HTTP_REFERER'] . '/#enter');
         }
 
         return $userDataFromDB;
@@ -84,7 +81,7 @@ class LoginController extends BaseUser
         session_destroy();
         session_start();
         $_SESSION['id'] = 'guestID';
-        $this->login = null;
+        $this->userLogin = null;
     }
 
     private function fill_db_user_data(){

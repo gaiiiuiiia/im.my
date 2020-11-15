@@ -16,13 +16,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function() {
-
+        $(document).ready(
+            function() {
             if(window.location.href.indexOf('#enter') !== -1) {
                 $('#enter').modal('show');
-            }
 
+            }
         })
+
     </script>
 </head>
 <body>
@@ -75,7 +76,7 @@
                 </div>
             <?php else:?>
                 <div>
-                    <h1><?=$this->login?></h1>
+                    <h1><?=$this->userLogin?></h1>
                 </div>
                 <div class="d-flex">
                     <button class="btn btn-outline-danger" data-toggle="modal" data-target="#logout">Выйти</button>
@@ -103,20 +104,25 @@
                     <div class="modal-body" >
 
                         <div>
-                            Сообщение пользователю!
+                            <?php
+                            echo $_SESSION['res']['answer'];
+                            unset($_SESSION['res']['answer']);
+                            ?>
                         </div>
 
                         <form action="<?=PATH?>login" method="post" id="loginForm">
                             <div class="row mb-3">
                                 <label for="login" class="col-sm-2 col-form-lable">Логин</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name='login' class="form-control" id="login">
+                                    <input type="text" name='login' class="form-control" id="login"
+                                            value="<?=$_SESSION['userInput']['login']?>">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="password" class="col-sm-2 col-form-lable">Пароль</label>
                                 <div class="col-sm-10">
-                                    <input type="password" name="password" class="form-control" id="password">
+                                    <input type="password" name="password" class="form-control" id="password"
+                                            value="<?=$_SESSION['userInput']['password']?>">
                                 </div>
                             </div>
                             <div class="form-check d-flex ml-5">

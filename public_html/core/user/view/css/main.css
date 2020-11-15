@@ -1,3 +1,15 @@
 .loginForm {
     background-color: #00bfe8;
 }
+
+.error {
+    background: #ff8080;
+    color: #eceef2;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
