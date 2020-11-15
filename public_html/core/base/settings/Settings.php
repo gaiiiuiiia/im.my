@@ -63,7 +63,7 @@ class Settings
 
     private $templateArr = [
         'text' => ['name'],
-        'textarea' => ['content'],
+        'textarea' => ['content', 'keywords'],
         'radio' => ['visible'],
         'select' => ['menu_position', 'parent_id'],
         'img' => ['img'],
@@ -90,7 +90,7 @@ class Settings
     private $blockNeedle = [
         'vg-rows' => [],
         'vg-img' => ['img'],
-        'vg-content' => ['content'],
+        'vg-content' => ['content', 'keywords'],
     ];
 
     private $validation = [
