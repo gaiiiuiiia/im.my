@@ -14,6 +14,8 @@ class Settings
     // Расширение
     private $expansion = 'core/admin/expansion/';
 
+    private $messages = 'core/base/messages/';
+
     private $routes = [
         'admin' => [
             'alias' => 'admin',

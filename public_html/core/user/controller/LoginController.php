@@ -9,29 +9,20 @@ use core\base\exceptions\UserException;
 class LoginController extends BaseUser
 {
 
-    private $redirection;
+    protected $error;
 
     protected function inputData(){
 
         $this->execBase();
 
-        if ($this->login) return;
+        if ($this->login){
+            $this->createMessage($this->messages['alreadyLogged']);
+            $this->redirect();
+        }
 
         if (isset($_POST['loginButton'])){
 
-            $userData = $this->createUserData(['login', 'password']);
-
-            $userDataFromDB = $this->createUserDataFromDB($userData);
-
-            if (!$userDataFromDB) {
-                $this->redirection = true;
-                return;
-            }
-
-            if (!$this->checkPassword($userData['password'], $userDataFromDB)){
-                $this->redirection = true;
-                return;
-            }
+            $userDataFromDB = $this->validateUserLoginData();
 
             $this->login($userDataFromDB);
             $this->redirection = true;
@@ -43,10 +34,29 @@ class LoginController extends BaseUser
 
     protected function outputData(){
         if ($this->login){
-            $this->redirect($_SERVER['HTTP_REFERER']);
+            $this->redirect();
         }
 
         parent::outputData(func_get_arg(0));
+    }
+
+    protected function validateUserLoginData(){
+
+        $userData = $this->createUserData(['login', 'password']);
+
+        $userDataFromDB = $this->createUserDataFromDB($userData);
+
+        if (!$userDataFromDB) {
+            $this->createMessage($this->messages['userNotExists']);
+            $this->redirect();
+        }
+
+        if (!$this->checkPassword($userData['password'], $userDataFromDB)){
+            $this->createMessage($this->messages['incorrectPassword']);
+            $this->redirect();
+        }
+
+        return $userDataFromDB;
     }
 
     protected function checkPassword($user_password, $user_data_from_DB){

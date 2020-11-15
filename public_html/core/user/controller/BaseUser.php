@@ -6,6 +6,7 @@ namespace core\user\controller;
 
 use core\base\controller\BaseController;
 use core\base\model\UserModel;
+use core\base\settings\Settings;
 
 
 abstract class BaseUser extends BaseController
@@ -17,7 +18,7 @@ abstract class BaseUser extends BaseController
 
     protected $login;
 
-    protected $message;
+    protected $messages;
 
 
     protected function inputData(){
@@ -29,9 +30,11 @@ abstract class BaseUser extends BaseController
 
         if (!$this->model) $this->model = UserModel::instance();
 
-        $this->authorize();
+        if (!$this->messages)
+            $this->messages = include $_SERVER['DOCUMENT_ROOT'] . PATH .
+                                        Settings::get('messages') . 'informationMessages.php';
 
-        if (!$this->message) $this->message = $this->getMessage();
+        $this->authorize();
 
     }
 
@@ -127,21 +130,22 @@ abstract class BaseUser extends BaseController
 
     protected function createUserData($fields = []){
 
-        if (!$_POST) return [];
+        if ($this->isPost()){
 
-        if (!$fields){
-            // получить все данные из массива пост
-            foreach ($_POST as $key => $value){
-                $res[$key] = $value;
+            if (!$fields){
+                // получить все данные из массива пост
+                foreach ($_POST as $key => $value){
+                    $res[$key] = $value;
+                }
             }
-        }
-        else{
-            foreach ($fields as $value){
-                $res[$value] = $_POST[$value];
+            else{
+                foreach ($fields as $value){
+                    $res[$value] = $_POST[$value];
+                }
             }
+            return $res;
         }
-
-        return $res;
+        return [];
     }
 
     protected function hasCookie($fields){
@@ -201,11 +205,8 @@ abstract class BaseUser extends BaseController
         return $this->model->get('users', $query)[0];
     }
 
-    protected function getMessage(){
-        $message = $_SESSION['messageToUser'];
-        unset($_SESSION['messageToUser']);
-
-        return $message;
+    protected function createMessage($message){
+        $_SESSION['res']['answer'] = '<div class="error">' . $message . '</div>';
     }
 
 }
