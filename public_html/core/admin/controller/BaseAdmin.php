@@ -8,6 +8,7 @@ use core\base\controller\BaseController;
 use core\admin\model\Model;
 use core\base\exceptions\RouteException;
 use core\base\settings\Settings;
+use libraries\FileEdit;
 
 
 abstract class BaseAdmin extends BaseController
@@ -389,6 +390,8 @@ abstract class BaseAdmin extends BaseController
 
     protected function createFile(){
 
+        $fileEdit = new FileEdit();
+        $this->fileArray = $fileEdit->addFile();
     }
 
     protected function updateMenuPosition(){
@@ -461,7 +464,7 @@ abstract class BaseAdmin extends BaseController
 
                 $this->model->edit($this->table, [
                     'fields' => ['alias' => $this->alias],
-                    'where' => [$this->columns['id_row'] => 'id'],
+                    'where' => [$this->columns['id_row'] => $id],
                 ]);
 
                 return true;
