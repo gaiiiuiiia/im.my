@@ -67,7 +67,6 @@ class FileEdit
         if (move_uploaded_file($tmpName, $destination)) return true;
 
         return false;
-
     }
 
     protected function checkFile($fileName, $ext, $fileLastName = ''){
