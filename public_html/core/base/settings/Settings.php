@@ -92,6 +92,12 @@ class Settings
         'vg-content' => ['content'],
     ];
 
+    // Таблицы, по которым получаем данные для аутентификации пользователя или данные о польователе
+    private $userTables = [
+        'userLoginTable' => 'user',
+        'userInfoTable' => 'user_info',
+    ];
+
     static public function get($property){
         return self::instance()->$property;
     }

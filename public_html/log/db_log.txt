@@ -198,3 +198,31 @@ Fault: 04-11-2020 14:10:37 - Ошибка в SQL запросе: SELECT users.* 
 file W:\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 41
 
+Fault: 17-11-2020 13:19:21 - Ошибка в SQL запросе: INSERT INTO users (login,password,salt) VALUES ('1','ce1ee7898a34badc2c9b26bb5ed6a6c9c6ff785164e7d55a21ad3b2df3ae2c76b290850f59d16a8e4e505277b308a8ac70d53fc4d476fdc89f50286d09f60007','salt_1') - 1452 Cannot add or update a child row: a foreign key constraint fails (`mdb`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`login`) REFERENCES `user_info` (`login`) ON DELETE CASCADE ON UPDATE CASCADE)
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 17-11-2020 13:19:23 - Ошибка в SQL запросе: INSERT INTO users (login,password,salt) VALUES ('1','ce1ee7898a34badc2c9b26bb5ed6a6c9c6ff785164e7d55a21ad3b2df3ae2c76b290850f59d16a8e4e505277b308a8ac70d53fc4d476fdc89f50286d09f60007','salt_1') - 1452 Cannot add or update a child row: a foreign key constraint fails (`mdb`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`login`) REFERENCES `user_info` (`login`) ON DELETE CASCADE ON UPDATE CASCADE)
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 20-11-2020 19:09:37 - Ошибка в SQL запросе: INSERT INTO users (login,password,salt) VALUES ('1','ce1ee7898a34badc2c9b26bb5ed6a6c9c6ff785164e7d55a21ad3b2df3ae2c76b290850f59d16a8e4e505277b308a8ac70d53fc4d476fdc89f50286d09f60007','salt_1') - 1146 Table 'mdb.users' doesn't exist
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 20-11-2020 19:10:28 - Ошибка в SQL запросе: INSERT INTO user_info (login,email,name,surname) VALUES ('1_login','1email@mail.top','имя_1','фамилия_1') - 1364 Field 'sex_id' doesn't have a default value
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 20-11-2020 19:11:11 - Ошибка в SQL запросе: INSERT INTO user (login,password,salt) VALUES ('1','ce1ee7898a34badc2c9b26bb5ed6a6c9c6ff785164e7d55a21ad3b2df3ae2c76b290850f59d16a8e4e505277b308a8ac70d53fc4d476fdc89f50286d09f60007','salt_1') - 1062 Duplicate entry '1' for key 'users_login_uindex'
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 20-11-2020 19:11:37 - Ошибка в SQL запросе: INSERT INTO user_info (login,email,name,surname,sex+id) VALUES ('1_login','1email@mail.top','имя_1','фамилия_1','1') - 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '+id) VALUES ('1_login','1email@mail.top','имя_1','фамилия_1','1')' at line 1
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 20-11-2020 19:12:07 - Ошибка в SQL запросе: INSERT INTO user_info (login,email,name,surname,sex_id) VALUES ('1_login','1email@mail.top','имя_1','фамилия_1','1') - 1452 Cannot add or update a child row: a foreign key constraint fails (`mdb`.`user_info`, CONSTRAINT `user_info_ibfk_1` FOREIGN KEY (`login`) REFERENCES `user` (`login`) ON DELETE CASCADE ON UPDATE CASCADE)
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+

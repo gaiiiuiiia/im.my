@@ -16,10 +16,9 @@ abstract class BaseUser extends BaseController
 
     protected $title;
 
-    protected $userLogin;
-
     protected $messages;
 
+    protected $tables;
 
     protected function inputData(){
 
@@ -27,6 +26,8 @@ abstract class BaseUser extends BaseController
         $this->init();
 
         $this->title = 'ASTRA';
+
+        if (!$this->tables) $this->tables = Settings::get('userTables');
 
         if (!$this->model) $this->model = UserModel::instance();
 
@@ -36,6 +37,7 @@ abstract class BaseUser extends BaseController
 
         $this->authorizeUser();
 
+        $this->createUserInformation();
     }
 
     protected function outputData(){
@@ -54,23 +56,28 @@ abstract class BaseUser extends BaseController
         return $this->render(ADMIN_TEMPLATE . 'layout/default');
     }
 
+    protected function createUserInformation(){
+
+        if ($_SESSION['user']['authorized'] && !$_SESSION['user']['userInfo']){
+
+            $user_data = $this->getUserDataFromDB($_SESSION['id'], $this->tables['userInfoTable']);
+            $this->saveDataToSession($_SESSION['user']['user_info'], $user_data);
+        }
+    }
+
     private function authorizeUser(){
 
-        if (isset($_SESSION['login'])){
-            // Авторизованный пользователь
-            $this->userLogin = $_SESSION['login'];
-        }
-        else{
-            // мб гость, а мб и пользователь, который только-только зашел...
-            $cookieFields = ['id', 'login', 'password',];
-            if ($this->hasCookie($cookieFields)){
-                // восстанвить сессию по ним
-                // $userData - либо массив данных пользователя из бд, либо false
-                if ($userData = $this->checkCookie($cookieFields)){
-                    $this->startSession($userData);
-                    $this->setCookie(false, $userData);  // проверить, а не конфликтует ли это с "галочкой на запомнить меня"
+        if (!isset($_SESSION['user']['authorized'])){
 
-                    $this->userLogin = $_SESSION['login'];
+            $cookieFields = ['id', 'login', 'password',];
+
+            if ($this->hasCookie($cookieFields)){
+
+                if ($userData = $this->validateCookie($cookieFields)){
+
+                    $this->startSession($userData['id']);
+                    $this->setCookie(false, $userData);  // проверить, а не конфликтует ли это с "галочкой на запомнить меня".
+                    // не конфликтует, т.к. еслки куки есть, то они были установлены ранее. тут просто продлеваем эти куки
                 }
                 else{
                     $this->setCookie(true);
@@ -83,13 +90,13 @@ abstract class BaseUser extends BaseController
         }
     }
 
-    protected function startSession($userData){
+    protected function startSession($userId){
 
         session_start();
 
-        if ($userData and is_array($userData)){
-            $_SESSION['id'] = $userData['id'];
-            $_SESSION['login'] = $userData['login'];
+        if ($userId){
+            $_SESSION['id'] = $userId;
+            $_SESSION['user']['authorized'] = true;
         }
         else {
             $_SESSION['id'] = 'guestID';
@@ -127,7 +134,7 @@ abstract class BaseUser extends BaseController
         return hash('sha512', $new_row);
     }
 
-    protected function createUserData($fields = []){
+    protected function createUserInputData($fields = []){
 
         if ($this->isPost()){
 
@@ -157,7 +164,9 @@ abstract class BaseUser extends BaseController
         }
     }
 
-    protected function checkCookie($cookieFields){
+    protected function validateCookie($cookieFields){
+
+        if (!$cookieFields) return false;
 
         foreach ($cookieFields as $field){
             if ($field !== 'password') $where[$field] = $_COOKIE[$field];
@@ -172,7 +181,8 @@ abstract class BaseUser extends BaseController
 
         $userDataFromDB = $this->model->get('users', $query)[0];
 
-        if ($this->hash_($userDataFromDB['password'], 'cookie', $userDataFromDB['salt']) === $_COOKIE['password'])
+        if ($userDataFromDB && $this->hash_($userDataFromDB['password'],
+                                            'cookie', $userDataFromDB['salt']) === $_COOKIE['password'])
             return $userDataFromDB;
         return false;
     }
@@ -192,29 +202,48 @@ abstract class BaseUser extends BaseController
         }
     }
 
-    protected function createUserDataFromDB($userData){
+    /**
+     * @param $field - поле, по которому ищется пользователь в базе. либо id, либо login
+     * @param $table
+     * @return mixed
+     */
+    protected function getUserDataFromDB($field, $table){
+        if (is_string($field)) $where = ['login' => $field];
+            else if (is_numeric($field)) $where = ['id' => $field];
+                else return null;
 
         $query = [
             'fields' => [],
-            'where' => [
-                'login' => $userData['login'],
-            ],
+            'where' => $where,
         ];
 
-        return $this->model->get('users', $query)[0];
+        return $this->model->get($table, $query)[0];
     }
 
     protected function createMessage($message){
         $_SESSION['res']['answer'] = '<div class="error">' . $message . '</div>';
     }
 
-    protected function saveUserInputToSession(){
-
-        if ($this->isPost()){
-            foreach ($_POST as $item => $value){
-                $_SESSION['userInput'][$item] = $value;
+    /**
+     * @param $arr - массив с данными
+     * @param $sessionCell - ячейка в массиве $_SESSION, куда будет записаны данные из массива $arr
+     * ОЖИДАЕТСЯ, ЧТО ЭТОТ ПАРАМЕТР ИМЕЕТ ВИД $_SESSION[...].. и тд
+     */
+    protected function saveDataToSession($sessionCell, $arr = null){
+        // TODO Подумать, как доставить данные из ячейки в ячейку сессии
+        if (!$arr){
+            if ($this->isPost()){
+                foreach ($_POST as $item => $value){
+                    $sessionCell[$item] = $value;
+                }
+            }
+        } else {
+            foreach ($arr as $item => $value){
+                $_SESSION[$sessionCell][$item] = $value;
             }
         }
+
+
     }
 
     protected function clearUserInputFromSession(){

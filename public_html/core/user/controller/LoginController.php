@@ -13,7 +13,7 @@ class LoginController extends BaseUser
 
         $this->execBase();
 
-        if ($this->userLogin && !isset($_POST['logoutButton'])){
+        if ($_SESSION['user']['authorized'] && !isset($_POST['logoutButton'])){
 
             $this->createMessage($this->messages['alreadyLogged']);
 
@@ -21,7 +21,7 @@ class LoginController extends BaseUser
         }
         if (isset($_POST['loginButton'])){
 
-            $this->saveUserInputToSession();
+            $this->saveDataToSession('userInput', $_POST);
 
             $userDataFromDB = $this->validateUserLoginData();
             $this->login($userDataFromDB);
@@ -39,9 +39,9 @@ class LoginController extends BaseUser
 
     protected function validateUserLoginData(){
 
-        $userData = $this->createUserData(['login', 'password']);
+        $userData = $this->createUserInputData(['login', 'password']);
 
-        $userDataFromDB = $this->createUserDataFromDB($userData);
+        $userDataFromDB = $this->getUserDataFromDB($userData['login'], $this->tables['userLoginTable']);
 
         if (!$userDataFromDB) {
             $this->createMessage($this->messages['userNotExists']);
@@ -67,21 +67,18 @@ class LoginController extends BaseUser
 
         if (isset($_POST['rememberMe'])) $this->setCookie(false, $userData);
 
-        session_start();
-        $_SESSION['id'] = $userData['id'];
-        $_SESSION['login'] = $userData['login'];
+        return $this->startSession($userData['id']);
     }
 
     protected function logout(){
 
         $this->setCookie(true);
 
-        unset($_SESSION['login']);
+        unset($_SESSION['user']);
         unset($_SESSION['id']);
         session_destroy();
         session_start();
         $_SESSION['id'] = 'guestID';
-        $this->userLogin = null;
     }
 
     private function fill_db_user_data(){
@@ -98,7 +95,18 @@ class LoginController extends BaseUser
                 ],
             ];
 
-            $this->model->add('users', $query);
+            $query_ = [
+                'fields' => [
+                    'login' => $row . '_login',
+                    'email' => $row . 'email@mail.top',
+                    'name' => 'имя_' . $row,
+                    'surname' => 'фамилия_' . $row,
+                    'sex_id' => 1
+                ],
+            ];
+
+            $this->model->add('user', $query);
+            //$this->model->add('user_info', $query_);
         }
     }
 
