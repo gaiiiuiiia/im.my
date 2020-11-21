@@ -3,8 +3,6 @@
 
 namespace core\user\controller;
 
-use core\base\exceptions\UserException;
-
 
 class LoginController extends BaseUser
 {
@@ -15,18 +13,21 @@ class LoginController extends BaseUser
 
         if ($_SESSION['user']['authorized'] && !isset($_POST['logoutButton'])){
 
-            $this->createMessage($this->messages['alreadyLogged']);
+            $this->msgHandler->createMessage($this->messages['alreadyLogged'], 'alreadyLogged');
 
             $this->redirect();
         }
         if (isset($_POST['loginButton'])){
 
-            $this->saveDataToSession('userInput', $_POST);
+            $userInput = $this->createUserInputData(['login', 'password']);
 
-            $userDataFromDB = $this->validateUserLoginData();
+            $this->saveDataToSession('user/userInput', $userInput);
+
+            $userDataFromDB = $this->validateUserLoginData($userInput);
+
             $this->login($userDataFromDB);
 
-            $this->clearUserInputFromSession();
+            unset($_SESSION['user']['userInput']);
 
             $this->redirect();
         } else if (isset($_POST['logoutButton'])){
@@ -37,19 +38,17 @@ class LoginController extends BaseUser
         }
     }
 
-    protected function validateUserLoginData(){
+    protected function validateUserLoginData($userInput){
 
-        $userData = $this->createUserInputData(['login', 'password']);
-
-        $userDataFromDB = $this->getUserDataFromDB($userData['login'], $this->tables['userLoginTable']);
+        $userDataFromDB = $this->getUserDataFromDB(['login' => $userInput['login']], $this->tables['userLoginTable']);
 
         if (!$userDataFromDB) {
-            $this->createMessage($this->messages['userNotExists']);
+            $this->msgHandler->createMessage($this->messages['userNotExists'], 'loginError');
             $this->redirect($_SERVER['HTTP_REFERER'] . '/#enter');
         }
 
-        if (!$this->checkPassword($userData['password'], $userDataFromDB)){
-            $this->createMessage($this->messages['incorrectPassword']);
+        if (!$this->checkPassword($userInput['password'], $userDataFromDB)){
+            $this->msgHandler->createMessage($this->messages['incorrectPassword'], 'loginError');
             $this->redirect($_SERVER['HTTP_REFERER'] . '/#enter');
         }
 

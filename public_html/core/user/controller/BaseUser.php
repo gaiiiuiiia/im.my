@@ -5,6 +5,7 @@ namespace core\user\controller;
 
 
 use core\base\controller\BaseController;
+use core\base\messages\MessageHandler;
 use core\base\model\UserModel;
 use core\base\settings\Settings;
 
@@ -17,6 +18,7 @@ abstract class BaseUser extends BaseController
     protected $title;
 
     protected $messages;
+    protected $msgHandler;
 
     protected $tables;
 
@@ -31,9 +33,15 @@ abstract class BaseUser extends BaseController
 
         if (!$this->model) $this->model = UserModel::instance();
 
+        if (!$this->msgHandler) $this->msgHandler = MessageHandler::instance();
+
         if (!$this->messages)
             $this->messages = include $_SERVER['DOCUMENT_ROOT'] . PATH .
                                         Settings::get('messages') . 'informationMessages.php';
+
+        /*unset($_SESSION);
+        session_destroy();
+        exit;*/
 
         $this->authorizeUser();
 
@@ -58,10 +66,14 @@ abstract class BaseUser extends BaseController
 
     protected function createUserInformation(){
 
-        if ($_SESSION['user']['authorized'] && !$_SESSION['user']['userInfo']){
+        if (isset($_SESSION['user']['authorized']) && !isset($_SESSION['user']['userInfo'])){
+            // TODO ЭТО ТЕСТОВЫЙ ВАРИАНТ. ТУТ ДОЛЖНА БЫТЬ ТАБЛИЦА С ИНФОРМАЦИЕЙ О ПОЛЬЗОВАТЕЛЕ
+            $user_data = $this->getUserDataFromDB(['id' => $_SESSION['id']], $this->tables['userLoginTable']);
+            $this->saveDataToSession('user/userInfo', ['login' => $user_data['login']]);
 
-            $user_data = $this->getUserDataFromDB($_SESSION['id'], $this->tables['userInfoTable']);
-            $this->saveDataToSession($_SESSION['user']['user_info'], $user_data);
+            // TODO CORRECT
+            // $user_data = $this->getUserDataFromDB(['id' => $_SESSION['id']], $this->tables['userInfoTable']);
+            // $this->saveDataToSession('user/userInfo', $user_data);
         }
     }
 
@@ -203,51 +215,18 @@ abstract class BaseUser extends BaseController
     }
 
     /**
-     * @param $field - поле, по которому ищется пользователь в базе. либо id, либо login
+     * @param $field - поле, по которому ищется пользователь в базе. массив ['login' => user_login] и ему подобные.
      * @param $table
      * @return mixed
      */
     protected function getUserDataFromDB($field, $table){
-        if (is_string($field)) $where = ['login' => $field];
-            else if (is_numeric($field)) $where = ['id' => $field];
-                else return null;
 
         $query = [
             'fields' => [],
-            'where' => $where,
+            'where' => $field,
         ];
 
         return $this->model->get($table, $query)[0];
-    }
-
-    protected function createMessage($message){
-        $_SESSION['res']['answer'] = '<div class="error">' . $message . '</div>';
-    }
-
-    /**
-     * @param $arr - массив с данными
-     * @param $sessionCell - ячейка в массиве $_SESSION, куда будет записаны данные из массива $arr
-     * ОЖИДАЕТСЯ, ЧТО ЭТОТ ПАРАМЕТР ИМЕЕТ ВИД $_SESSION[...].. и тд
-     */
-    protected function saveDataToSession($sessionCell, $arr = null){
-        // TODO Подумать, как доставить данные из ячейки в ячейку сессии
-        if (!$arr){
-            if ($this->isPost()){
-                foreach ($_POST as $item => $value){
-                    $sessionCell[$item] = $value;
-                }
-            }
-        } else {
-            foreach ($arr as $item => $value){
-                $_SESSION[$sessionCell][$item] = $value;
-            }
-        }
-
-
-    }
-
-    protected function clearUserInputFromSession(){
-        unset($_SESSION['userInput']);
     }
 
 }

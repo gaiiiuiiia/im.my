@@ -7,6 +7,36 @@ namespace core\base\controller;
 trait BaseMethods
 {
 
+
+    protected function saveDataToSession($path, $dataToSave, &$targetArr = null){
+
+        if (!$dataToSave) return;
+
+        if (!is_array($targetArr)) $targetArr = &$_SESSION;
+
+        if (is_string($path)){
+            $path = explode('/', $path);
+
+            if (count($path) == 1){
+                if (is_array($dataToSave)){
+                    foreach ($dataToSave as $item => $value){
+                        $targetArr[$path[0]][$item] = $value;
+                    }
+                }else {
+                    $targetArr[$path[0]] = $dataToSave;
+                }
+                return;
+            }
+
+            if (!array_key_exists($path[0], $targetArr)) $targetArr[$path[0]] = [];
+
+            $targetArr = &$targetArr[$path[0]];
+            unset($path[0]);
+
+            return $this->saveDataToSession(implode('/', $path), $dataToSave, $targetArr);
+        }
+    }
+
     protected function clearStr($str){
 
         // очистка от лишних тегов html, php, js

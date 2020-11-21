@@ -226,3 +226,19 @@ Fault: 20-11-2020 19:12:07 - Ошибка в SQL запросе: INSERT INTO use
 file W:\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 41
 
+Fault: 21-11-2020 18:53:36 - Ошибка в SQL запросе: SELECT user.* FROM user  WHERE user.login='123'    - 2006 MySQL server has gone away
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 21-11-2020 18:58:26 - Ошибка в SQL запросе: SELECT user.* FROM user  WHERE user.login='123'    - 2006 MySQL server has gone away
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 21-11-2020 19:22:27 - Ошибка в SQL запросе: SELECT user.* FROM user  WHERE user.login='123'    - 2006 MySQL server has gone away
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 21-11-2020 19:38:15 - Ошибка в SQL запросе: SELECT user.* FROM user  WHERE user.id='8'    - 2006 MySQL server has gone away
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+

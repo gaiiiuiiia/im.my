@@ -70,13 +70,13 @@
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Найти</button>
             </form>
 
-            <?php if (!$_SESSION['login']):?>
+            <?php if (!$_SESSION['user']['authorized']):?>
                 <div class="d-flex">
                     <button class="btn btn-outline-danger" data-toggle="modal" data-target="#enter">Войти</button>
                 </div>
             <?php else:?>
                 <div>
-                    <h1><?=$this->userLogin?></h1>
+                    <h1><?=$_SESSION['user']['userInfo']['login']?></h1>
                 </div>
                 <div class="d-flex">
                     <button class="btn btn-outline-danger" data-toggle="modal" data-target="#logout">Выйти</button>
@@ -104,10 +104,7 @@
                     <div class="modal-body" >
 
                         <div>
-                            <?php
-                            echo $_SESSION['res']['answer'];
-                            unset($_SESSION['res']['answer']);
-                            ?>
+                            <?=$this->msgHandler->showMessage('loginError')?>
                         </div>
 
                         <form action="<?=PATH?>login" method="post" id="loginForm">
@@ -115,14 +112,14 @@
                                 <label for="login" class="col-sm-2 col-form-lable">Логин</label>
                                 <div class="col-sm-10">
                                     <input type="text" name='login' class="form-control" id="login"
-                                            value="<?=$_SESSION['userInput']['login']?>">
+                                            value="<?=$_SESSION['user']['userInput']['login']?>">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="password" class="col-sm-2 col-form-lable">Пароль</label>
                                 <div class="col-sm-10">
                                     <input type="password" name="password" class="form-control" id="password"
-                                            value="<?=$_SESSION['userInput']['password']?>">
+                                            value="<?=$_SESSION['user']['userInput']['password']?>">
                                 </div>
                             </div>
                             <div class="form-check d-flex ml-5">
