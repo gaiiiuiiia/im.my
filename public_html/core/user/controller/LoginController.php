@@ -21,7 +21,7 @@ class LoginController extends BaseUser
 
             $userInput = $this->createUserInputData(['login', 'password']);
 
-            $this->saveDataToSession('user/userInput', $userInput);
+            $this->saveDataToArray('user/userInput', $userInput, $_SESSION);
 
             $userDataFromDB = $this->validateUserLoginData($userInput);
 

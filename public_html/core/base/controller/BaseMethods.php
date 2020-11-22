@@ -8,16 +8,14 @@ trait BaseMethods
 {
 
 
-    protected function saveDataToSession($path, $dataToSave, &$targetArr = null){
+    protected function saveDataToArray($path, $dataToSave, &$targetArr){
 
-        if (!$dataToSave) return;
-
-        if (!is_array($targetArr)) $targetArr = &$_SESSION;
+        if (!$dataToSave || !is_array($targetArr)) return false;
 
         if (is_string($path)){
             $path = explode('/', $path);
 
-            if (count($path) == 1){
+            if (count($path) === 1){
                 if (is_array($dataToSave)){
                     foreach ($dataToSave as $item => $value){
                         $targetArr[$path[0]][$item] = $value;
@@ -25,17 +23,76 @@ trait BaseMethods
                 }else {
                     $targetArr[$path[0]] = $dataToSave;
                 }
-                return;
+                return true;
             }
 
             if (!array_key_exists($path[0], $targetArr)) $targetArr[$path[0]] = [];
 
-            $targetArr = &$targetArr[$path[0]];
-            unset($path[0]);
+            $next = array_shift($path);
 
-            return $this->saveDataToSession(implode('/', $path), $dataToSave, $targetArr);
+            return $this->saveDataToArray(implode('/', $path), $dataToSave, $targetArr[$next]);
         }
+        return false;
     }
+
+    protected function getDataFromArray($path, &$array){
+
+        if (!$path || !is_array($array)) return null;
+
+        if (is_string($path)){
+
+            $path = explode('/', $path);
+
+            if (count($path) === 1){
+                return $array[$path[0]];
+            }
+
+            $next = array_shift($path);
+
+            if (!isset($array[$next])) return false;
+
+            return $this->getDataFromArray(implode('/', $path),$array[$next]);
+        }
+        return false;
+    }
+
+    protected function deleteDataFromArray($path, &$array){
+
+        if (!$path || !is_array($array)) return false;
+
+        /*if (!$__array && !$__path) {
+            $__array = &$array;
+            $__path = $path;
+        }*/
+
+        if (is_string($path)) {
+
+            $path = explode('/', $path);
+
+            if (count($path) === 1) {
+                unset($array[$path[0]]);
+                //$this->deleteEmptyDir($__path, $__array);
+                return true;
+            }
+
+            $next = array_shift($path);
+
+            return $this->deleteDataFromArray(implode('/', $path),$array[$next]);
+        }
+        return false;
+    }
+
+    /*private function deleteEmptyDir($path, &$array){
+
+        $path = explode('/', $path);
+
+        if (count($path) === 1)
+
+        $new_array = array_filter($targetArr, function($element) {
+            return !empty($element);
+        });
+
+    }*/
 
     protected function clearStr($str){
 

@@ -69,7 +69,7 @@ abstract class BaseUser extends BaseController
         if (isset($_SESSION['user']['authorized']) && !isset($_SESSION['user']['userInfo'])){
             // TODO ЭТО ТЕСТОВЫЙ ВАРИАНТ. ТУТ ДОЛЖНА БЫТЬ ТАБЛИЦА С ИНФОРМАЦИЕЙ О ПОЛЬЗОВАТЕЛЕ
             $user_data = $this->getUserDataFromDB(['id' => $_SESSION['id']], $this->tables['userLoginTable']);
-            $this->saveDataToSession('user/userInfo', ['login' => $user_data['login']]);
+            $this->saveDataToArray('user/userInfo', ['login' => $user_data['login']], $_SESSION);
 
             // TODO CORRECT
             // $user_data = $this->getUserDataFromDB(['id' => $_SESSION['id']], $this->tables['userInfoTable']);

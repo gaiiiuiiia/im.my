@@ -26,7 +26,7 @@ class MessageHandler
 
         if (!array_key_exists($type, $this->messagesTypes)) return;
 
-        $this->saveDataToSession($this->messagesTypes[$type], '<div>'. $message . '</div>');
+        $this->saveDataToArray($this->messagesTypes[$type], '<div>'. $message . '</div>', $_SESSION);
 
     }
 
@@ -36,14 +36,13 @@ class MessageHandler
             echo "<div class='error'>Ошибка вывода! Данный тип сообщения не существует.</div>";
             return;
         }
-        if (isset($_SESSION[$this->messagesTypes[$type]])){
-            // TODO Написать метод, по аналогии с SaveDataToSession, который будет по маршруту проверять ячейку в массиве
+        if ($this->getDataFromArray($this->messagesTypes[$type], $_SESSION)){
 
-            $msg = $_SESSION[$this->messagesTypes[$type]];
-            $msgClass = strpos($type, 'error') ? 'error' : 'notify';
+            $msg = $this->getDataFromArray($this->messagesTypes[$type], $_SESSION);
+            $msgClass = strpos(strtolower($type), 'error') ? 'error' : 'notify';
 
-            echo "<div class='$msgClass'>$msg</div>";
-            unset($_SESSION[$this->messagesTypes[$type]]);
+            echo "<div class='$msgClass center'>$msg</div>";
+            $this->deleteDataFromArray($this->messagesTypes[$type], $_SESSION);
         }
     }
 
