@@ -13,43 +13,48 @@ class LoginController extends BaseUser
 
         if ($_SESSION['user']['authorized'] && !isset($_POST['logoutButton'])){
 
-            $this->msgHandler->createMessage($this->messages['alreadyLogged'], 'alreadyLogged');
+            // если зашли с im.my/login
+            if ($_SERVER['HTTP_REFERER'] == SITE_URL . '/login' ||
+                $_SERVER['HTTP_REFERER'] == SITE_URL . '/registration'){
 
-            $this->redirect();
+                $this->redirect(SITE_URL);
+            }
+
+            $this->msgHandler->createMessage($this->messages['alreadyLogged'], 'alreadyLogged');
+            $this->redirect($_SERVER['HTTP_REFERER'] . '/#systemMessage');
         }
         if (isset($_POST['loginButton'])){
 
-            $userInput = $this->createUserInputData(['login', 'password']);
+            $this->createUserInput(['login', 'password']);
 
-            $this->saveDataToArray('user/userInput', $userInput, $_SESSION);
+            $this->saveDataToArray('user/userInput', $this->userInput, $_SESSION);
 
-            $userDataFromDB = $this->validateUserLoginData($userInput);
+            $userDataFromDB = $this->validateUserLoginData();
 
             $this->login($userDataFromDB);
 
-            unset($_SESSION['user']['userInput']);
+            $this->deleteDataFromArray('user/userInput', $_SESSION);
 
             $this->redirect();
         } else if (isset($_POST['logoutButton'])){
-
             $this->logout();
 
             $this->redirect();
         }
     }
 
-    protected function validateUserLoginData($userInput){
+    protected function validateUserLoginData(){
 
-        $userDataFromDB = $this->getUserDataFromDB(['login' => $userInput['login']], $this->tables['userLoginTable']);
+        $userDataFromDB = $this->getUserDataFromDB(['login' => $this->userInput['login']], $this->tables['userLoginTable']);
 
         if (!$userDataFromDB) {
             $this->msgHandler->createMessage($this->messages['userNotExists'], 'loginError');
-            $this->redirect($_SERVER['HTTP_REFERER'] . '/#enter');
+            $this->redirect($_SERVER['HTTP_REFERER'] . '/#enterError');
         }
 
-        if (!$this->checkPassword($userInput['password'], $userDataFromDB)){
+        if (!$this->checkPassword($this->userInput['password'], $userDataFromDB)){
             $this->msgHandler->createMessage($this->messages['incorrectPassword'], 'loginError');
-            $this->redirect($_SERVER['HTTP_REFERER'] . '/#enter');
+            $this->redirect($_SERVER['HTTP_REFERER'] . '/#enterError');
         }
 
         return $userDataFromDB;
@@ -62,7 +67,7 @@ class LoginController extends BaseUser
         return false;
     }
 
-    protected function login($userData){
+    public function login($userData){
 
         if (isset($_POST['rememberMe'])) $this->setCookie(false, $userData);
 

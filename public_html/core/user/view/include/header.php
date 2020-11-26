@@ -18,8 +18,13 @@
     <script type="text/javascript">
         $(document).ready(
             function() {
-            if(window.location.href.indexOf('#enter') !== -1) {
+            if(window.location.href.indexOf('#enterError') !== -1) {
                 $('#enter').modal('show');
+
+            }
+
+            if(window.location.href.indexOf('#systemMessage') !== -1) {
+                $('#systemMessage').modal('show');
 
             }
         })
@@ -132,12 +137,16 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                        <button type="submit" name="loginButton" form="loginForm" class="btn btn-primary">Авторизоваться</button>
+                        <button type="submit" class="btn btn-primary" name="loginButton" form="loginForm">Авторизоваться</button>
                     </div>
                 </div>
 
                 <div class="tab-pane fade" id="registration" role="tabpanel" aria-labelledby="registration-tab">
                     <div class="modal-body">
+                        <div>
+                            <?=$this->msgHandler->showMessage('registrationError')?>
+                        </div>
+
                         <form action="<?=PATH?>registration" method="post" id="registrationForm">
                             <div class="row mb-3">
                                 <label for="inputName" class="col-sm-2 col-form-lable">Имя</label>
@@ -213,3 +222,19 @@
     </div>
 </div>
 
+<div class="modal fade" id="systemMessage" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+            </div>
+            <div class="modal-body">
+                <?=$this->msgHandler->showMessage('alreadyLogged')?>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>

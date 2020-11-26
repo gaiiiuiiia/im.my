@@ -1,5 +1,15 @@
 .loginForm {
-    background-color: #00bfe8;
+
+}
+
+.login-content {
+    background-color: #e6e7ea;
+    width: 700px;
+    border: 2px solid #d0d0d0;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .error {
@@ -10,6 +20,40 @@
 .notify {
     background: #688ff5;
     color: #eceef2;
+}
+
+.registration-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    position: absolute;
+    left: 30%;
+    top: 10%;
+    padding: 10px;
+    border: 1px solid #4d58f5;
+    border-radius: 10px;
+    width: 500px;
+}
+
+.input-fields {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-field {
+    width: 300px;
+}
+
+.input-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1px;
+}
+
+.registration-buttons {
+    position: relative;
+    left: 150px;
+    top: 30px;
 }
 
 .center {

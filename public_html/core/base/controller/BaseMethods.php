@@ -56,43 +56,44 @@ trait BaseMethods
         return false;
     }
 
-    protected function deleteDataFromArray($path, &$array){
+    protected function deleteDataFromArray($path, &$array, &$__empty_dir = null){
 
         if (!$path || !is_array($array)) return false;
 
-        /*if (!$__array && !$__path) {
-            $__array = &$array;
-            $__path = $path;
-        }*/
-
         if (is_string($path)) {
+
+            if (!$__empty_dir)
+                $__empty_dir = [$path, &$array];
+
+            $__empty_dir[] = !(count($array) > 1);
 
             $path = explode('/', $path);
 
             if (count($path) === 1) {
                 unset($array[$path[0]]);
-                //$this->deleteEmptyDir($__path, $__array);
+                $this->deleteEmptyDir($__empty_dir);
                 return true;
             }
 
             $next = array_shift($path);
 
-            return $this->deleteDataFromArray(implode('/', $path),$array[$next]);
+            return $this->deleteDataFromArray(implode('/', $path),$array[$next], $__empty_dir);
         }
         return false;
     }
 
-    /*private function deleteEmptyDir($path, &$array){
+    private function deleteEmptyDir($empty_dir){
 
-        $path = explode('/', $path);
+        $path = explode('/', array_shift($empty_dir));
+        $array = array_shift($empty_dir);
 
-        if (count($path) === 1)
+        $empty_dirs = array_keys($empty_dir, true);
+        $last = end($empty_dirs);
 
-        $new_array = array_filter($targetArr, function($element) {
-            return !empty($element);
-        });
+        $to_delete = implode('/', array_slice($path, 0, $last));
 
-    }*/
+        $this->deleteDataFromArray($to_delete, $array);
+    }
 
     protected function clearStr($str){
 

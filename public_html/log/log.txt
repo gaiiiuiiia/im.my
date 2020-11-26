@@ -730,3 +730,7 @@ Fault: 15-11-2020 22:47:11 - Class core\user\controller\?Controller does not exi
 file W:\domains\im.my\public_html\core\base\controller\BaseController.php
 In line 49
 
+Fault: 24-11-2020 19:29:57 - Отсутсвует шаблон - templates/default/registration
+file W:\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 104
+

@@ -242,3 +242,19 @@ Fault: 21-11-2020 19:38:15 - Ошибка в SQL запросе: SELECT user.* F
 file W:\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 41
 
+Fault: 25-11-2020 9:30:05 - Ошибка в SQL запросе: SELECT user.id FROM user  WHERE user.email='123@mail.ru'    - 1054 Unknown column 'user.email' in 'where clause'
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 25-11-2020 9:31:36 - Ошибка в SQL запросе: SELECT user_info.id FROM user_info  WHERE user_info.email='123@mail.ru'    - 1054 Unknown column 'user_info.id' in 'field list'
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 25-11-2020 9:34:26 - Ошибка в SQL запросе: INSERT INTO user_info (login,email) VALUES ('1231','123@mail.ru') - 1364 Field 'sex_id' doesn't have a default value
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 25-11-2020 14:37:52 - Ошибка в SQL запросе: SELECT user.* FROM user  WHERE user.id='15'    - 2006 MySQL server has gone away
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+

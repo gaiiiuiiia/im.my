@@ -20,6 +20,8 @@ abstract class BaseUser extends BaseController
     protected $messages;
     protected $msgHandler;
 
+    protected $userInput;
+
     protected $tables;
 
     protected function inputData(){
@@ -146,24 +148,22 @@ abstract class BaseUser extends BaseController
         return hash('sha512', $new_row);
     }
 
-    protected function createUserInputData($fields = []){
+    protected function createUserInput($fields = []){
 
         if ($this->isPost()){
 
             if (!$fields){
                 // получить все данные из массива пост
                 foreach ($_POST as $key => $value){
-                    $res[$key] = $value;
+                    $this->userInput[$key] = $value;
                 }
             }
             else{
                 foreach ($fields as $value){
-                    $res[$value] = $_POST[$value];
+                    $this->userInput[$value] = $_POST[$value];
                 }
             }
-            return $res;
         }
-        return [];
     }
 
     protected function hasCookie($fields){
