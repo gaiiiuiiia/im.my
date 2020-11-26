@@ -43,12 +43,7 @@ class CreateSitemapController extends BaseAdmin
 
     }
 
-
     protected function parsing($url, $index = 0){
-
-        if (mb_strlen(SITE_URL) + 1 === mb_strlen($url) &&
-                mb_strpos($url, '/') === mb_strlen($url) - 1)
-            return;
 
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -56,31 +51,74 @@ class CreateSitemapController extends BaseAdmin
         curl_setopt($curl, CURLOPT_HEADER, true);
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($curl, CURLOPT_TIMEOUT, 120);
-        curl_setopt($curl, CURLOPT_RANGE, 0 - 4194304);
+        curl_setopt($curl, CURLOPT_RANGE, 0 - 4194304); // больше 4 МБ не грузить
 
         $out = curl_exec($curl);
 
         curl_close($curl);
 
-        if (!preg_match("/Content-Type:\s+text\/html/uis", $out)){
+        // u - многобайтовый, i - регистронезависимый
+        if (!preg_match("/Content-Type:\s+text\/html/ui", $out)){
             unset($this->linkArr[$index]);
-            $this->linkArr = array_values($this->linkArr);
+            $this->linkArr = array_values($this->linkArr);  // поправляем индексацию элементов в массиве
             return;
         }
-        if (!preg_match("/HTTP\/\d\.?\d?\s+20\d/uis", $out)){
+        if (!preg_match("/HTTP\/\d\.?\d?\s+20\d/ui", $out)){
             $this->writeLog('Не корректная ссылка при парсинге - ' . $url,
                                 $this->parsingLogFile);
             unset($this->linkArr[$index]);
             $this->linkArr = array_values($this->linkArr);
             $_SESSION['res']['answer'] = '<div class="error">Incorrect link in parsing - ' . $url .
-                                            '<br>Sitemap was not created</div>';
+                                            '<br>Sitemap is created</div>';
             return;
+        }
+
+        preg_match_all('/<a\s*?[^>]*?href\s*?=\s*?(["\'])(.+?)\1[^>]*?>]/ui', $out, $links);
+
+        if ($links[2]){
+
+            foreach ($links[2] as $link){
+
+                if ($link === '/' || $link === SITE_URL . '/') continue;
+
+                foreach ($this->linkArr as $ext){
+
+                    if ($ext){
+
+                        $ext = addslashes($ext);
+                        $ext = str_replace('.', '\.', $ext);
+
+                        if (preg_match('/' . $ext . '\s*?$/ui', $link)){
+                            continue 2;  // выход из первого цикла
+                        }
+
+                    }
+
+                }
+
+                if (strpos($link, '/') === 0){
+                    $link = SITE_URL . $link;
+                }
+
+                if (!in_array($link, $this->linkArr) && $link !== '#' &&
+                        strpos($link, SITE_URL) === 0){
+
+                    if ($this->filter($link)){
+                        $this->linkArr[] = $link;
+                        $this->parsing($link, count($this->linkArr) - 1);
+                    }
+
+                }
+
+            }
+
+
         }
 
     }
 
     protected function filter($url){
-
+        return true;
     }
 
     protected function createSitemap(){
