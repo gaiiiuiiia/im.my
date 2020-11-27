@@ -88,6 +88,15 @@ class CreateSitemapController extends BaseAdmin
                 'all_links' => '',
             ]]);
 
+        if ($this->all_links){
+
+            foreach ($this->all_links as $key => $link){
+
+                if (!$this->filter($link))
+                    unset($this->all_links[$key]);
+            }
+        }
+
         $this->createSitemap();
 
         !$_SESSION['res']['answer'] && $_SESSION['res']['answer'] = '<div class="success">Sitemap is created</div>';
@@ -148,66 +157,79 @@ class CreateSitemapController extends BaseAdmin
 
         } while($status === CURLM_CALL_MULTI_PERFORM || $active);
 
-        $out = curl_exec($curl);
+        $result = [];
 
-        curl_close($curl);
+        foreach ($urls as $i => $url){
 
-        // u - многобайтовый, i - регистронезависимый
-        if (!preg_match("/Content-Type:\s+text\/html/ui", $out)){
-            unset($this->all_links[$index]);
-            $this->all_links = array_values($this->all_links);  // поправляем индексацию элементов в массиве
-            return;
+            $result[$i] = curl_multi_getcontent($curl[$i]);
+            curl_multi_remove_handle($curlMulti, $curl[$i]);
+            curl_close($curl[$i]);
+
+            // u - многобайтовый, i - регистронезависимый
+            if (!preg_match("/Content-Type:\s+text\/html/ui", $result[$i])){
+
+                $this->cancel(0, 'Incorrect content type ' . $url);
+                continue;
+            }
+
+            if (!preg_match("/HTTP\/\d\.?\d?\s+20\d/ui", $result[$i])){
+
+                $this->cancel(0, 'Incorrect server code ' . $url);
+                continue;
+            }
+
+            $this->createLinks($result[$i]);
         }
-        if (!preg_match("/HTTP\/\d\.?\d?\s+20\d/ui", $out)){
-            $this->writeLog('Не корректная ссылка при парсинге - ' . $url,
-                                $this->parsingLogFile);
-            unset($this->all_links[$index]);
-            $this->all_links = array_values($this->all_links);
-            $_SESSION['res']['answer'] = '<div class="error">Incorrect link in parsing - ' . $url .
-                                            '<br>Sitemap is created</div>';
-            return;
-        }
 
-        preg_match_all('/<a\s*?[^>]*?href\s*?=\s*?(["\'])(.+?)\1[^>]*?>]/ui', $out, $links);
+        curl_multi_close($curlMulti);
 
-        if ($links[2]){
+    }
 
-            foreach ($links[2] as $link){
+    protected function createLinks($content){
 
-                if ($link === '/' || $link === SITE_URL . '/') continue;
+        if ($content){
 
-                foreach ($this->all_links as $ext){
+            preg_match_all('/<a\s*?[^>]*?href\s*?=\s*?(["\'])(.+?)\1[^>]*?>]/ui', $content, $links);
 
-                    if ($ext){
+            if ($links[2]){
 
-                        $ext = addslashes($ext);
-                        $ext = str_replace('.', '\.', $ext);
+                foreach ($links[2] as $link){
 
-                        if (preg_match('/' . $ext . '(\s*?$|\?[^\/]*$)/ui', $link)){
-                            continue 2;  // переход на след. итерацию первого цикла
+                    if ($link === '/' || $link === SITE_URL . '/') continue;
+
+                    foreach ($this->all_links as $ext){
+
+                        if ($ext){
+
+                            $ext = addslashes($ext);
+                            $ext = str_replace('.', '\.', $ext);
+
+                            if (preg_match('/' . $ext . '(\s*?$|\?[^\/]*$)/ui', $link)){
+                                continue 2;  // переход на след. итерацию первого цикла
+                            }
+
                         }
 
                     }
 
-                }
+                    if (strpos($link, '/') === 0){
+                        $link = SITE_URL . $link;
+                    }
 
-                if (strpos($link, '/') === 0){
-                    $link = SITE_URL . $link;
-                }
+                    $site_url = mb_str_replace('.', '\.',
+                        mb_str_replace('/', '\/', SITE_URL));
 
-                $site_url = mb_str_replace('.', '\.',
-                                                mb_str_replace('/', '\/', SITE_URL));
+                    if (!in_array($link, $this->all_links) &&
+                            !preg_match('/^('. $site_url .')?\/?#[^\/]*?$/ui', $link) &&
+                            strpos($link, SITE_URL) === 0){
 
-                if (!in_array($link, $this->all_links) && !preg_match('/^('. $site_url .')?\/?#[^\/]*?$/ui', $link) &&
-                        strpos($link, SITE_URL) === 0){
-
-                    if ($this->filter($link)){
+                        $this->temp_links[] = $link;
                         $this->all_links[] = $link;
-                        $this->parsing($link, count($this->all_links) - 1);
                     }
                 }
             }
         }
+
     }
 
     protected function filter($link){
