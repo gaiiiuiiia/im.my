@@ -482,3 +482,27 @@ Fault: 29-11-2020 18:30:33 - Не верное имя файла для подк
 file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
 In line 35
 
+Fault: 29-11-2020 18:41:34 - Не верное имя файла для подключения - core/user/controller/CoreController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 35
+
+Fault: 29-11-2020 18:41:34 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 35
+
+Fault: 29-11-2020 18:44:44 - Не верное имя файла для подключения - core/user/controller/CoreController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 35
+
+Fault: 29-11-2020 18:44:44 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 35
+
+Fault: 29-11-2020 18:46:16 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 35
+
+Fault: 29-11-2020 18:54:04 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 35
+
