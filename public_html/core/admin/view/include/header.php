@@ -6,9 +6,9 @@
         <meta type="keywords" content="...">
         <meta type="description" content="...">
         <title>Document</title>
-        <?php foreach ($this->styles as $style): ?>
-        <link rel="stylesheet" href="<?echo $style?>">
-        <?php endforeach;?>
+
+        <?php $this->getStyles();?>
+
     </head>
     <body>
         <div class="vg-carcass vg-hide">

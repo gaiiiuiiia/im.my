@@ -102,7 +102,6 @@ class CreateSitemapController extends BaseAdmin
         !$_SESSION['res']['answer'] && $_SESSION['res']['answer'] = '<div class="success">Sitemap is created</div>';
 
         $this->redirect();
-
     }
 
     protected function parsing($urls){
@@ -137,7 +136,6 @@ class CreateSitemapController extends BaseAdmin
                     $i = array_search($info['handle'], $curl);
                     $error = curl_errno($curl[$i]);
                     $message = curl_error($curl[$i]);
-
                     $header = curl_getinfo($curl[$i]);
 
                     if ($error !== 0){
@@ -147,42 +145,32 @@ class CreateSitemapController extends BaseAdmin
                                         ' http code: ' . $header['http_code'] .
                                         ' error: ' . $error . ' message: ' . $message);
                     }
-
                 }
-
             }
             if ($status > 0){
                 $this->cancel(0, curl_multi_strerror($status));
             }
-
         } while($status === CURLM_CALL_MULTI_PERFORM || $active);
-
-        $result = [];
 
         foreach ($urls as $i => $url){
 
-            $result[$i] = curl_multi_getcontent($curl[$i]);
+            $result = curl_multi_getcontent($curl[$i]);
             curl_multi_remove_handle($curlMulti, $curl[$i]);
             curl_close($curl[$i]);
 
             // u - многобайтовый, i - регистронезависимый
-            if (!preg_match("/Content-Type:\s+text\/html/ui", $result[$i])){
-
+            if (!preg_match("/Content-Type:\s+text\/html/ui", $result)){
                 $this->cancel(0, 'Incorrect content type ' . $url);
                 continue;
             }
 
-            if (!preg_match("/HTTP\/\d\.?\d?\s+20\d/ui", $result[$i])){
-
+            if (!preg_match("/HTTP\/\d\.?\d?\s+20\d/ui", $result)){
                 $this->cancel(0, 'Incorrect server code ' . $url);
                 continue;
             }
-
-            $this->createLinks($result[$i]);
+            $this->createLinks($result);
         }
-
         curl_multi_close($curlMulti);
-
     }
 
     protected function createLinks($content){
@@ -197,7 +185,7 @@ class CreateSitemapController extends BaseAdmin
 
                     if ($link === '/' || $link === SITE_URL . '/') continue;
 
-                    foreach ($this->all_links as $ext){
+                    foreach ($this->fileArr as $ext){
 
                         if ($ext){
 
@@ -207,9 +195,7 @@ class CreateSitemapController extends BaseAdmin
                             if (preg_match('/' . $ext . '(\s*?$|\?[^\/]*$)/ui', $link)){
                                 continue 2;  // переход на след. итерацию первого цикла
                             }
-
                         }
-
                     }
 
                     if (strpos($link, '/') === 0){
@@ -229,7 +215,6 @@ class CreateSitemapController extends BaseAdmin
                 }
             }
         }
-
     }
 
     protected function filter($link){
@@ -322,8 +307,8 @@ class CreateSitemapController extends BaseAdmin
         if ($this->all_links){
 
             $date = new \DateTime();
-            $lastMod = $date->format('Y-m-d') . 'T' . $date->format('H:i:s+01:00');
-            //$lastMod = $date->format('c');
+            //$lastMod = $date->format('Y-m-d') . 'T' . $date->format('H:i:s+01:00');
+            $lastMod = $date->format('c');
 
             foreach ($this->all_links as $item){
 
@@ -341,11 +326,8 @@ class CreateSitemapController extends BaseAdmin
                 $urlMain->addChild('lastmod', $lastMod);
                 $urlMain->addChild('changefreq', 'weekly');
                 $urlMain->addChild('priority', $priority);
-
             }
-
         }
-
         $dom->save($_SERVER['DOCUMENT_ROOT'] . PATH . 'sitemap.xml');
     }
 }

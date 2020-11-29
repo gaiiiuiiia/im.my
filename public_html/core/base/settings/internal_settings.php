@@ -18,7 +18,9 @@ const QTY_LINKS = 3;  // кол-во ссылок справа и слева (п
 
 const ADMIN_CSS_JS = [
     'styles' => ['css/main.css'],
-    'scripts' => [],
+    'scripts' => [
+        'js/frameworkfunctions.js',
+        'js/scripts.js'],
 ];
 const USER_CSS_JS = [
     'styles' => [],

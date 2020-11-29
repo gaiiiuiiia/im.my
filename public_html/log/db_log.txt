@@ -182,3 +182,7 @@ Fault: 15-11-2020 23:30:04 - Ошибка в SQL запросе: SHOW COLUMNS FR
 file W:\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 41
 
+Fault: 29-11-2020 16:59:46 - Ошибка в SQL запросе: SHOW COLUMNS FROM parsing_data - 2006 MySQL server has gone away
+file W:\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
