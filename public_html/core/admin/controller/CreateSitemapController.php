@@ -23,7 +23,9 @@ class CreateSitemapController extends BaseAdmin
         'get' => [],
     ];
 
-    protected function inputData($links_counter = 1){
+    public function inputData($links_counter = 1, $redirect = true){
+
+        $links_counter = $this->clearNum($links_counter);
 
         if (!function_exists('curl_init'))
             $this->cancel(0,'Library CURL is absent. Creation of sitemap impossible', '', true);
@@ -99,9 +101,15 @@ class CreateSitemapController extends BaseAdmin
 
         $this->createSitemap();
 
-        !$_SESSION['res']['answer'] && $_SESSION['res']['answer'] = '<div class="success">Sitemap is created</div>';
 
-        $this->redirect();
+        if ($redirect){
+            !$_SESSION['res']['answer'] && $_SESSION['res']['answer'] = '<div class="success">Sitemap is created</div>';
+            $this->redirect();
+        } else {
+            $this->cancel(1, 'Sitemap is created! ' . count($this->all_links) . ' links',
+                            '', true);
+        }
+
     }
 
     protected function parsing($urls){
@@ -253,7 +261,7 @@ class CreateSitemapController extends BaseAdmin
 
         if (!in_array('parsing_data', $tables)) {
 
-            $query = 'CREATE TABLE parsing_data (all_links TEXT, temp_links TEXT)';
+            $query = 'CREATE TABLE parsing_data (all_links LONGTEXT, temp_links LONGTEXT)';
 
             if (!$this->model->query($query, 'c') ||
                 !$this->model->add('parsing_data',
