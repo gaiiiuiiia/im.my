@@ -9,7 +9,7 @@ const ADMIN_TEMPLATE = 'core/admin/view/';
 const UPLOAD_DIR = 'userfiles/';
 
 const COOKIE_VERSION = '1.0.0';
-const CRYPT_KEY = '';
+const CRYPT_KEY = 'TjWnZr4u7x!z%C*FbQeThWmZq4t7w!z$G+KbPeShVmYq3t6w%D*G-KaPdSgVkYp3w!z%C*F-JaNdRgUk4t7w9z$C&F)J@NcRmYq3t6w9y$B&E)H@SgVkYp3s6v9y/B?E';
 const COOKIE_TIME = 60;
 const BLOCK_TIME = 3;
 
