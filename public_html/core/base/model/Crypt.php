@@ -26,7 +26,7 @@ class Crypt
 
         $hmac = hash_hmac($this->hashAlgorithm, $cipherText, CRYPT_KEY, true);
 
-        return base64_encode($iv . $hmac . $cipherText);
+        return $this->cryptCombine($cipherText, $iv, $hmac);
     }
 
     public function decrypt($str){
@@ -45,10 +45,45 @@ class Crypt
 
         $calcmac = hash_hmac($this->hashAlgorithm, $cipherText, CRYPT_KEY, true);
 
-        if (hash_equals($hmac, $calcmac)) return $originalPlaintext;
+        if (hash_equals($hmac, $calcmac))
+            return $originalPlaintext;
 
         return false;
+    }
 
+    protected function cryptCombine($str, $iv, $hmac){
+
+        $new_str = '';
+        $str_len = strlen($str);
+        $counter = (int) ceil(strlen(CRYPT_KEY) / ($str_len + strlen($hmac)));
+        $step = 1;
+
+        if ($counter >= $str_len)
+            $counter = 1;
+
+        for ($i = 0; $i < $str_len; $i++){
+
+            if ($counter < $str_len){
+
+                if ($counter === $i){
+
+                    $new_str .= substr($iv, $step - 1, 1);
+                    $step++;
+                    $counter += $step;
+                }
+            } else
+                break;
+
+            $new_str .= substr($str, $i, 1);
+        }
+        $new_str .= substr($str, $i);
+        $new_str .= substr($iv, $step - 1);
+
+        $new_str_half = (int) ceil(strlen($new_str) / 2);
+
+        $new_str = substr($new_str, 0, $new_str_half) . $hmac . substr($new_str, $new_str_half);
+
+        return base64_encode($new_str);
     }
 
 }
