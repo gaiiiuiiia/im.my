@@ -127,7 +127,12 @@ abstract class BaseModel extends BaseModelMethods
 
         $query = "SELECT $fields FROM $table $join $where $order $limit";
 
-        return $this->query($query);
+        $res = $this->query($query);
+
+        if (isset($set['join_structure']) && $set['join_structure'] && $res)
+            $res = $this->joinStructure($res, $table);
+
+        return $res;
     }
 
     /**
@@ -228,7 +233,7 @@ abstract class BaseModel extends BaseModelMethods
     ],
      */
 
-    public function delete($table, $set){
+    public function delete($table, $set = []){
 
         $table = trim($table);
 
@@ -269,23 +274,39 @@ abstract class BaseModel extends BaseModelMethods
 
     final public function showColumns($table){
 
-        $query = "SHOW COLUMNS FROM $table";
+        if (!isset($this->tableRows[$table]) || !$this->tableRows[$table]){
 
-        $res = $this->query($query);
+            $query = "SHOW COLUMNS FROM $table";
 
-        $columns = [];
+            $res = $this->query($query);
 
-        if ($res){
+            $this->tableRows[$table] = [];
 
-            foreach ($res as $row){
-                $columns[$row['Field']] = $row;
-                if ($row['Key'] === 'PRI'){
-                    $columns['id_row'] = $row['Field'];
+            if ($res){
+
+                foreach ($res as $row){
+
+                    $this->tableRows[$table][$row['Field']] = $row;
+
+                    if ($row['Key'] === 'PRI'){
+
+                        if (!isset($this->tableRows[$table]['id_row']))
+                            $this->tableRows[$table]['id_row'] = $row['Field'];
+                        else {
+
+                            if (!isset($this->tableRows[$table]['multi_id_row']))
+                                $this->tableRows[$table]['multi_id_row'][] = $this->tableRows[$table]['id_row'];
+
+                            $this->tableRows[$table]['multi_id_row'][] = $row['Field'];
+                        }
+                    }
                 }
+                if (isset($this->tableRows[$table]['multi_id_row']))
+                    unset($this->tableRows[$table]['id_row']);
             }
         }
 
-        return $columns;
+        return $this->tableRows[$table];
     }
 
     final public function showTables(){
