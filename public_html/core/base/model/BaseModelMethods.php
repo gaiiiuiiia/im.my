@@ -56,8 +56,8 @@ abstract class BaseModelMethods
 
                     if ($join && $join_structure){
 
-                        if (!preg_match('/^(.+)?\sas\s+(.+)/i', $field, $matches))
-                            $fields .= $concat_table . $matches[1] . ' as TABLE' . $table . 'TABLE_' . $matches[1] . ',';
+                        if (preg_match('/^(.+)?\s+as\s+(.+)/i', $field, $matches))
+                            $fields .= $concat_table . $matches[1] . ' as TABLE' . $table . 'TABLE_' . $matches[2] . ',';
                         else
                             $fields .= $concat_table . $field . ' as TABLE' . $table . 'TABLE_' . $field . ',';
                     }
@@ -235,6 +235,7 @@ abstract class BaseModelMethods
                         default:
                             // выход на след итерацию цикла foreach
                             continue 2;
+                            break;
                     }
                     if (!$item['type']){
                         $join .= 'LEFT JOIN ';
