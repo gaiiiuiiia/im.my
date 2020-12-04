@@ -301,8 +301,6 @@ abstract class BaseModel extends BaseModelMethods
                         }
                     }
                 }
-                if (isset($this->tableRows[$table]['multi_id_row']))
-                    unset($this->tableRows[$table]['id_row']);
             }
         }
 
