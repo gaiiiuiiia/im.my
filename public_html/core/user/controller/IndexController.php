@@ -13,12 +13,12 @@ class IndexController extends BaseController
 
         $model = Model::instance();
 
-        $res = $model->get('teachers', [
+        $res = $model->get('goods', [
             'where' => ['id' => '1,2'],
             'operand' => ['IN'],
             'join' => [
-                'stud_teach' => ['on' => ['id', 'teachers']],
-                'students' => [
+                'goods_filters' => ['on' => ['id', 'teachers']],
+                'filters' => [
                     'fields' => ['name as student_name'],
                     'on' => ['students', 'id']
                 ],

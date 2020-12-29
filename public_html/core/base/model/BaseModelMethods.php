@@ -127,8 +127,6 @@ abstract class BaseModelMethods
         $table = ($table && (!isset($set['no_concat']) || !$set['no_concat']))
             ? $this->createTableAlias($table)['alias'] . '.' : '';
 
-        $table = ($table && !$set['no_concat']) ? $table . '.' : '';
-
         $where = '';
 
         if (is_string($set['where'])){
@@ -199,12 +197,10 @@ abstract class BaseModelMethods
                     $where .= $table . $key . ' LIKE ' . "'" . addslashes($item) . "' $condition";
                 }
                 else{
-                    if (strpos($item, 'SELECT') === 0){
+                    if (strpos($item, 'SELECT') === 0)
                         $where .= $table . $key . $operand . '(' . $item . ") $condition";
-                    }
-                    else{
+                    else
                         $where .= $table . $key . $operand . "'" . addslashes($item) . "' $condition";
-                    }
                 }
             }
             $where = substr($where, 0, strrpos($where, $condition));

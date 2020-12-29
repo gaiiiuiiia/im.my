@@ -47,17 +47,17 @@ class Settings
         ],
     ];
 
-    private $defaultTable = 'teachers';
+    private $defaultTable = 'goods';
 
     private $formTemplates = PATH . 'core/admin/view/include/form_templates/';
 
     private $projectTables = [
-        'teachers' => [
-            'name' => 'Учителя',
+        'goods' => [
+            'name' => 'Товары',
             'img' => 'pages.png',
         ],
-        'students' => [
-            'name' => 'Ученики',
+        'filters' => [
+            'name' => 'Фильтры',
         ],
     ];
 
@@ -65,6 +65,7 @@ class Settings
         'text' => ['name'],
         'textarea' => ['content', 'keywords'],
         'radio' => ['visible'],
+        'checkboxlist' => ['filters'],
         'select' => ['menu_position', 'parent_id'],
         'img' => ['img'],
         'gallery_img' => ['gallery_img'],
@@ -85,6 +86,11 @@ class Settings
     private $rootItems = [
         'name' => 'Корневая',
         'tables' => ['articles'],
+    ];
+
+    private $manyToMany = [
+        'goods_filters' => ['goods', 'filters',],  // 'type' => 'child' || 'root'
+
     ];
 
     private $blockNeedle = [

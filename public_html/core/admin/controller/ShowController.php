@@ -31,8 +31,11 @@ class ShowController extends BaseAdmin
         }
         $fields[] = $this->columns['id_row'] . ' as id';
 
-        if ($this->columns['name']) $fields['name'] = 'name';
-        if ($this->columns['img']) $fields['img'] = 'img';
+        if ($this->columns['name'])
+            $fields['name'] = 'name';
+
+        if ($this->columns['img'])
+            $fields['img'] = 'img';
 
         if (count($fields) < 3){
             foreach ($this->columns as $key => $item){
@@ -53,14 +56,18 @@ class ShowController extends BaseAdmin
             }
         }
         if ($this->columns['parent_id']){
-            if (!in_array('parent_id', $fields)) $fields[] = 'parent_id';
+            if (!in_array('parent_id', $fields))
+                $fields[] = 'parent_id';
             $order[] = 'parent_id';
         }
-        if ($this->columns['menu_position']) $order[] = 'menu_position';
+        if ($this->columns['menu_position'])
+            $order[] = 'menu_position';
         elseif ($this->columns['date']){
 
-            if ($order) $order_direction = ['ASC', 'DESC'];
-            else $order_direction[] = 'DESC';
+            if ($order)
+                $order_direction = ['ASC', 'DESC'];
+            else
+                $order_direction[] = 'DESC';
 
             $order[] = 'date';
         }
