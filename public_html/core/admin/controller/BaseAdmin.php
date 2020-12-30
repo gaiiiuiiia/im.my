@@ -319,6 +319,7 @@ abstract class BaseAdmin extends BaseController
         $method = 'add';
 
         if ($_POST[$this->columns['id_row']]){
+
             $id = is_numeric($_POST[$this->columns['id_row']]) ?
                 $this->clearNum($_POST[$this->columns['id_row']]) :
                 $this->clearStr($_POST[$this->columns['id_row']]);
@@ -329,11 +330,12 @@ abstract class BaseAdmin extends BaseController
             }
         }
         foreach ($this->columns as $key => $item){
-            if ($key === 'id_row') continue;
 
-            if ($item['Type'] === 'date' || $item['Type'] === 'datetime'){
+            if ($key === 'id_row')
+                continue;
+
+            if ($item['Type'] === 'date' || $item['Type'] === 'datetime')
                 !$_POST[$key] && $_POST[$key] = 'NOW()';
-            }
         }
 
         $this->createFile();
@@ -360,6 +362,8 @@ abstract class BaseAdmin extends BaseController
             $answerFail = $this->messages['editFail'];
         }
 
+        $this->checkManyToMany();
+
         $this->expansion(get_defined_vars());
 
         $result = $this->checkAlias($_POST[$this->columns['id_row']]);
@@ -367,13 +371,16 @@ abstract class BaseAdmin extends BaseController
         if ($res_id){
             $_SESSION['res']['answer'] = '<div class="success">' . $answerSuccess . '</div>';
 
-            if (!$returnId) $this->redirect();
+            if (!$returnId)
+                $this->redirect();
 
             return $_POST[$this->columns['id_row']];
+
         } else{
             $_SESSION['res']['answer'] = '<div class="error">' . $answerFail . '</div>';
 
-            if (!$returnId) $this->redirect();
+            if (!$returnId)
+                $this->redirect();
         }
 
     }
@@ -749,5 +756,67 @@ abstract class BaseAdmin extends BaseController
             }
         }
     }
+
+    protected function checkManyToMany($settings = false){
+
+        if (!$settings)
+            $settings = $this->settings ?: Settings::instance();
+
+        $manyToMany = $settings::get('manyToMany');
+
+        if ($manyToMany){
+
+            foreach ($manyToMany as $mTable => $tables){
+
+                $targetKey = array_search($this->table, $tables);
+
+                if ($targetKey !== false){
+
+                    $otherKey = $targetKey ? 0 : 1;
+
+                    $checkboxlist = $settings::get('templateArr')['checkboxlist'];
+
+                    if (!$checkboxlist || !in_array($tables[$otherKey], $checkboxlist))
+                        continue;
+
+                    $columns = $this->model->showColumns($tables[$otherKey]);
+
+                    $targetRow = $this->table . '_' . $this->columns['id_row'];
+
+                    $otherRow = $tables[$otherKey] . '_' . $columns['id_row'];
+
+                    $this->model->delete($mTable, [
+                        'where' => [$targetRow => $_POST[$this->columns['id_row']]],
+                    ]);
+
+                    if ($_POST[$tables[$otherKey]]){
+
+                        $insertArr = [];
+                        $i = 0;
+
+                        foreach ($_POST[$tables[$otherKey]] as $value){
+
+                            foreach ($value as $item){
+
+                                if ($item){
+                                    $insertArr[$i][$targetRow] = $_POST[$this->columns['id_row']];
+                                    $insertArr[$i][$otherRow] = $item;
+
+                                    $i++;
+                                }
+                            }
+                        }
+
+                        if ($insertArr)
+
+                            $this->model->add($mTable, [
+                                'fields' => $insertArr,
+                            ]);
+                    }
+                }
+            }
+        }
+    }
+
 
 }
