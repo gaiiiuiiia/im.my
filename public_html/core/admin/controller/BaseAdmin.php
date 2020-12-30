@@ -592,6 +592,8 @@ abstract class BaseAdmin extends BaseController
 
                         if ($data) {
 
+                            $this->foreignData[$tables[$otherKey]][$tables[$otherKey]]['name'] = 'Выбрать';
+
                             foreach ($data as $item) {
 
                                 if ($tables['type'] === 'root' && $orderData['parent_id']) {
