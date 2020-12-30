@@ -702,3 +702,31 @@ Fault: 28-12-2020 23:23:08 - Не верное имя файла для подк
 file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
 In line 35
 
+Fault: 30-12-2020 2:02:05 - Не найден шаблон E:/myfiles/Programs/OpenServer/domains/im.my/public_html/core/admin/view/include/form_templates/checkboxlist.php
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\admin\view\add.php
+In line 50
+
+Fault: 30-12-2020 2:02:10 - Не найден шаблон E:/myfiles/Programs/OpenServer/domains/im.my/public_html/core/admin/view/include/form_templates/checkboxlist.php
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\admin\view\add.php
+In line 50
+
+Fault: 30-12-2020 2:03:07 - Не найден шаблон E:/myfiles/Programs/OpenServer/domains/im.my/public_html/core/admin/view/include/form_templates/checkboxlist.php
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\admin\view\add.php
+In line 50
+
+Fault: 30-12-2020 2:04:47 - Не найден шаблон E:/myfiles/Programs/OpenServer/domains/im.my/public_html/core/admin/view/include/form_templates/checkboxlist.php
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\admin\view\add.php
+In line 50
+
+Fault: 30-12-2020 2:04:55 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 35
+
+Fault: 30-12-2020 2:04:58 - Не найден шаблон E:/myfiles/Programs/OpenServer/domains/im.my/public_html/core/admin/view/include/form_templates/checkboxlist.php
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\admin\view\add.php
+In line 50
+
+Fault: 30-12-2020 2:06:10 - Не найден шаблон E:/myfiles/Programs/OpenServer/domains/im.my/public_html/core/admin/view/include/form_templates/checkboxlist.php
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\admin\view\add.php
+In line 50
+
