@@ -85,7 +85,7 @@ class Settings
 
     private $rootItems = [
         'name' => 'Корневая',
-        'tables' => ['articles'],
+        'tables' => ['articles', 'filters'],
     ];
 
     private $manyToMany = [

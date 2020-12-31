@@ -12,7 +12,8 @@ class AddController extends BaseAdmin
 
     protected function inputData(){
 
-        if (!$this->userId) $this->execBase();
+        if (!$this->userId)
+            $this->execBase();
 
         $this->checkPost();
 
@@ -33,7 +34,7 @@ class AddController extends BaseAdmin
     protected function createForeignProperty($arr, $rootItems){
 
         if (in_array($this->table, $rootItems['tables'])){
-            $this->foreignData[$arr['COLUMN_NAME']][0]['id'] = 0;
+            $this->foreignData[$arr['COLUMN_NAME']][0]['id'] = 'NULL';
             $this->foreignData[$arr['COLUMN_NAME']][0]['name'] = $rootItems['name'];
         }
 

@@ -222,3 +222,51 @@ Fault: 28-12-2020 23:09:18 - Ошибка в SQL запросе: SHOW COLUMNS FR
 file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 41
 
+Fault: 31-12-2020 13:07:03 - Ошибка в SQL запросе: SELECT filters.alias FROM filters  WHERE filters.alias=''   LIMIT 1 - 1054 Unknown column 'filters.alias' in 'field list'
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 31-12-2020 14:32:40 - Ошибка в SQL запросе: SELECT filters.alias FROM filters  WHERE filters.alias=''   LIMIT 1 - 1054 Unknown column 'filters.alias' in 'field list'
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 31-12-2020 14:39:04 - Ошибка в SQL запросе: SELECT filters.alias FROM filters  WHERE filters.alias=''   LIMIT 1 - 1054 Unknown column 'filters.alias' in 'field list'
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 31-12-2020 14:41:36 - Ошибка в SQL запросе: SELECT filters.alias FROM filters  WHERE filters.alias=''   LIMIT 1 - 1054 Unknown column 'filters.alias' in 'field list'
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 31-12-2020 14:41:53 - Ошибка в SQL запросе: SELECT filters.alias FROM filters  WHERE filters.alias=''   LIMIT 1 - 1054 Unknown column 'filters.alias' in 'field list'
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 31-12-2020 14:42:21 - Ошибка в SQL запросе: SELECT filters.alias FROM filters  WHERE filters.alias=''   LIMIT 1 - 1054 Unknown column 'filters.alias' in 'field list'
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 31-12-2020 14:47:03 - Ошибка в SQL запросе: SHOW COLUMNS FROM filters - 2006 MySQL server has gone away
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 31-12-2020 14:47:18 - Ошибка в SQL запросе: SELECT filters.alias FROM filters  WHERE filters.alias=''   LIMIT 1 - 1054 Unknown column 'filters.alias' in 'field list'
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 31-12-2020 14:52:21 - Ошибка в SQL запросе: SELECT filters.alias FROM filters  WHERE filters.alias=''   LIMIT 1 - 2006 MySQL server has gone away
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 31-12-2020 14:59:18 - Ошибка в SQL запросе: SELECT filters.alias FROM filters  WHERE filters.alias=''   LIMIT 1 - 1054 Unknown column 'filters.alias' in 'field list'
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 31-12-2020 15:17:46 - Ошибка в SQL запросе: SELECT filters.alias FROM filters  WHERE filters.alias=''   LIMIT 1 - 2006 MySQL server has gone away
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 31-12-2020 16:11:04 - Ошибка в SQL запросе: SELECT filters.alias FROM filters  WHERE filters.alias=''   LIMIT 1 - 1054 Unknown column 'filters.alias' in 'field list'
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
