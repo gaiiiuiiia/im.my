@@ -7,11 +7,34 @@ namespace core\admin\controller;
 class EditController extends BaseAdmin
 {
 
+    protected $action = 'edit';
+
     protected function inputData(){
 
-        if (!$this->userId) $this->execBase();
+        if (!$this->userId)
+            $this->execBase();
 
+        $this->checkPost();
 
+        $this->createTableData();
+
+        $this->createForeignData();
+
+        $this->createMenuPosition();
+
+        $this->createRadio();
+
+        $this->createOutputData();
+
+        $this->createManyToMany();
+
+        $this->template = ADMIN_TEMPLATE . 'add';
+
+        return $this->expansion();
+
+    }
+
+    protected function createData(){
 
     }
 

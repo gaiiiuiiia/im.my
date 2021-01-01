@@ -270,3 +270,7 @@ Fault: 31-12-2020 16:11:04 - Ошибка в SQL запросе: SELECT filters.
 file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 41
 
+Fault: 01-01-2021 21:09:06 - Ошибка в SQL запросе: SELECT goods.*,goods_filters.filters_id as TABLEgoods_filtersTABLE_filters_id,goods_filters.goods_id as TABLEgoods_filtersTABLE_goods_id,filters.name as TABLEfiltersTABLE_student_name,filters.id as TABLEfiltersTABLE_id FROM goods LEFT JOIN goods_filters ON goods.id=goods_filters.teachers LEFT JOIN filters ON goods_filters.students=filters.id WHERE goods.id IN ('1','2')    - 1054 Unknown column 'goods_filters.teachers' in 'on clause'
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
