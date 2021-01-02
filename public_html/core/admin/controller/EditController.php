@@ -4,6 +4,8 @@
 namespace core\admin\controller;
 
 
+use core\base\exceptions\RouteException;
+
 class EditController extends BaseAdmin
 {
 
@@ -17,6 +19,8 @@ class EditController extends BaseAdmin
         $this->checkPost();
 
         $this->createTableData();
+
+        $this->createData();
 
         $this->createForeignData();
 
@@ -35,6 +39,18 @@ class EditController extends BaseAdmin
     }
 
     protected function createData(){
+
+        // $this->parameters[$this->table] - id элемента в таблице $table goods/18
+        $id = $this->clearNum($this->parameters[$this->table]);
+
+        if (!$id)
+            throw new RouteException('Некорректный идентификатор - ' . $id
+                . ' при редактировании таблицы ' . $this->table);
+
+        $this->data = $this->model->get($this->table, [
+            'where' => [$this->columns['id_row'] => $id],
+        ])[0];
+
 
     }
 

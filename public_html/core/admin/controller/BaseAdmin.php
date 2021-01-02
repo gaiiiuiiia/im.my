@@ -587,7 +587,7 @@ abstract class BaseAdmin extends BaseController
 
                         $res = $this->model->get($mTable, [
                             'fields' => [$tables[$otherKey] . '_' . $orderData['columns']['id_row']],
-                            'where' => [$this->table . '_' . $this->columns['id_row'] = $this->data[$this->columns['id_row']]]
+                            'where' => [$this->table . '_' . $this->columns['id_row'] => $this->data[$this->columns['id_row']]]
                         ]);
 
                         if ($res){
@@ -937,11 +937,14 @@ abstract class BaseAdmin extends BaseController
 
                 }
             }
+
+            // если есть this->data, то мы редактируем - кол-во ячеек остается равным предыдущему значению
+            // если ее нет, то мы создаем - кол-во ячеек + 1
             $menu_pos = $this->model->get($this->table, [
                     'fields' => ['COUNT(*) as count'],
                     'where' => $where,
                     'no_concat' => true,
-                ])[0]['count'] + 1;
+                ])[0]['count'] + (int)!$this->data;
 
             for ($i = 1; $i <= $menu_pos; $i++){
                 $this->foreignData['menu_position'][$i - 1]['id'] = $i;
