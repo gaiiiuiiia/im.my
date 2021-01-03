@@ -75,7 +75,8 @@ class Settings
     private $fileTemplates = ['img', 'gallery_img'];
 
     private $translate = [
-        'name' => ['Название', "Не более 100 символов"],
+        'name' => ['Название', 'Не более 100 символов'],
+        'keywords' => ['Ключевые слова', 'Не более 70 символов'],
     ];
 
     private $radio = [
@@ -92,7 +93,7 @@ class Settings
     ];
 
     private $manyToMany = [
-        'goods_filters' => ['goods', 'filters', 'type' => 'child'],  // 'type' => 'child' || 'root'
+        'goods_filters' => ['goods', 'filters', 'type' => 'root'],  // 'type' => 'child' || 'root'
 
     ];
 
@@ -106,6 +107,7 @@ class Settings
         'name' => [
             'empty' => true,
             'trim' => true,
+            'count' => 100,
             ],
         'price' => [
             'int' => true,

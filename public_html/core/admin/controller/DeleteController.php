@@ -165,7 +165,7 @@ class DeleteController extends BaseAdmin
 
                             $updateFlag = true;
 
-                            @unlink($_SERVER['DOCUMENT_ROOT'] . PATH . UPLOAD_DIR . $value);
+                            @unlink($_SERVER['DOCUMENT_ROOT'] . PATH . UPLOAD_DIR . $item);
                             unset($data[$key]);
 
                             $this->data[$row] = $data ? json_encode($data) : 'NULL';

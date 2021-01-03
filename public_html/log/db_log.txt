@@ -286,3 +286,7 @@ Fault: 03-01-2021 14:27:32 - Ошибка в SQL запросе: SELECT COUNT(*)
 file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 41
 
+Fault: 03-01-2021 21:37:42 - Ошибка в SQL запросе: UPDATE goods SET name='Товар_2',visible='1',menu_position='1',img='sakura_derevia_tsvetenie_137682_3840x2400.jpg',content='',gallery_img='{\"1\":\"20190927_161851.jpg\"}',date='2021-01-03',datetime='2021-01-03 20:25:44',keywords='',alias='tovar_2',main_img=NULL WHERE id=24 - 2006 MySQL server has gone away
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+

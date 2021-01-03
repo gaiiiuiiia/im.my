@@ -31,7 +31,8 @@ class FileEdit
                         if ($file_name) $this->imgArr[$key][] = $file_name;
                     }
                 }
-            } else{ // Единичное добавление файла
+            }
+            else{ // Единичное добавление файла
                 if ($file['name']){
                     $file_name = $this->createFile($file);
 

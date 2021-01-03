@@ -4,6 +4,8 @@ defined('VG_ACCESS') or die ('Access denied');
 
 use core\base\exceptions\RouteException;
 
+const MS_MODE = false;  // работаем с браузером Microsoft?
+
 const TEMPLATE = 'templates/default/';
 const ADMIN_TEMPLATE = 'core/admin/view/';
 const UPLOAD_DIR = 'userfiles/';
