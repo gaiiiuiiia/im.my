@@ -340,6 +340,10 @@ abstract class BaseAdmin extends BaseController
 
         $this->createFile();
 
+        // для проверки на добавление файлов, а не их перезаписи
+        if ($id && method_exists($this, 'checkFiles'))
+            $this->checkFiles($id);
+
         $this->createAlias($id);
 
         $this->updateMenuPosition($id);

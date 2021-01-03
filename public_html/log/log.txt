@@ -742,3 +742,11 @@ Fault: 03-01-2021 14:27:58 - Не верное имя файла для подк
 file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
 In line 35
 
+Fault: 03-01-2021 16:18:45 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 35
+
+Fault: 03-01-2021 16:18:54 - Не верное имя файла для подключения - core/user/controller/UserfilesController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 35
+
