@@ -71,6 +71,9 @@ class Settings
         'gallery_img' => ['gallery_img'],
     ];
 
+    // массив тех шаблонов, в которые выводятся файлы
+    private $fileTemplates = ['img', 'gallery_img'];
+
     private $translate = [
         'name' => ['Название', "Не более 100 символов"],
     ];

@@ -282,3 +282,7 @@ Fault: 01-01-2021 21:09:06 - Ошибка в SQL запросе: SELECT goods.*,
 file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 41
 
+Fault: 03-01-2021 14:27:32 - Ошибка в SQL запросе: SELECT COUNT(*) as count FROM goods     - 2006 MySQL server has gone away
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
