@@ -830,3 +830,67 @@ Fault: 03-01-2021 20:22:54 - Не верное имя файла для подк
 file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
 In line 35
 
+Fault: 04-01-2021 16:49:44 - Не верное имя файла для подключения - core/user/controller/StaticController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 04-01-2021 16:49:44 - Не верное имя файла для подключения - core/user/controller/StaticController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 04-01-2021 16:49:45 - Не верное имя файла для подключения - core/user/controller/StaticController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 04-01-2021 16:51:02 - Не верное имя файла для подключения - core/user/controller/StaticController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 04-01-2021 16:51:02 - Не верное имя файла для подключения - core/user/controller/StaticController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 04-01-2021 16:58:09 - Не верное имя файла для подключения - core/user/controller/StaticController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 04-01-2021 16:58:09 - Не верное имя файла для подключения - core/user/controller/StaticController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 04-01-2021 16:58:09 - Не верное имя файла для подключения - core/user/controller/StaticController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 04-01-2021 16:58:20 - Не верное имя файла для подключения - core/user/controller/StaticController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 04-01-2021 16:58:20 - Не верное имя файла для подключения - core/user/controller/StaticController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 04-01-2021 16:58:23 - Не верное имя файла для подключения - core/user/controller/StaticController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 04-01-2021 16:58:23 - Не верное имя файла для подключения - core/user/controller/StaticController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 04-01-2021 16:58:43 - Не верное имя файла для подключения - core/user/controller/StaticController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 04-01-2021 16:58:48 - Не верное имя файла для подключения - core/user/controller/StaticController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 04-01-2021 16:58:48 - Не верное имя файла для подключения - core/user/controller/StaticController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 04-01-2021 16:58:48 - Не верное имя файла для подключения - core/user/controller/StaticController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+

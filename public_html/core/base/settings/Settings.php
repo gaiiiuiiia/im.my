@@ -68,7 +68,7 @@ class Settings
         'checkboxlist' => ['filters'],
         'select' => ['menu_position', 'parent_id'],
         'img' => ['img', 'main_img'],
-        'gallery_img' => ['gallery_img'],
+        'gallery_img' => ['gallery_img', 'new_gallery_img'],
     ];
 
     // массив тех шаблонов, в которые выводятся файлы
