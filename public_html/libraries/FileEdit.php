@@ -19,7 +19,7 @@ class FileEdit
             if (is_array($file['name'])){  // Множественное добавление файлов
                 $file_arr = [];
 
-                for ($i = 0; $i < count($file['name']); $i++){
+                foreach ($file['name'] as  $i => $value){
                     if (!empty($file['name'][$i])){
 
                         foreach ($file as $field => $values){

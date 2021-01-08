@@ -147,6 +147,32 @@ function createFile(){
 
                     formData.append('ajax', 'editData')
 
+                    Ajax({
+                        url: this.getAttribute('action'),
+                        type: 'post',
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                    }).then(res => {
+
+                        try{
+
+                            res = JSON.parse(res)
+
+                            if (!res.success)
+                                throw new Error()
+
+                            location.reload()
+
+                        }
+                        catch (e) {
+
+                            alert('Произошла внуренняя ошибка')
+
+                        }
+
+                    })
+
                 }
 
             }
@@ -155,20 +181,17 @@ function createFile(){
 
         function createEmptyBlocks(elem){
 
-            let gallery_containers = document.querySelectorAll('.gallery_container')
+            let gallery_containers = document.getElementsByClassName('gallery_container')
 
             console.log(gallery_containers);
 
-            gallery_containers.forEach(container => {
+            for (let container of gallery_containers){
 
                 console.log(container);
 
-                let empty = container.querySelector('.vg-dotted-square .vg-center').contains('.empty_container')
-
-                console.log(empty);
 
 
-            })
+            }
 
         }
 
