@@ -21,83 +21,131 @@ function createSitemap(){
         });
 }
 
-let files = document.querySelectorAll('input[type=file]')
-let fileStore = [];
+createFile()
 
+function createFile(){
 
-if (files.length){
+    let files = document.querySelectorAll('input[type=file]')
+    let fileStore = [];
 
-    files.forEach(item => {
+    if (files.length){
 
-        item.onchange = function() {
+        files.forEach(item => {
 
-            let multiple = false
-            let parentContainer
-            let container
+            item.onchange = function() {
 
-            if (item.hasAttribute('multiple')){
+                let multiple = false
+                let parentContainer
+                let container
 
-                multiple = true
+                if (item.hasAttribute('multiple')){
 
-                parentContainer = this.closest('.gallery_container')
+                    multiple = true
 
-                if (!parentContainer)
-                    return false
+                    parentContainer = this.closest('.gallery_container')
 
-                container = parentContainer.querySelectorAll('.empty_container')
+                    if (!parentContainer)
+                        return false
 
-                let container_length = container.length
-                let files_length = this.files.length
+                    container = parentContainer.querySelectorAll('.empty_container')
 
-                if (container_length < files_length){
+                    let container_length = container.length
+                    let files_length = this.files.length
 
-                    for (let index = 0; index < files_length - container_length; index++){
+                    if (container_length < files_length){
 
-                        let el = document.createElement('div')
-                        el.classList.add('vg-dotted-square', 'vg-center', 'empty_container')
+                        for (let index = 0; index < files_length - container_length; index++){
 
-                        parentContainer.append(el)
+                            let el = document.createElement('div')
+                            el.classList.add('vg-dotted-square', 'vg-center', 'empty_container')
+
+                            parentContainer.append(el)
+
+                        }
+
+                    }
+
+                    container = parentContainer.querySelectorAll('.empty_container')
+
+                }
+
+                // название объекта загрузки изображения
+                let fileName = item.name
+                let attributeName = fileName.replace(/[\[\]]/g, '')
+
+                for (let i in this.files){
+
+                    if (this.files.hasOwnProperty(i)){
+
+                        if (multiple){
+
+                            if (typeof fileStore[fileName] === 'undefined')
+                                fileStore[fileName] = []
+
+                            // получили порядковый номер элемента в массиве, который мы только что добавили
+                            let elemId = fileStore[fileName].push(this.files[i]) - 1
+
+                            container[i].setAttribute(`data-deleteFileId-${attributeName}`, elemId)
+
+                            showImage(this.files[i], container[i])
+
+                            deleteNewFiles(elemId, fileName, attributeName, container[i])
+
+                        }
+                        else {
+
+                            // в этот контейнер вставится изображение
+                            container = this.closest('.img_container')
+                                .querySelector('.img_show')
+
+                            showImage(this.files[i], container)
+
+                        }
 
                     }
 
                 }
 
-                container = parentContainer.querySelectorAll('.empty_container')
+                //createEmptyBlocks()
 
             }
 
-            // название объекта загрузки изображения
-            let fileName = item.name
-            let attributeName = fileName.replace(/[\[\]]/g, '')
+        })
 
-            for (let i in this.files){
+        let form = document.querySelector('#main-form')
 
-                if (this.files.hasOwnProperty(i)){
+        if (form){
 
-                    if (multiple){
+            form.onsubmit = function(e) {
 
-                        if (typeof fileStore[fileName] === 'undefined')
-                            fileStore[fileName] = []
+                if (!isEmpty(fileStore)){
 
-                        // получили порядковый номер элемента в массиве, который мы только что добавили
-                        let elemId = fileStore[fileName].push(this.files[i]) - 1
+                    e.preventDefault()
 
-                        container[i].setAttribute(`data-deleteFileId-${attributeName}`, elemId)
+                    // объект формы. даные в нем есть, просто в консоли не отображаются
+                    let formData = new FormData(this)
 
-                        showImage(this.files[i], container[i])
+                    console.log(formData);
 
-                        deleteNewFiles(elemId, fileName, attributeName, container[i])
+                    for (let i in fileStore){
+
+                        if (fileStore.hasOwnProperty(i)){
+
+                            formData.delete(i)
+
+                            let rowName = i.replace(/[\[\]]/g, '')
+
+                            fileStore[i].forEach((item, index) => {
+
+                                formData.append(`${rowName}[${index}]`, item)
+
+                            })
+
+                        }
 
                     }
-                    else {
 
-                        // в этот контейнер вставится изображение
-                        container = this.closest('.img_container')
-                            .querySelector('.img_show')
-
-                        showImage(this.files[i], container)
-
-                    }
+                    formData.append('ajax', 'editData')
 
                 }
 
@@ -105,41 +153,62 @@ if (files.length){
 
         }
 
-    })
+        function createEmptyBlocks(elem){
 
-    function deleteNewFiles(elemId, fileName, attributeName, container){
+            let gallery_containers = document.querySelectorAll('.gallery_container')
 
-        container.addEventListener('click', function(){
+            console.log(gallery_containers);
 
-            this.remove()
-            delete fileStore[fileName][elemId]
+            gallery_containers.forEach(container => {
 
-            console.log(fileStore);
+                console.log(container);
 
-        })
+                let empty = container.querySelector('.vg-dotted-square .vg-center').contains('.empty_container')
 
-    }
+                console.log(empty);
 
-    function showImage(item, container){
 
-        let reader = new FileReader()
-        // очистка контейнера - вдруг перезагружаем файлик
-        container.innerHTML = ''
+            })
 
-        reader.readAsDataURL(item)
+        }
 
-        reader.onload = e => {
+        function deleteNewFiles(elemId, fileName, attributeName, container){
 
-            container.innerHTML = '<img class="img_item" src="">'
+            container.addEventListener('click', function(){
 
-            container.querySelector('img').setAttribute('src', e.target.result)
+                this.remove()
+                delete fileStore[fileName][elemId]
 
-            container.classList.remove('empty_container')
+                console.log(fileStore);
+
+            })
+
+        }
+
+        function showImage(item, container){
+
+            let reader = new FileReader()
+            // очистка контейнера - вдруг перезагружаем файлик
+            container.innerHTML = ''
+
+            reader.readAsDataURL(item)
+
+            reader.onload = e => {
+
+                container.innerHTML = '<img class="img_item" src="">'
+
+                container.querySelector('img').setAttribute('src', e.target.result)
+
+                container.classList.remove('empty_container')
+
+            }
 
         }
 
     }
 
 }
+
+
 
 

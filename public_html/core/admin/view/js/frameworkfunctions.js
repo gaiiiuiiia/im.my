@@ -77,3 +77,11 @@ const Ajax = (set) => {
         xhr.send(body);
     });
 }
+
+function isEmpty(element){
+
+    for (let elem in element)
+        return false
+
+    return true
+}
