@@ -59,6 +59,12 @@ class Settings
         'filters' => [
             'name' => 'Фильтры',
         ],
+        'articles' => [
+            'name' => 'Статьи',
+        ],
+        'pages' => [
+            'name' => 'Страницы',
+        ],
     ];
 
     private $templateArr = [

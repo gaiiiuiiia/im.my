@@ -106,3 +106,10 @@ function isEmpty(element){
 
     return true
 }
+
+function errorAlert(){
+
+    alert('Произошла внуренняя ошибка')
+
+    return false;
+}
