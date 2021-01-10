@@ -298,6 +298,57 @@ function changeMenuPosition(){
 
 }
 
+blockParameters()
 
+function blockParameters() {
+
+    let wraps = document.querySelectorAll('.select_wrap')
+
+    if (wraps.length){
+
+        let selectAllIndexes = []
+
+        wraps.forEach(item => {
+
+            // див option_wrap, который идет после нашего item
+            let next = item.nextElementSibling
+
+            if (next && next.classList.contains('option_wrap')){
+
+                item.addEventListener('click', e => {
+
+                    // если кликаем НЕ ПО КНОПКЕ ВЫДЕЛИТЬ ВСЕ
+                    if (!e.target.classList.contains('select_all')){
+
+                        // этот метод описан для каждого Element в файле frameworkfunctions.js
+                        next.slideToggle()
+
+                    }
+                    else {
+
+                        // преобразовали NodeList в массив. выбрали все селект-поля и
+                        // берем индекс того элемента, по кот мы кликаем
+                        let index = [...document.querySelectorAll('.select_all')].indexOf(e.target)
+
+                        if (typeof selectAllIndexes[index] === 'undefined')
+                            selectAllIndexes[index] = false
+
+                        selectAllIndexes[index] = !selectAllIndexes[index]
+
+                        next.querySelectorAll('input[type=checkbox]')
+                            .forEach(element => element.checked = selectAllIndexes[index])
+
+
+                    }
+
+                })
+
+            }
+
+        })
+
+    }
+
+}
 
 
