@@ -575,11 +575,12 @@ abstract class BaseAdmin extends BaseController
                     if (!$checkBoxList || !in_array($tables[$otherKey], $checkBoxList))
                         continue;
 
-                    if (!$this->translate[$tables[$otherKey]])
+                    if (!$this->translate[$tables[$otherKey]]){
 
                         if ($settings::get('projectTables')[$tables[$otherKey]])
                             $this->translate[$tables[$otherKey]] =
                                 [$settings::get('projectTables')[$tables[$otherKey]]['name']];
+                    }
 
                     $orderData = $this->createOrderData($tables[$otherKey]);
 

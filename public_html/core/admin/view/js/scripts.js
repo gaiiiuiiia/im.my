@@ -110,6 +110,16 @@ function createFile(){
 
             }
 
+            // dragAndDrop функция
+            let area = item.closest('.img_wrapper')
+
+            if (area){
+
+                dragAndDrop(area, item)
+
+            }
+
+
         })
 
         let form = document.querySelector('#main-form')
@@ -225,6 +235,42 @@ function createFile(){
                 container.classList.remove('empty_container')
 
             }
+
+        }
+
+        function dragAndDrop(area, input){
+
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach((eventName, index) => {
+
+                area.addEventListener(eventName, e => {
+
+                    e.preventDefault() // у области вырубаем действие по умолчанию
+                    e.stopPropagation() // отменяем всплытие собыия - файл не открывается в браузере, как обычно
+
+                    // событие 0 и 1
+                    if (index < 2){
+
+                        area.style.background = 'lightblue'
+
+                    }
+                    else {
+
+                        area.style.background = 'fff'
+
+                        if (index === 3){
+
+                            input.files = e.dataTransfer.files
+
+                            // перетащили файл - инициализируем событие change
+                            input.dispatchEvent(new Event('change'))
+
+                        }
+
+                    }
+
+                })
+
+            })
 
         }
 
@@ -350,5 +396,3 @@ function blockParameters() {
     }
 
 }
-
-

@@ -12,7 +12,7 @@ trait BaseMethods
         // очистка от лишних тегов html, php, js
         if (is_array($str)) {
             foreach ($str as $key => $item) {
-                $str[$key] = trim(strip_tags($item));
+                $str[$key] = $this->clearStr($item);
             }
             return $str;
         }
