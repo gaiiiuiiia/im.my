@@ -396,3 +396,134 @@ function blockParameters() {
     }
 
 }
+
+showHideMenuSearch()
+
+function showHideMenuSearch(){
+
+    document.querySelector('#hideButton').addEventListener('click', () => {
+
+        document.querySelector('.vg-carcass').classList.toggle('vg-hide')
+
+    })
+
+    let searchBtn = document.querySelector('#searchButton')
+    let searchInput = searchBtn.querySelector('input[type=text]')
+
+    searchBtn.addEventListener('click', () => {
+
+        searchBtn.classList.add('vg-search-reverse')
+        searchInput.focus()
+
+    })
+
+    searchInput.addEventListener('blur', () => {
+        searchBtn.classList.remove('vg-search-reverse')
+    })
+
+}
+
+let searchResultHover = (() => {
+
+    // функция по принципу замыкания
+
+    let searchRes = document.querySelector('.search_res')
+    let searchInput = document.querySelector('#searchButton input[type=text]')
+    let defaultInputValue = null
+
+    function arrowPressed(e){
+
+        if (!(document.querySelector('#searchButton').classList.contains('vg-search-reverse'))
+                    || (e.key !== 'ArrowUp' && e.key !== 'ArrowDown'))
+            return null
+
+        let children = [...searchRes.children]
+
+        if (children.length){
+
+            e.preventDefault()
+
+            let activeItem = searchRes.querySelector('.search_act')
+            let activeIndex = activeItem ? children.indexOf(activeItem) : -1
+
+            if (e.key === 'ArrowUp')
+                activeIndex = activeIndex <= 0 ? children.length - 1 : --activeIndex
+            else
+                activeIndex = activeIndex === children.length - 1 ? 0 : ++activeIndex
+
+            children.forEach(item => item.classList.remove('search_act'))
+
+            children[activeIndex].classList.add('search_act')
+
+            searchInput.value = children[activeIndex].innerText
+
+        }
+
+    }
+
+    function setDefaultValue(){
+
+        searchInput.value = defaultInputValue
+
+    }
+
+    searchRes.addEventListener('mouseleave', setDefaultValue)
+
+    window.addEventListener('keydown', arrowPressed)
+
+
+    return () => {
+
+        /*
+        defaultInputValue = searchInput.value
+
+        if (searchRes.children.length){
+
+            [...searchRes.children].forEach(item => {
+
+                item.addEventListener('mouseover', () => {
+                    item.classList.add('search_act')
+                    searchInput.value = item.innerText
+                })
+
+                item.addEventListener('mouseleave', () => {
+                    item.classList.remove('search_act')
+                })
+
+            })
+
+        }
+        */
+
+        searchInput.addEventListener('input', () => {
+            defaultInputValue = searchInput.value
+        })
+
+        if (searchRes.children.length){
+
+            [...searchRes.children].forEach(item => {
+
+                item.addEventListener('mouseover', () => {
+                    item.classList.add('search_act')
+                })
+
+                item.addEventListener('mouseleave', () => {
+                    item.classList.remove('search_act')
+                })
+
+                item.addEventListener('mousedown', () => {
+                    searchInput.value = item.innerText
+                    searchInput.dispatchEvent(new Event('input'))
+                })
+
+            })
+
+        }
+
+    }
+
+})()
+
+searchResultHover()
+
+
