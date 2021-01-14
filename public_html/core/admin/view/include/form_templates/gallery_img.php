@@ -1,5 +1,5 @@
 <div class="vg-element vg-full vg-box-shadow img_wrapper">
-    <div class="vg-wrap vg-element vg-full">
+    <div class="vg-wrap vg-element vg-full vg-box-shadow">
         <div class="vg-wrap vg-element vg-full">
             <div class="vg-element vg-full vg-left">
                 <span class="vg-header"><?=$this->translate[$row][0] ?: $row?></span>

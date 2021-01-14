@@ -106,7 +106,7 @@ function createFile(){
 
                 }
 
-                //createEmptyBlocks()
+                //createEmptyBlocks(item)
 
             }
 
@@ -119,6 +119,7 @@ function createFile(){
 
             }
 
+            //createEmptyBlocks(item)
 
         })
 
@@ -189,17 +190,33 @@ function createFile(){
 
         }
 
-        function createEmptyBlocks(elem){
+        // создание пустых ячеек - пунктирные квадратики
+        // у объектов input-type=file
+        function createEmptyBlocks(item){
 
-            let gallery_containers = document.getElementsByClassName('gallery_container')
+            if (item.hasAttribute('multiple')){
 
-            console.log(gallery_containers);
+                let possibleContainerClasses = [
+                    '.gallery_container',
+                ]
 
-            for (let container of gallery_containers){
+                possibleContainerClasses.forEach(cls => {
 
-                console.log(container);
+                    let container = item.closest(cls)
 
+                    if (!container)
+                        return null
 
+                    console.dir(container.children)
+
+                    // удаляем пустые ячейки
+                    let emptyElem
+                    while ((emptyElem = container.querySelector('.empty_container')))
+                        container.removeChild(emptyElem)
+
+                    console.log(container)
+
+                })
 
             }
 
@@ -211,8 +228,6 @@ function createFile(){
 
                 this.remove()
                 delete fileStore[fileName][elemId]
-
-                console.log(fileStore);
 
             })
 
@@ -239,7 +254,7 @@ function createFile(){
         }
 
         function dragAndDrop(area, input){
-
+            
             ['dragenter', 'dragover', 'dragleave', 'drop'].forEach((eventName, index) => {
 
                 area.addEventListener(eventName, e => {
@@ -255,7 +270,7 @@ function createFile(){
                     }
                     else {
 
-                        area.style.background = 'fff'
+                        area.style.background = '#fff'
 
                         if (index === 3){
 
@@ -474,27 +489,6 @@ let searchResultHover = (() => {
 
     return () => {
 
-        /*
-        defaultInputValue = searchInput.value
-
-        if (searchRes.children.length){
-
-            [...searchRes.children].forEach(item => {
-
-                item.addEventListener('mouseover', () => {
-                    item.classList.add('search_act')
-                    searchInput.value = item.innerText
-                })
-
-                item.addEventListener('mouseleave', () => {
-                    item.classList.remove('search_act')
-                })
-
-            })
-
-        }
-        */
-
         searchInput.addEventListener('input', () => {
             defaultInputValue = searchInput.value
         })
@@ -526,4 +520,22 @@ let searchResultHover = (() => {
 
 searchResultHover()
 
+let galleries = document.querySelectorAll('.gallery_container')
+
+if (galleries.length){
+
+    galleries.forEach(item => {
+
+        item.sortable({
+            excludedElements : 'label .empty_container',
+            stop: function (dragEl){
+
+            }
+        })
+
+    })
+
+}
+
+document.querySelector('.vg-rows > div').sortable()
 
