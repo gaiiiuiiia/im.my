@@ -2,16 +2,19 @@
 
 namespace core\user\controller;
 
-use core\admin\model\Model;
-use core\base\controller\BaseController;
 
-class IndexController extends BaseController
+class IndexController extends BaseUser
 {
 
     protected function inputData(){
 
-        echo "<h1>Индексный контроллер</h1>";
+        $this->execBase();
 
+        $this->content = "HI I'm a IndexController \n";
+
+        print_arr($_COOKIE);
+        echo '<br>';
+        print_arr($_SESSION);
     }
 
 }

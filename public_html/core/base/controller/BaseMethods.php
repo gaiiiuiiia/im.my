@@ -7,6 +7,94 @@ namespace core\base\controller;
 trait BaseMethods
 {
 
+
+    protected function saveDataToArray($path, $dataToSave, &$targetArr){
+
+        if (!$dataToSave || !is_array($targetArr)) return false;
+
+        if (is_string($path)){
+            $path = explode('/', $path);
+
+            if (count($path) === 1){
+                if (is_array($dataToSave)){
+                    foreach ($dataToSave as $item => $value){
+                        $targetArr[$path[0]][$item] = $value;
+                    }
+                }else {
+                    $targetArr[$path[0]] = $dataToSave;
+                }
+                return true;
+            }
+
+            if (!array_key_exists($path[0], $targetArr)) $targetArr[$path[0]] = [];
+
+            $next = array_shift($path);
+
+            return $this->saveDataToArray(implode('/', $path), $dataToSave, $targetArr[$next]);
+        }
+        return false;
+    }
+
+    protected function getDataFromArray($path, &$array){
+
+        if (!$path || !is_array($array)) return null;
+
+        if (is_string($path)){
+
+            $path = explode('/', $path);
+
+            if (count($path) === 1){
+                return $array[$path[0]];
+            }
+
+            $next = array_shift($path);
+
+            if (!isset($array[$next])) return false;
+
+            return $this->getDataFromArray(implode('/', $path),$array[$next]);
+        }
+        return false;
+    }
+
+    protected function deleteDataFromArray($path, &$array, &$__empty_dir = null){
+
+        if (!$path || !is_array($array)) return false;
+
+        if (is_string($path)) {
+
+            if (!$__empty_dir)
+                $__empty_dir = [$path, &$array];
+
+            $__empty_dir[] = !(count($array) > 1);
+
+            $path = explode('/', $path);
+
+            if (count($path) === 1) {
+                unset($array[$path[0]]);
+                $this->deleteEmptyDir($__empty_dir);
+                return true;
+            }
+
+            $next = array_shift($path);
+
+            return $this->deleteDataFromArray(implode('/', $path),$array[$next], $__empty_dir);
+        }
+        return false;
+    }
+
+    private function deleteEmptyDir($empty_dir){
+
+        $path = explode('/', array_shift($empty_dir));
+        $array = array_shift($empty_dir);
+
+        $empty_dirs = array_keys($empty_dir, true);
+        $last = end($empty_dirs);
+
+        $to_delete = implode('/', array_slice($path, 0, $last));
+
+        $this->deleteDataFromArray($to_delete, $array);
+    }
+
     protected function clearStr($str){
 
         // очистка от лишних тегов html, php, js

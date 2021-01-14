@@ -78,7 +78,7 @@ abstract class BaseController
     }
 
     protected function render($path = '', $parameters = []){
-        // подключение шаблонов
+        // подключение шаблонов и рендеринг
 
         // разбор параметров. получаем доступ к элементам массива в виде
         // $elem = value, где $elem - ячейка массива
@@ -125,7 +125,7 @@ abstract class BaseController
     protected function init($admin = false){
 
         $dir = $admin ? ADMIN_CSS_JS : USER_CSS_JS;
-        $template = $admin ? ADMIN_TEMPLATE : TEMPLATE;
+        $template = $admin ? ADMIN_TEMPLATE : USER_TEMPLATE;
 
         if ($dir['styles']) {
             foreach ($dir['styles'] as $item){

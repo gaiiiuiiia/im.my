@@ -37,7 +37,7 @@ class Settings
             'path' => 'core/user/controller/',
             'hrUrl' => true,
             'routes' => [
-
+                'login' => 'login',
             ],
         ],
         'default' => [
@@ -134,6 +134,12 @@ class Settings
             'count' => 160,
             'trim' => true,
         ],
+    ];
+
+    // Таблицы, по которым получаем данные для аутентификации пользователя или данные о польователе
+    private $userTables = [
+        'userLoginTable' => 'user',
+        'userInfoTable' => 'user_info',
     ];
 
     static public function get($property){
