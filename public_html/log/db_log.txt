@@ -1,0 +1,20 @@
+Fault: 15-01-2021 0:31:05 - Ошибка в SQL запросе: SHOW COLUMNS FROM articles - 1146 Table 'mdb.articles' doesn't exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 15-01-2021 3:09:46 - Ошибка в SQL запросе: SHOW COLUMNS FROM pages - 1146 Table 'mdb.pages' doesn't exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 15-01-2021 17:09:56 - Ошибка в SQL запросе: SHOW COLUMNS FROM pages - 1146 Table 'mdb.pages' doesn't exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 15-01-2021 17:10:35 - Ошибка в SQL запросе: SHOW COLUMNS FROM users - 1146 Table 'mdb.users' doesn't exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 15-01-2021 17:32:08 - Ошибка в SQL запросе: SHOW COLUMNS FROM goods_filters - 1146 Table 'mdb.goods_filters' doesn't exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+

@@ -56,25 +56,25 @@ class Settings
             'name' => 'Товары',
             'img' => 'pages.png',
         ],
-        'filters' => [
-            'name' => 'Фильтры',
+        'user' => [
+            'name' => 'Пользователи',
         ],
         'articles' => [
             'name' => 'Статьи',
         ],
-        'pages' => [
-            'name' => 'Страницы',
+        'address' => [
+            'name' => 'Адреса доставки',
         ],
     ];
 
     private $templateArr = [
-        'text' => ['name'],
+        'text' => ['name', 'login', 'password', 'salt'],
         'textarea' => ['content', 'keywords'],
         'radio' => ['visible'],
         'checkboxlist' => ['filters'],
         'select' => ['menu_position', 'parent_id'],
         'img' => ['img', 'main_img'],
-        'gallery_img' => ['gallery_img', 'new_gallery_img'],
+        'gallery_img' => ['gallery_img', 'unknown'],
     ];
 
     // массив тех шаблонов, в которые выводятся файлы
@@ -83,6 +83,7 @@ class Settings
     private $translate = [
         'name' => ['Название', 'Не более 100 символов'],
         'keywords' => ['Ключевые слова', 'Не более 70 символов'],
+        'img' => ['Главное изображение', 'отображается первым'],
     ];
 
     private $radio = [
@@ -105,7 +106,7 @@ class Settings
 
     private $blockNeedle = [
         'vg-rows' => [],
-        'vg-img' => ['img', 'main_img'],
+        'vg-img' => ['img', 'gallery_img'],
         'vg-content' => ['content', 'keywords'],
     ];
 
