@@ -6,6 +6,7 @@ namespace core\user\controller;
 
 use core\base\controller\BaseController;
 use core\base\messages\MessageHandler;
+use core\base\model\Crypt;
 use core\base\model\UserModel;
 use core\base\settings\Settings;
 
@@ -22,7 +23,9 @@ abstract class BaseUser extends BaseController
 
     protected $userInput;
 
-    protected $tables;
+    protected $userTables;
+
+    protected $crypt;
 
     protected function inputData(){
 
@@ -31,19 +34,16 @@ abstract class BaseUser extends BaseController
 
         $this->title = 'ASTRA';
 
-        if (!$this->tables) $this->tables = Settings::get('userTables');
+        $this->userTables = $this->userTables ?: Settings::get('userTables');
 
-        if (!$this->model) $this->model = UserModel::instance();
+        $this->model = $this->model ?: UserModel::instance();
 
-        if (!$this->msgHandler) $this->msgHandler = MessageHandler::instance();
+        $this->msgHandler = $this->msgHandler ?: MessageHandler::instance();
 
-        if (!$this->messages)
-            $this->messages = include $_SERVER['DOCUMENT_ROOT'] . PATH .
-                                        Settings::get('messages') . 'informationMessages.php';
+        $this->messages = $this->messages ?: include $_SERVER['DOCUMENT_ROOT'] . PATH .
+                                                    Settings::get('messages') . 'informationMessages.php';
 
-        /*unset($_SESSION);
-        session_destroy();
-        exit;*/
+        $this->crypt = $this->crypt ?: Crypt::instance();
 
         $this->authorizeUser();
 
@@ -70,7 +70,7 @@ abstract class BaseUser extends BaseController
 
         if (isset($_SESSION['user']['authorized']) && !isset($_SESSION['user']['userInfo'])){
             // TODO ЭТО ТЕСТОВЫЙ ВАРИАНТ. ТУТ ДОЛЖНА БЫТЬ ТАБЛИЦА С ИНФОРМАЦИЕЙ О ПОЛЬЗОВАТЕЛЕ
-            $user_data = $this->getUserDataFromDB(['id' => $_SESSION['id']], $this->tables['userLoginTable']);
+            $user_data = $this->getUserDataFromDB(['id' => $this->crypt->decrypt($_SESSION['id'])], $this->userTables['userLoginTable']);
             $this->saveDataToArray('user/userInfo', ['login' => $user_data['login']], $_SESSION);
 
             // TODO CORRECT
@@ -90,11 +90,11 @@ abstract class BaseUser extends BaseController
                 if ($userData = $this->validateCookie($cookieFields)){
 
                     $this->startSession($userData['id']);
-                    $this->setCookie(false, $userData);  // проверить, а не конфликтует ли это с "галочкой на запомнить меня".
+                    $this->setCookie($userData);  // проверить, а не конфликтует ли это с "галочкой на запомнить меня".
                     // не конфликтует, т.к. еслки куки есть, то они были установлены ранее. тут просто продлеваем эти куки
                 }
                 else{
-                    $this->setCookie(true);
+                    $this->setCookie($userData, true);
                 }
             }
             else{
@@ -109,7 +109,7 @@ abstract class BaseUser extends BaseController
         session_start();
 
         if ($userId){
-            $_SESSION['id'] = $userId;
+            $_SESSION['id'] = $this->crypt->encrypt($userId);
             $_SESSION['user']['authorized'] = true;
         }
         else {
@@ -169,49 +169,67 @@ abstract class BaseUser extends BaseController
     protected function hasCookie($fields){
 
         if ($fields){
+
             foreach ($fields as $field){
-                if (!isset($_COOKIE[$field])) return false;
+
+                if (!isset($_COOKIE[$field]))
+                    return false;
+
             }
+
             return true;
         }
+
+        return null;
+
     }
 
     protected function validateCookie($cookieFields){
 
-        if (!$cookieFields) return false;
+        if ($cookieFields){
 
-        foreach ($cookieFields as $field){
-            if ($field !== 'password') $where[$field] = $_COOKIE[$field];
+            $where = [];
+
+            foreach ($cookieFields as $field){
+                if ($field !== 'password')
+                    $where[$field] = $this->crypt->decrypt($_COOKIE[$field]);
+            }
+
+            $query = [
+                'where' => $where,
+                'operand' => ['='],
+                'condition' => ['AND'],
+            ];
+
+            $userDataFromDB = $this->model->get($this->userTables['userLoginTable'], $query)[0];
+
+            if ($userDataFromDB && $this->crypt->decrypt($userDataFromDB['password'])
+                               === $this->crypt->decrypt($_COOKIE['password']))
+
+                return $userDataFromDB;
+
         }
-
-        $query = [
-            'fields' => [],
-            'where' => $where,
-            'operand' => ['='],
-            'condition' => ['AND'],
-        ];
-
-        $userDataFromDB = $this->model->get('users', $query)[0];
-
-        if ($userDataFromDB && $this->hash_($userDataFromDB['password'],
-                                            'cookie', $userDataFromDB['salt']) === $_COOKIE['password'])
-            return $userDataFromDB;
         return false;
     }
 
-    protected function setCookie($delete = false, $userData = []){
+    protected function setCookie($userData, $delete = false){
 
         if ($userData){
-            setcookie('id', $userData['id'], time() + COOKIE_TIME, '/');
-            setcookie('login', $userData['login'], time() + COOKIE_TIME, '/');
-            setcookie('password', $this->hash_($userData['password'], 'cookie', $userData['salt']),
-                                                                time() + COOKIE_TIME, '/');
+
+            foreach ($userData as $key => $value){
+
+                if (is_int($key) && $delete)
+                    setcookie($value, '', time() - 1, '/');
+
+                else if (!is_int($key) && $delete)
+                    setcookie($key, '', time() - 1, '/');
+
+                else if (!is_int($key) && !$delete)
+                    setcookie($key, $this->crypt->encrypt($value), time() + COOKIE_TIME, '/');
+
+            }
         }
-        else if ($delete){
-            setcookie('id', '', time() - 1, '/');
-            setcookie('login', '', time() - 1, '/');
-            setcookie('password', '', time() - 1, '/');
-        }
+        return null;
     }
 
     /**
@@ -227,6 +245,14 @@ abstract class BaseUser extends BaseController
         ];
 
         return $this->model->get($table, $query)[0];
+    }
+
+    public function login($userData){
+
+        if (isset($_POST['rememberMe']))
+            $this->setCookie($userData);
+
+        return $this->startSession($userData['id']);
     }
 
 }

@@ -102,10 +102,13 @@ trait BaseMethods
             foreach ($str as $key => $item) {
                 $str[$key] = $this->clearStr($item);
             }
+
             return $str;
         }
+        else {
+            return trim(strip_tags($str));
+        }
 
-        return trim(strip_tags($str));
     }
 
     protected function clearNum($num){

@@ -442,3 +442,35 @@ Fault: 24-10-2020 3:04:44 - Не верное имя файла для подк�
 file W:\domains\im.my\public_html\core\base\settings\internal_settings.php
 In line 33
 
+Fault: 15-01-2021 18:57:43 - Class core\user\controller\?Controller does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 51
+
+Fault: 15-01-2021 18:58:25 - Class core\user\controller\?Controller does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 51
+
+Fault: 15-01-2021 21:12:26 - Class core\user\controller\?Controller does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 51
+
+Fault: 16-01-2021 19:51:58 - Class core\user\controller\?Controller does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 51
+
+Fault: 16-01-2021 19:55:05 - Не верное имя файла для подключения - core/user/controller/UndefinedController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 38
+
+Fault: 16-01-2021 19:55:49 - Не верное имя файла для подключения - core/user/controller/UndefinedController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 38
+
+Fault: 16-01-2021 19:55:50 - Не верное имя файла для подключения - core/user/controller/UndefinedController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 38
+
+Fault: 16-01-2021 19:57:11 - Не верное имя файла для подключения - core/user/controller/UndefinedController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 38
+

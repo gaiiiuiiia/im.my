@@ -4,6 +4,8 @@
 namespace core\user\controller;
 
 
+use core\base\controller\Singleton;
+
 class LoginController extends BaseUser
 {
 
@@ -14,8 +16,8 @@ class LoginController extends BaseUser
         if ($_SESSION['user']['authorized'] && !isset($_POST['logoutButton'])){
 
             // если зашли с im.my/login
-            if ($_SERVER['HTTP_REFERER'] == SITE_URL . '/login' ||
-                $_SERVER['HTTP_REFERER'] == SITE_URL . '/registration'){
+            if ($_SERVER['HTTP_REFERER'] === SITE_URL . '/login' ||
+                $_SERVER['HTTP_REFERER'] === SITE_URL . '/registration'){
 
                 $this->redirect(SITE_URL);
             }
@@ -36,7 +38,9 @@ class LoginController extends BaseUser
             $this->deleteDataFromArray('user/userInput', $_SESSION);
 
             $this->redirect();
+
         } else if (isset($_POST['logoutButton'])){
+
             $this->logout();
 
             $this->redirect();
@@ -45,14 +49,14 @@ class LoginController extends BaseUser
 
     protected function validateUserLoginData(){
 
-        $userDataFromDB = $this->getUserDataFromDB(['login' => $this->userInput['login']], $this->tables['userLoginTable']);
+        $userDataFromDB = $this->getUserDataFromDB(['login' => $this->userInput['login']], $this->userTables['userLoginTable']);
 
         if (!$userDataFromDB) {
             $this->msgHandler->createMessage($this->messages['userNotExists'], 'loginError');
             $this->redirect($_SERVER['HTTP_REFERER'] . '/#enterError');
         }
 
-        if (!$this->checkPassword($this->userInput['password'], $userDataFromDB)){
+        if (!$this->validatePassword($userDataFromDB['password'])){
             $this->msgHandler->createMessage($this->messages['incorrectPassword'], 'loginError');
             $this->redirect($_SERVER['HTTP_REFERER'] . '/#enterError');
         }
@@ -60,23 +64,15 @@ class LoginController extends BaseUser
         return $userDataFromDB;
     }
 
-    protected function checkPassword($user_password, $user_data_from_DB){
-        if ($this->hash_($user_password, 'pass', $user_data_from_DB['salt']) === $user_data_from_DB['password']){
-            return true;
-        }
-        return false;
-    }
+    protected function validatePassword($userPasswordFromDB){
 
-    public function login($userData){
+        return $this->crypt->decrypt($userPasswordFromDB) === $this->userInput['password'];
 
-        if (isset($_POST['rememberMe'])) $this->setCookie(false, $userData);
-
-        return $this->startSession($userData['id']);
     }
 
     protected function logout(){
 
-        $this->setCookie(true);
+        $this->setCookie(['id', 'login', 'password'], true);
 
         unset($_SESSION['user']);
         unset($_SESSION['id']);

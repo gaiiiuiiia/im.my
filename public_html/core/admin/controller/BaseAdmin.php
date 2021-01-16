@@ -54,11 +54,11 @@ abstract class BaseAdmin extends BaseController
 
         $this->init(true);
 
-        $this->title = 'Some title of my site';
+        $this->title = 'Admin panel';
 
-        if (!$this->model){
+        if (!$this->model)
             $this->model = Model::instance();
-        }
+
         if (!$this->menu)
             $this->menu = Settings::get('projectTables');
 

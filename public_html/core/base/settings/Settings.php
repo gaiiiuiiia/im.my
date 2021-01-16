@@ -83,7 +83,9 @@ class Settings
     private $translate = [
         'name' => ['Название', 'Не более 100 символов'],
         'keywords' => ['Ключевые слова', 'Не более 70 символов'],
-        'img' => ['Главное изображение', 'отображается первым'],
+        'img' => ['Главное изображение', 'Отображается первым'],
+        'visible' => ['Выводить пользователям?', 'Отображать ли этот объект на сайте'],
+        'gallery_img' => ['Галлерея изображений', 'Выберите несколько изображений']
     ];
 
     private $radio = [
@@ -100,7 +102,7 @@ class Settings
     ];
 
     private $manyToMany = [
-        'goods_filters' => ['goods', 'filters'],  // 'type' => 'child' || 'root'
+        //'goods_filters' => ['goods', 'filters'],  // 'type' => 'child' || 'root'
 
     ];
 
@@ -124,7 +126,7 @@ class Settings
             'trim' => true,
         ],
         'password' => [
-            'crypt' => true,
+            //'crypt' => true,
             'empty' => true,
         ],
         'keywords' => [

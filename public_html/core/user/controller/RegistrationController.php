@@ -22,61 +22,60 @@ class RegistrationController extends BaseUser
 
             $this->validateUserRegistrationData();
 
-            $this->registerUser();
+            $userLoginData = $this->registerUser();
 
             $this->deleteDataFromArray('user/userInput', $_SESSION);
 
-            $this->login();
+            $this->login($userLoginData);
 
             $this->redirect(SITE_URL);
+
         } else if (isset($_SESSION['user']['authorized'])){
+
             $this->msgHandler->createMessage($this->messages['alreadyLogged'], 'alreadyLogged');
+
             $this->redirect($_SERVER['HTTP_REFERER'] . '/#systemMessage');
+
         }
     }
 
     protected function validateUserRegistrationData(){
 
-        $this->checkLogin();
-        $this->checkPassword();
-        $this->checkEmail();
-
+        return $this->checkLogin() && $this->checkPassword() && $this->checkEmail();
 
     }
 
+    /**
+     * Добавлет данные о пользователе в таблицу user и user_info.
+     * возвращает данные о пользователе из таблицы user.
+     * @return mixed
+     */
     protected function registerUser(){
-        $salt = hash('crc32', time() + mt_rand(0, 1000));
 
         $query1 = [
             'fields' => [
                 'login' => $this->userInput['login'],
-                'password' => $this->hash_($this->userInput['password'], 'pass', $salt),
-                'salt' => $salt,
+                'password' => $this->crypt->encrypt($this->userInput['password']),
             ],
         ];
 
+        $this->model->add($this->userTables['userLoginTable'], $query1);
+
+        $userLoginData = $this->model->get($this->userTables['userLoginTable'], [
+            'where' => ['login' => $this->userInput['login']],
+        ])[0];
+
         $query2 = [
             'fields' => [
-                'login' => $this->userInput['login'],
+                'user_id' => $userLoginData['id'],
                 'email' => $this->userInput['email'],
                 'name' => $this->userInput['name'],
             ],
         ];
 
-        $this->model->add($this->tables['userLoginTable'], $query1);
-        $this->model->add($this->tables['userInfoTable'], $query2);
-    }
+        $this->model->add($this->userTables['userInfoTable'], $query2);
 
-    protected function login(){
-
-        $query = [
-            'fields' => [],
-            'where' => ['login' => $this->userInput['login']],
-        ];
-
-        $res = $this->model->get($this->tables['userLoginTable'], $query)[0];
-
-        return (new LoginController())->login($res);
+        return $userLoginData;
     }
 
     protected function checkLogin(){
@@ -86,7 +85,7 @@ class RegistrationController extends BaseUser
             'where' => ['login' => $this->userInput['login']]
         ];
 
-        if ($this->model->get($this->tables['userLoginTable'], $query)[0]){
+        if ($this->model->get($this->userTables['userLoginTable'], $query)[0]){
 
             $this->msgHandler->createMessage($this->messages['loginExists'], 'registrationError');
             $this->redirect($_SERVER['HTTP_REFERER'] . '/#enter');
@@ -111,7 +110,7 @@ class RegistrationController extends BaseUser
             'where' => ['email' => $this->userInput['email']]
         ];
 
-        if ($this->model->get($this->tables['userInfoTable'], $query)[0]){
+        if ($this->model->get($this->userTables['userInfoTable'], $query)[0]){
 
             $this->msgHandler->createMessage($this->messages['emailExists'], 'registrationError');
             $this->redirect($_SERVER['HTTP_REFERER'] . '/#enter');

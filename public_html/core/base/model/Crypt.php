@@ -35,7 +35,8 @@ class Crypt
 
         $crypt_data = $this->cryptUnCombine($str, $ivlen);
 
-        $originalPlaintext = openssl_decrypt($crypt_data['str'], $this->cryptMethod, CRYPT_KEY, OPENSSL_RAW_DATA, $crypt_data['iv']);
+        $originalPlaintext = openssl_decrypt($crypt_data['str'], $this->cryptMethod,
+            CRYPT_KEY, OPENSSL_RAW_DATA, $crypt_data['iv']);
 
         $calcmac = hash_hmac($this->hashAlgorithm, $crypt_data['str'], CRYPT_KEY, true);
 

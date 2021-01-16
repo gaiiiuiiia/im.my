@@ -36,9 +36,8 @@ class MessageHandler
             echo "<div class='error'>Ошибка вывода! Данный тип сообщения не существует.</div>";
             return;
         }
-        if ($this->getDataFromArray($this->messagesTypes[$type], $_SESSION)){
+        if ($msg = $this->getDataFromArray($this->messagesTypes[$type], $_SESSION)){
 
-            $msg = $this->getDataFromArray($this->messagesTypes[$type], $_SESSION);
             $msgClass = strpos(strtolower($type), 'error') ? 'error' : 'notify';
 
             echo "<div class='$msgClass center'>$msg</div>";

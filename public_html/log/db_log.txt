@@ -18,3 +18,11 @@ Fault: 15-01-2021 17:32:08 - Ошибка в SQL запросе: SHOW COLUMNS FR
 file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
 In line 41
 
+Fault: 15-01-2021 18:00:39 - Ошибка в SQL запросе: SELECT goods_filters.filters_id FROM goods_filters  WHERE goods_filters.goods_id='1'    - 1146 Table 'mdb.goods_filters' doesn't exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+
+Fault: 15-01-2021 21:21:47 - Ошибка в SQL запросе: SHOW COLUMNS FROM goods - 2006 MySQL server has gone away
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\model\BaseModel.php
+In line 41
+

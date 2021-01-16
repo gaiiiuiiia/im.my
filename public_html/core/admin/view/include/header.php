@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta type="keywords" content="...">
         <meta type="description" content="...">
-        <title>Document</title>
+        <title><?=$this->title?></title>
 
         <?php $this->getStyles();?>
 
@@ -14,7 +14,7 @@
         <div class="vg-carcass vg-hide">
             <div class="vg-main">
                 <div class="vg-one-of-twenty vg-firm-background-color2  vg-center">
-                    <a href="<?=PATH?>" target="_blank">
+                    <a href="<?=PATH?>" target="blank">
                         <div class="vg-element vg-full">
                             <span class="vg-text2 vg-firm-color1">Site</span>
                         </div>
