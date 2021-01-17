@@ -14,6 +14,7 @@
 </head>
 <body>
 
+
 <nav class="navbar navbar-expand-sm navar-light bg-light">
     <div class="container">
         <a href="<?=PATH?>" class="navbar-brand"><?=$this->title?></a>
@@ -31,7 +32,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkWoman">
                         <a class="dropdown-item" href="#">Платья</a>
                         <a class="dropdown-item" href="#">Блузки</a>
-                        <a class="dropdown-item" href="#">Хуйнюшки</a>
+                        <a class="dropdown-item" href="#">-</a>
                     </div>
                 <li class="nav-item dropdown">
                     <a href="" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkMan" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Мужчины</a>

@@ -1,1 +1,1 @@
-<h1><?=$this->content?></h1>
+<h1>aaaaas</h1>
