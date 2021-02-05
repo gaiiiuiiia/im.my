@@ -32,7 +32,7 @@ class RegistrationController extends BaseUser
 
         } else if (isset($_SESSION['user']['authorized'])){
 
-            $this->msgHandler->createMessage($this->messages['alreadyLogged'], 'alreadyLogged');
+            $this->msgHandler->createMessage('alreadyLogged', 'alreadyLogged');
 
             $this->redirect($_SERVER['HTTP_REFERER'] . '/#systemMessage');
 
@@ -87,7 +87,7 @@ class RegistrationController extends BaseUser
 
         if ($this->model->get($this->userTables['userLoginTable'], $query)[0]){
 
-            $this->msgHandler->createMessage($this->messages['loginExists'], 'registrationError');
+            $this->msgHandler->createMessage('loginExists', 'registrationError');
             $this->redirect($_SERVER['HTTP_REFERER'] . '/#enter');
         }
 
@@ -97,7 +97,7 @@ class RegistrationController extends BaseUser
     protected function checkPassword(){
 
         if ($this->userInput['password'] !== $this->userInput['confirm-password']){
-            $this->msgHandler->createMessage($this->messages['passwordsDoNotMatch'], 'registrationError');
+            $this->msgHandler->createMessage('passwordsDoNotMatch', 'registrationError');
             $this->redirect($_SERVER['HTTP_REFERER'] . '/#enter');
         }
 
@@ -112,7 +112,7 @@ class RegistrationController extends BaseUser
 
         if ($this->model->get($this->userTables['userInfoTable'], $query)[0]){
 
-            $this->msgHandler->createMessage($this->messages['emailExists'], 'registrationError');
+            $this->msgHandler->createMessage('emailExists', 'registrationError');
             $this->redirect($_SERVER['HTTP_REFERER'] . '/#enter');
         }
 

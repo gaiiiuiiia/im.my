@@ -15,16 +15,10 @@ abstract class BaseUser extends BaseController
 {
 
     protected $model;
-
     protected $title;
-
-    protected $messages;
     protected $msgHandler;
-
     protected $userInput;
-
     protected $userTables;
-
     protected $crypt;
 
     protected function inputData(){
@@ -39,9 +33,6 @@ abstract class BaseUser extends BaseController
         $this->model = $this->model ?: UserModel::instance();
 
         $this->msgHandler = $this->msgHandler ?: MessageHandler::instance();
-
-        $this->messages = $this->messages ?: include $_SERVER['DOCUMENT_ROOT'] . PATH .
-                                                    Settings::get('messages') . 'informationMessages.php';
 
         $this->crypt = $this->crypt ?: Crypt::instance();
 
@@ -59,8 +50,8 @@ abstract class BaseUser extends BaseController
             $this->content = $this->render($this->template, $vars);
         }
 
-        $this->header = $this->render(USER_TEMPLATE . 'include/header');
-        $this->footer = $this->render(USER_TEMPLATE . 'include/footer');
+        $this->header = $this->render(TEMPLATE . 'header');
+        $this->footer = $this->render(TEMPLATE . 'footer');
 
         // дефолтная раскладка хедер контент футер
         return $this->render(ADMIN_TEMPLATE . 'layout/default');

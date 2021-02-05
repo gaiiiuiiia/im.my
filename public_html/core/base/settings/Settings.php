@@ -36,7 +36,7 @@ class Settings
         'user' => [
             'path' => 'core/user/controller/',
             'hrUrl' => true,
-            'routes' => [
+            'routes' => [  // алиас маршрута
                 'login' => 'login',
             ],
         ],
@@ -68,13 +68,13 @@ class Settings
     ];
 
     private $templateArr = [
-        'text' => ['name', 'login', 'password', 'salt'],
-        'textarea' => ['content', 'keywords'],
+        'text' => ['name'],
+        'textarea' => ['content', 'keywords', 'description'],
         'radio' => ['visible'],
         'checkboxlist' => ['filters'],
         'select' => ['menu_position', 'parent_id'],
-        'img' => ['img', 'main_img'],
-        'gallery_img' => ['gallery_img', 'unknown'],
+        'img' => ['img'],
+        'gallery_img' => ['gallery_img'],
     ];
 
     // массив тех шаблонов, в которые выводятся файлы
@@ -85,7 +85,7 @@ class Settings
         'keywords' => ['Ключевые слова', 'Не более 70 символов'],
         'img' => ['Главное изображение', 'Отображается первым'],
         'visible' => ['Выводить пользователям?', 'Отображать ли этот объект на сайте'],
-        'gallery_img' => ['Галлерея изображений', 'Выберите несколько изображений']
+        'gallery_img' => ['Галлерея изображений', 'Выберите несколько изображений'],
     ];
 
     private $radio = [
@@ -109,7 +109,7 @@ class Settings
     private $blockNeedle = [
         'vg-rows' => [],
         'vg-img' => ['img', 'gallery_img'],
-        'vg-content' => ['content', 'keywords'],
+        'vg-content' => ['content', 'keywords', 'description'],
     ];
 
     private $validation = [
@@ -152,10 +152,10 @@ class Settings
     public function glueProperties($class){
         $baseProperties = [];
 
-        foreach ($this as $name => $item){
-            $property = $class::get($name);
+        foreach ($this as $name => $item){  // прохожусь по свойствам класса Settings
+            $property = $class::get($name);  // беру одноименное св-во в классе $class
 
-            if (is_array($property) && is_array($item)){
+            if (is_array($property) && is_array($item)){  // если они оба массивы, то клеим их
                 $baseProperties[$name] = $this->arrayMergeRecursive($this->$name, $property);
                 continue;
             }

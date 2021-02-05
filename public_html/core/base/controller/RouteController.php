@@ -15,10 +15,10 @@ class RouteController extends BaseController
 
     private function __construct(){
 
-        $adress_str = $_SERVER['REQUEST_URI'];
+        $address_str = $_SERVER['REQUEST_URI'];
 
         if ($_SERVER['QUERY_STRING']){
-            $adress_str = substr($adress_str, 0, strpos($adress_str, $_SERVER['QUERY_STRING']) - 1);
+            $address_str = substr($address_str, 0, strpos($address_str, $_SERVER['QUERY_STRING']) - 1);
         }
 
         // тут path это расположение файла index.php
@@ -27,10 +27,10 @@ class RouteController extends BaseController
         // проверка запуска скрипта из корня проекта в настройках Config
         if ($path === PATH){
 
-            if (strrpos($adress_str, '/') === strlen($adress_str) - 1 &&
-                    strrpos($adress_str, '/') !== strlen(PATH) - 1){
+            if (strrpos($address_str, '/') === strlen($address_str) - 1 &&
+                    strrpos($address_str, '/') !== strlen(PATH) - 1){
 
-                $this->redirect(rtrim($adress_str, '/'), 301);
+                $this->redirect(rtrim($address_str, '/'), 301);
             }
 
             $this->routes = Settings::get('routes');
@@ -39,13 +39,14 @@ class RouteController extends BaseController
                 throw new RouteException('Отсутствуют маршруты в базовых настройках', 1);
             }
 
-            $url = explode('/', substr($adress_str, strlen(PATH)));
+            $url = explode('/', substr($address_str, strlen(PATH)));
 
             // проверка на вход в админку
             if ($url[0] && $url[0] === $this->routes['admin']['alias']){
 
                 array_shift($url);
 
+                // проверка на плагин. im.my/admin/pluginName. файл плагина должен быть в папке plugins
                 if ($url[0] && is_dir($_SERVER['DOCUMENT_ROOT'] . PATH . $this->routes['plugins']['path'] . $url[0])){
                     $plugin = array_shift($url);
                     $pluginSettings = $this->routes['settings']['path'] . ucfirst($plugin . 'Settings');
@@ -61,13 +62,16 @@ class RouteController extends BaseController
                     $hrUrl = $this->routes['plugins']['hrUrl'];
                     $route = 'plugins';
 
-                }else{
+                }
+                // если это не плагин, то просто входим в админ панель
+                else{
                     $this->controller = $this->routes['admin']['path'];
                     $hrUrl = $this->routes['admin']['hrUrl'];
                     $route = 'admin';
                 }
 
-            }else{
+            }
+            else{  // входим в юзер часть сайта
                 $hrUrl = $this->routes['user']['hrUrl'];
                 $this->controller = $this->routes['user']['path'];
                 $route = 'user';
@@ -76,27 +80,7 @@ class RouteController extends BaseController
             $this->createRoute($route, $url);
 
             // парсинг поисковой строки. извлечение параметров
-            if ($url[1]){
-                $count = count($url);
-                $key = '';
-
-                if (!$hrUrl){
-                    $i = 1;
-                }else{
-                    $this->parameters['alias'] = $url[1];
-                    $i = 2;
-                }
-
-                for ( ; $i < $count; $i++){
-                    if (!$key){
-                        $key = $url[$i];
-                        $this->parameters[$key] = '';
-                    }else{
-                        $this->parameters[$key] = $url[$i];
-                        $key = '';
-                    }
-                }
-            }
+            $this->createParameters($url, $hrUrl);
 
         }
         else{
@@ -105,9 +89,13 @@ class RouteController extends BaseController
     }
 
     private function createRoute($var, $arr){
+
         $route = [];
 
+        // arr[0] - контроллер, который будет подключен
         if (!empty($arr[0])){
+            // проверка алиаса контроллера. Например алиас catalog будет записан в настройках как site/input/output
+            // site - контроллер, input - входной метод, output - выходной метод, если их нет, то подкл. дефолтные
             if ($this->routes[$var]['routes'][$arr[0]]){
                 $route = explode('/', $this->routes[$var]['routes'][$arr[0]]);
 
@@ -119,7 +107,34 @@ class RouteController extends BaseController
             $this->controller .= $this->routes['default']['controller'];
         }
 
-        $this->inputMethod = $route[1] ? $route[1] : $this->routes['default']['inputMethod'];
-        $this->outputMethod = $route[2] ? $route[2] : $this->routes['default']['outputMethod'];
+        $this->inputMethod = $route[1] ?: $this->routes['default']['inputMethod'];
+        $this->outputMethod = $route[2] ?: $this->routes['default']['outputMethod'];
+
+        return null;
+    }
+
+    private function createParameters($url, $hrUrl){
+
+        if ($url[1]){
+            $count = count($url);
+            $key = '';
+
+            if (!$hrUrl){
+                $i = 1;
+            }else{
+                $this->parameters['alias'] = $url[1];
+                $i = 2;
+            }
+
+            for ( ; $i < $count; $i++){
+                if (!$key){
+                    $key = $url[$i];
+                    $this->parameters[$key] = '';
+                }else{
+                    $this->parameters[$key] = $url[$i];
+                    $key = '';
+                }
+            }
+        }
     }
 }

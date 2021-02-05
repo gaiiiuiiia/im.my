@@ -26,12 +26,12 @@ abstract class BaseModel extends BaseModelMethods
     /**
      * @param $query
      * @param string $crud = r - SELECT / c - INSERT / u - UPDATE / d - DELETE
-     * @param false $return_id
+     * @param false $insert_id идентификатор вставки для метода INSERT
      * @return array|bool|mixed
      * @throws DbException
      */
 
-    final public function query($query, $crud = 'r', $return_id = false){
+    final public function query($query, $crud = 'r', $insert_id = false){
 
         // объект, содержащий выборку из БД
         $result = $this->db->query($query);
@@ -61,7 +61,7 @@ abstract class BaseModel extends BaseModelMethods
 
             case 'c':
 
-                if ($return_id){
+                if ($insert_id){
                     return $this->db->insert_id;
                 }
                 return true;

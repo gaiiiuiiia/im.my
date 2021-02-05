@@ -162,7 +162,10 @@ abstract class BaseModelMethods
                 else{
                     $condition = $set['condition'][$c_count - 1];
                 }
+
                 if ($operand === 'IN' || $operand === 'NOT IN'){
+
+                    // если вложенный запрос типа $key => 'SELECT ...'
                     if (is_string($item) && strpos($item, 'SELECT') === 0){
                         $in_str = $item;
                     }

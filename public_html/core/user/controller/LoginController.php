@@ -22,7 +22,7 @@ class LoginController extends BaseUser
                 $this->redirect(SITE_URL);
             }
 
-            $this->msgHandler->createMessage($this->messages['alreadyLogged'], 'alreadyLogged');
+            $this->msgHandler->createMessage('alreadyLogged', 'alreadyLogged');
             $this->redirect($_SERVER['HTTP_REFERER'] . '/#systemMessage');
         }
         if (isset($_POST['loginButton'])){
@@ -52,12 +52,12 @@ class LoginController extends BaseUser
         $userDataFromDB = $this->getUserDataFromDB(['login' => $this->userInput['login']], $this->userTables['userLoginTable']);
 
         if (!$userDataFromDB) {
-            $this->msgHandler->createMessage($this->messages['userNotExists'], 'loginError');
+            $this->msgHandler->createMessage('userNotExists', 'loginError');
             $this->redirect($_SERVER['HTTP_REFERER'] . '/#enterError');
         }
 
         if (!$this->validatePassword($userDataFromDB['password'])){
-            $this->msgHandler->createMessage($this->messages['incorrectPassword'], 'loginError');
+            $this->msgHandler->createMessage('incorrectPassword', 'loginError');
             $this->redirect($_SERVER['HTTP_REFERER'] . '/#enterError');
         }
 

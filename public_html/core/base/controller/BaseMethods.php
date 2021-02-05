@@ -7,7 +7,6 @@ namespace core\base\controller;
 trait BaseMethods
 {
 
-
     protected function saveDataToArray($path, $dataToSave, &$targetArr){
 
         if (!$dataToSave || !is_array($targetArr)) return false;
@@ -124,7 +123,6 @@ trait BaseMethods
     protected function isAjax(){
         return isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
             $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpRequest';
-
     }
 
     protected function redirect($http = false, $code = false){

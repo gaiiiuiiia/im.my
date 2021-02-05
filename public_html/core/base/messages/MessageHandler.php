@@ -6,6 +6,7 @@ namespace core\base\messages;
 
 use core\base\controller\BaseMethods;
 use core\base\controller\Singleton;
+use core\base\exceptions\UserException;
 use core\base\settings\Settings;
 
 class MessageHandler
@@ -13,6 +14,7 @@ class MessageHandler
     use Singleton;
     use BaseMethods;
 
+    protected $messages;
     protected $messagesTypes;
 
     private function __construct(){
@@ -20,13 +22,24 @@ class MessageHandler
         $this->messagesTypes = include $_SERVER['DOCUMENT_ROOT'] . PATH .
             Settings::get('messages') . 'messagesTypes.php';
 
+        $this->messages = include $_SERVER['DOCUMENT_ROOT'] . PATH .
+            Settings::get('messages') . 'informationMessages.php';
+
     }
 
     public function createMessage($message, $type){
 
-        if (!array_key_exists($type, $this->messagesTypes)) return;
+        try{
+            if (!array_key_exists($type, $this->messagesTypes) ||
+                !array_key_exists($message, $this->messages))
 
-        $this->saveDataToArray($this->messagesTypes[$type], '<div>'. $message . '</div>', $_SESSION);
+                throw new UserException("Некорректное сообщение пользователю с параметрами $type, $message");
+        }
+        catch (UserException $e){
+            return;
+        }
+
+        $this->saveDataToArray($this->messagesTypes[$type], '<div>'. $this->messages[$message] . '</div>', $_SESSION);
 
     }
 

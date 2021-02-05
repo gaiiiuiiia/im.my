@@ -33,21 +33,23 @@ abstract class BaseController
     protected $ajaxData;
 
     public function route(){
+
         $controller = str_replace('/', '\\', $this->controller);
 
         try {
-            // 10 видео 10 минута
-            // поиск метода request в классе $controller. далее при помощи $object можно вызвать request
-            $object = new \ReflectionMethod($controller, 'request');
 
-            $args = [
+            $method = new \ReflectionMethod($controller, 'request');
+
+            $parameters = [
                 'parameters' => $this->parameters,
                 'inputMethod' => $this->inputMethod,
                 'outputMethod' => $this->outputMethod,
             ];
 
-            $object->invoke(new $controller, $args);
-        }catch(\ReflectionException $e) {
+            $method->invoke(new $controller, $parameters);
+
+        }
+        catch(\ReflectionException $e){
             throw new RouteException($e->getMessage());
         }
     }
@@ -61,7 +63,7 @@ abstract class BaseController
         $data = $this->$inputData();
 
         if (method_exists($this, $outputData)){
-            $page = $this->outputData($data);
+            $page = $this->$outputData($data);
             if ($page){
                 $this->page = $page;
             }
@@ -124,16 +126,16 @@ abstract class BaseController
 
     protected function init($admin = false){
 
-        $dir = $admin ? ADMIN_CSS_JS : USER_CSS_JS;
-        $template = $admin ? ADMIN_TEMPLATE : USER_TEMPLATE;
+        $paths = $admin ? ADMIN_CSS_JS : USER_CSS_JS;
+        $template = $admin ? ADMIN_TEMPLATE : TEMPLATE;
 
-        if ($dir['styles']) {
-            foreach ($dir['styles'] as $item){
+        if ($paths['styles']) {
+            foreach ($paths['styles'] as $item){
                 $this->styles[] = PATH . $template . trim($item, '/');
             }
         }
-        if ($dir['scripts']) {
-            foreach ($dir['scripts'] as $item){
+        if ($paths['scripts']) {
+            foreach ($paths['scripts'] as $item){
                 $this->scripts[] = PATH . $template . trim($item, '/');
             }
         }

@@ -474,3 +474,395 @@ Fault: 16-01-2021 19:57:11 - Не верное имя файла для подк
 file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
 In line 38
 
+Fault: 20-01-2021 0:30:36 - Не верное имя файла для подключения - core/plugins/shop/CategoriesController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 38
+
+Fault: 20-01-2021 2:51:08 - bad template
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 142
+
+Fault: 20-01-2021 22:38:55 - Не верное имя файла для подключения - core/user/controller/ShopController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 21-01-2021 0:43:08 - Не верное имя файла для подключения - core/user/controller/TemplatesController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 21-01-2021 0:43:08 - Не верное имя файла для подключения - core/user/controller/TemplatesController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 21-01-2021 0:43:08 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 0:44:06 - Не верное имя файла для подключения - core/user/controller/TemplatesController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 21-01-2021 0:44:06 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 0:44:06 - Не верное имя файла для подключения - core/user/controller/TemplatesController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 21-01-2021 0:44:17 - Не верное имя файла для подключения - core/user/controller/TemplatesController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 21-01-2021 0:44:17 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 0:44:17 - Не верное имя файла для подключения - core/user/controller/TemplatesController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 21-01-2021 0:45:43 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:06:11 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:11:09 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:17:58 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:19:22 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:20:54 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:20:55 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:21:56 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:22:52 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:25:37 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:26:29 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:27:32 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:27:36 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:27:43 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:27:49 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:27:50 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:28:29 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:30:25 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:30:58 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:31:19 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:32:12 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:32:56 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:33:12 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:34:02 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:34:42 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:35:43 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 21-01-2021 1:35:59 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 30-01-2021 19:26:08 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 8:23:30 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 8:24:26 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 8:24:27 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 8:24:45 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 8:25:17 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 8:25:27 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 8:25:48 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 8:27:23 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 8:34:06 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 8:35:14 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 8:37:29 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 9:16:38 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 9:16:58 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 9:23:22 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 9:26:18 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 9:29:06 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 9:30:50 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 9:35:45 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 9:37:41 - Не верное имя файла для подключения - core/admin/controller/ViewController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 05-02-2021 9:40:08 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 9:43:52 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 9:46:01 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 9:47:12 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 9:47:34 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 9:47:48 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 9:47:52 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 9:48:42 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:11:53 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:13:53 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:14:19 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:19:25 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:22:51 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:23:40 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:24:30 - Не верное имя файла для подключения - core/user/controller/TemplatesController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 05-02-2021 10:24:38 - Не верное имя файла для подключения - core/user/controller/TemplatesController
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\settings\internal_settings.php
+In line 37
+
+Fault: 05-02-2021 10:25:22 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:25:29 - Class core\user\controller\Favicon.icoController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:25:58 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:26:22 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:27:00 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:28:01 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:28:32 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:29:49 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:45:27 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:45:59 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:49:10 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:49:52 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:49:58 - Class core\user\controller\Favicon.icoController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:50:09 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:50:13 - Class core\user\controller\Favicon.icoController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:50:23 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:50:25 - Class core\user\controller\Favicon.icoController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:51:17 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:51:43 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:52:41 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:53:31 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 10:54:00 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
+Fault: 05-02-2021 11:07:05 - Class core\user\controller\Index.phpController does not exist
+file E:\myfiles\Programs\OpenServer\domains\im.my\public_html\core\base\controller\BaseController.php
+In line 53
+
